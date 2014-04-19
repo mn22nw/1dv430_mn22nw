@@ -1,0 +1,26 @@
+@charset "UTF-8";
+
+	body {		overflow-y: scroll;	
+				width:100%;
+				height:100%;
+				margin:0 auto;
+				
+				font-family:"Georgia", sans-serif;
+				}
+	h2 {			padding-top:10px;}
+	
+	a {			display:block; 
+				width:80px; height:80px;
+				float:left;
+				padding:10px; 
+				}
+	
+		/** Anger sidansstorlek och placering*
+---------------------------------------------------------------------- */	
+#page {width:90%; height:90%;
+		background:grey;
+		margin:0 auto;
+		overflow:hidden;}
+#containDiv {
+    /*  */ padding:25px; width:500px;
+			background:red;}
