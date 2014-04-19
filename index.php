@@ -28,7 +28,7 @@
 	 	<body>
 	<div id="page">
 		<header>
-			<h2>FavoTubeee</h2>	
+			<h2>FavoTube</h2>	
 		</header> 
 		<div id="videoBoard"></div>
 	</div>
