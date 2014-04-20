@@ -1,16 +1,25 @@
 var Video = {
 	init:function(link)
 	{	
-			//var containDiv = document.querySelector("#contain");
+		
 		var videoBoard = document.querySelector("#videoBoard");
 		var containDiv = document.createElement("div");
 		containDiv.className = "draggy";
 		var videoDiv = document.createElement("div");
 		var video = document.createElement("iframe");
+		
+		var exitButton = document.createElement('div');
+	    exitButton.className = 'exitButton';
+	    exitButton.onclick = function (e) { 
+	    e = e || window.event;
+		e.preventDefault(); 
+		containDiv.parentNode.removeChild(containDiv);
+		};	
 
 		video.setAttribute("src", "http://www.youtube.com/embed/"+link);	  //embed sjukt viktig!
 	 	videoDiv.className = "vidSize";
-		videoDiv.appendChild(video);	
+		videoDiv.appendChild(video);
+		containDiv.appendChild(exitButton);
 		containDiv.appendChild(videoDiv);
 		videoBoard.appendChild(containDiv); 
 	

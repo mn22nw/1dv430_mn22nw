@@ -29,8 +29,12 @@
 	<div id="page">
 		<header>
 			<img class ="logo" src="pics/logo.png" alt="logo" />
-			<input id="linkInput" type="text" name="Förnamn" value="" placeholder="Paste videolink here">
+			<div class="validation">
+				<input id="linkInput" type="text" name="Förnamn" value="" placeholder="Paste videolink here">
+				<div class="errorm"></div>
+			</div>
 			<a id="okButton" href="#">OK</a>
+			
 		</header> 
 		<div id="videoBoard"></div>
 	</div>
