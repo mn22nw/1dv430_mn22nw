@@ -6,23 +6,35 @@ var FAVOTUBE = FAVOTUBE || {};
 	
 	FAVOTUBE.util = FAVOTUBE.util || {};
 	
-	FAVOTUBE.util.createVideos = function(url) { 
+	FAVOTUBE.util.init= function() { 
 			var linkInput = document.querySelector("#linkInput");
-			linkInput.focus();
+				linkInput.focus();
+				
+				okButton.addEventListener('click', function() { 
+					
+						var urlValue = FAVOTUBE.util.getInputUrl();
+						FAVOTUBE.util.createVideos(urlValue);
+						linkInput.value="";
+						linkInput.focus();
+					}, false);
+			
+	};	
+	FAVOTUBE.util.createVideos = function(url) { 
 			var youtubeID = Video.YouTubeGetID(url);
 			Video.init(youtubeID);// att göra: korta av ytubesträng till rätt   YCvFdWnzkcI
 			//Video.init("YCvFdWnzkcI");
 	};
 	
-	FAVOTUBE.util.renderMemory= function() { 
-			var memoryWindow = new PopUpMemory(); 
-			var content = document.createElement("div");
-			content.className = "memory";
-			memoryWindow.render.init(content, "Memory", "Memory", "small_icon2");
+	FAVOTUBE.util.getInputUrl= function() { 
+			var linkInput = document.querySelector("#linkInput");
+			return linkInput.value;
 	};	
 	
-	FAVOTUBE.util.createVideos("https://www.youtube.com/watch?feature=player_embedded&v=LcN3fdOR-FM"); 
-	FAVOTUBE.util.createVideos("https://www.youtube.com/watch?v=YCvFdWnzkcI"); 
+	
+		FAVOTUBE.util.init();		
+	
+	//FAVOTUBE.util.createVideos("https://www.youtube.com/watch?feature=player_embedded&v=LcN3fdOR-FM"); 
+	
 };
    // jQuery methods go here...
 

@@ -54,6 +54,12 @@
 	#videoBoard {
 			background:grey;
 			border-radius:25px;
+			min-width:500px;
+			height:600px;
+			width:100% -2px;
+			border:2px solid #000;
+			overflow:hidden; /*http://stackoverflow.com/questions/3921761/floating-image-to-the-left-changes-container-divs-height*/
+
 	}
 	.vidSize { margin:0 auto;  width:100%;
     	padding-bottom: 70.3125%;
@@ -71,18 +77,25 @@
 }
 	
 	.draggy {
-		cursor:move;
+		cursor:move; display:inline;
 		max-height:450px;
 		max-width:480px;
 		width:30%;
 		padding-top:20px;
 		background:green;
 		box-shadow: 5px 5px 7px #333;
+		margin-left:6px;
+		margin-top:10px;
+		float:left;
+		
 	}
 		/** Anger sidansstorlek och placering*
 ---------------------------------------------------------------------- */	
-#page {	width:90%; min-height: 800px; height:90%;
-		background:#FFF;
+#page {	width:90%; min-height: 800px; 
+		height:100%; 
+		height:auto !important; 
 		margin:0 auto;
-		overflow:hidden;}
+		background:#FFF;
+		overflow:hidden;
+		padding-bottom: 20px;}
 

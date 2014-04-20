@@ -14,9 +14,9 @@ var Video = {
 		containDiv.appendChild(videoDiv);
 		videoBoard.appendChild(containDiv); 
 	
-	containDiv.addEventListener('mousedown', initDrag, false);   
+	//containDiv.addEventListener('mousedown', initDrag, false);   
 	
-	function initDrag(e) {
+	//function initDrag(e) {
 			$(function() {
 	    $( ".draggy" ).draggable({
 	    	
@@ -44,7 +44,8 @@ var Video = {
 	       //"this" is selector
 	
 	})  //end 
-		}},
+		//}
+		},
 		
 	YouTubeGetID:function(url) {    //https://gist.github.com/takien/4077195
 		  var ID = '';
