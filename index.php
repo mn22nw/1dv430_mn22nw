@@ -35,8 +35,8 @@
 	<?php
  		include('script/database.php');
 	 ?>
-	
-	<script type='text/javascript' src="script/testy.js"></script>
+	<script type='text/javascript' src="script/Video.js"></script>
+	<script type='text/javascript' src="script/script.js"></script>
 	<script type="text/javascript" src="script/my_jquery.js"></script>
 	
  	</body>
