@@ -28,7 +28,8 @@
 	 	<body>
 	<div id="page">
 		<header>
-			<h2>FavoTube</h2>	
+			<img class ="logo" src="pics/logo.png" alt="logo" />
+			<input id="linkInput" type="text" name="Förnamn" value="" placeholder="Paste videolink here">
 		</header> 
 		<div id="videoBoard"></div>
 	</div>

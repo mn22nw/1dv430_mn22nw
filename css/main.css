@@ -16,16 +16,34 @@
 				}
 	article, aside, details, figcaption, figure, main
 	footer, header, hgroup, menu, nav, section{ display: block; } 			
-	
+
+	/**    HEADER        **
+-------------------------------------------------------------------*/
+
 	header {
 			background:#FFF;
 			height:200px;
 			width:100%;
-
 			margin:0 auto;
 	}
+	
+	.logo {
+			width:250px;
+			height:110px;
+			border: 1px solid red;
+			float:left;
+	}
 
-/*lägg vidSize i container för 80% är av hela page*/
+#linkInput {
+			width:300px;
+			float:left;
+			margin-left:35px;
+			border:1px solid green;}
+
+
+	/** VIDEORUTA **
+-------------------------------------------------------------------*/
+
 	.vidSize { margin:0 auto;  width:100%;
     	padding-bottom: 70.3125%;
    	  height: 0; overflow: hidden;
