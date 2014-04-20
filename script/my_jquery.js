@@ -1,12 +1,12 @@
  $(document).ready(function(){
  	
- 	 $(function() {
-    $( "#containDiv" ).draggable({
+ /*	 $(function() {
+    $( "#test" ).draggable({
     	
     	containment: 'parent'
     });
   });
- 	/*
+ 	
   $("p").click(function(){
     $(this).hide();
   });*/
