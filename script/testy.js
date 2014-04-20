@@ -34,6 +34,21 @@ $(window).resize(function(){
         collision: "fit flip"
     })
  });
+ 
+  
+    
+  
+$(".draggy").hover(function(){
+	
+	 $(this).css({'z-index' : '999'}); 
+      // function for mouseeneter
+      //"this" is selector
+},function(){
+	 $(this).css({'z-index' : '0'}); 
+      // function for mouseleave
+       //"this" is selector
+
+})  //end
 
 };
 
