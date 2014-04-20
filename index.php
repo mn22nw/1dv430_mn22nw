@@ -30,6 +30,7 @@
 		<header>
 			<img class ="logo" src="pics/logo.png" alt="logo" />
 			<input id="linkInput" type="text" name="Förnamn" value="" placeholder="Paste videolink here">
+			<a id="okButton" href="#">OK</a>
 		</header> 
 		<div id="videoBoard"></div>
 	</div>

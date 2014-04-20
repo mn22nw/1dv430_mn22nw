@@ -21,7 +21,6 @@
 -------------------------------------------------------------------*/
 
 	header {
-			background:#FFF;
 			height:200px;
 			width:100%;
 			margin:0 auto;
@@ -30,7 +29,6 @@
 	.logo {
 			width:250px;
 			height:110px;
-			border: 1px solid red;
 			float:left;
 	}
 
@@ -38,12 +36,25 @@
 			width:300px;
 			float:left;
 			margin-left:35px;
+			margin-top:15px;
 			border:1px solid green;}
 
-
+#okButton {
+			background:#39B54A;
+			width:40px;
+			line-height:15px;
+			height:15px;
+			color:#FFF;
+			text-align:center;
+			margin:10px;
+			border-radius:5px;
+}
 	/** VIDEORUTA **
 -------------------------------------------------------------------*/
-
+	#videoBoard {
+			background:grey;
+			border-radius:25px;
+	}
 	.vidSize { margin:0 auto;  width:100%;
     	padding-bottom: 70.3125%;
    	  height: 0; overflow: hidden;
@@ -71,7 +82,7 @@
 		/** Anger sidansstorlek och placering*
 ---------------------------------------------------------------------- */	
 #page {	width:90%; min-height: 800px; height:90%;
-		background:grey;
+		background:#FFF;
 		margin:0 auto;
 		overflow:hidden;}
 

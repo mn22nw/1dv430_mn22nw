@@ -6,11 +6,12 @@ var FAVOTUBE = FAVOTUBE || {};
 	
 	FAVOTUBE.util = FAVOTUBE.util || {};
 	
-	FAVOTUBE.util.createVideos = function() { 
-			
-			Video.init("LcN3fdOR-FM");// att göra: korta av ytubesträng till rätt   YCvFdWnzkcI
-			Video.init("YCvFdWnzkcI");
-			console.log("jahapp");
+	FAVOTUBE.util.createVideos = function(url) { 
+			var linkInput = document.querySelector("#linkInput");
+			linkInput.focus();
+			var youtubeID = Video.YouTubeGetID(url);
+			Video.init(youtubeID);// att göra: korta av ytubesträng till rätt   YCvFdWnzkcI
+			//Video.init("YCvFdWnzkcI");
 	};
 	
 	FAVOTUBE.util.renderMemory= function() { 
@@ -20,7 +21,8 @@ var FAVOTUBE = FAVOTUBE || {};
 			memoryWindow.render.init(content, "Memory", "Memory", "small_icon2");
 	};	
 	
-	FAVOTUBE.util.createVideos(); 
+	FAVOTUBE.util.createVideos("https://www.youtube.com/watch?feature=player_embedded&v=LcN3fdOR-FM"); 
+	FAVOTUBE.util.createVideos("https://www.youtube.com/watch?v=YCvFdWnzkcI"); 
 };
    // jQuery methods go here...
 
