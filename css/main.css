@@ -1,0 +1,114 @@
+@charset "UTF-8";
+
+	body {		overflow-y: scroll;	
+				width:100%;
+				height:100%;
+				margin:0 auto;
+				
+				font-family:"Georgia", sans-serif;
+				}
+	h2 {			padding-top:30px;}
+	
+	a {			display:block; 
+				width:80px; height:80px;
+				float:left;
+				padding:10px; 
+				}
+	article, aside, details, figcaption, figure, main
+	footer, header, hgroup, menu, nav, section{ display: block; } 			
+
+	/**    HEADER        **
+-------------------------------------------------------------------*/
+
+	header {
+			height:200px;
+			width:100%;
+			margin:0 auto;
+	}
+	
+	.logo {
+			width:250px;
+			height:110px;
+			float:left;
+	}
+.validation {
+			float:left;
+			margin-left:35px;
+}
+.errorm {
+			margin-top:5px;
+}
+#linkInput {
+			width:300px;
+			margin-top:15px;
+			border:1px solid green;}
+
+#okButton {
+			background:#39B54A;
+			width:40px;
+			line-height:15px;
+			height:15px;
+			color:#FFF;
+			text-align:center;
+			margin:10px;
+			border-radius:5px;
+}
+	/** VIDEORUTA **
+-------------------------------------------------------------------*/
+	#videoBoard {
+			background:grey;
+			border-radius:25px;
+			min-width:500px;
+			height:600px;
+			width:100% -2px;
+			border:2px solid #000;
+			overflow:hidden; /*http://stackoverflow.com/questions/3921761/floating-image-to-the-left-changes-container-divs-height*/
+
+	}
+	.vidSize { margin:0 auto;  width:100%;
+    	padding-bottom: 70.3125%;
+   	  height: 0; overflow: hidden;
+   	 
+   			 height: 0;
+			background:#2D8C36;
+			margin-bottom:35px;}
+	
+	.vidSize iframe {
+    margin:0 auto; 
+    width: 100%;
+    height: 100%;
+    border:none;
+}
+	
+	.draggy {
+		cursor:move; display:inline;
+		max-height:450px;
+		max-width:480px;
+		width:30%;
+		
+		background:#2D8C36;
+		margin:6px;
+		margin-top:10px;
+		float:left;
+		border-radius:5px;
+		
+	}
+	
+	.exitButton{
+				width:30px;
+				height:30px;
+				float:right;
+				margin-right:7px;
+				cursor:pointer;
+				background-image:url('../pics/exitbutton.png');
+	}
+		/** Anger sidansstorlek och placering*
+---------------------------------------------------------------------- */	
+#page {	width:90%; min-height: 800px; 
+		height:100%; 
+		height:auto !important; 
+		margin:0 auto;
+		background:#FFF;
+		overflow:hidden;
+		padding-bottom: 20px;}
+
