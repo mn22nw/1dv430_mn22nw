@@ -11,12 +11,12 @@ var createVideo= function(){
 	containDiv.className = "draggy";
 
 	//console.log("Hej");
-	var li = document.createElement("iframe");
+	var video = document.createElement("iframe");
 		
-		li.setAttribute("src", "http://www.youtube.com/embed/XGSy3_Czz8k");	
-		li.setAttribute("width", "420");
-		li.setAttribute("height", "345");
-		containDiv.appendChild(li);	
+		
+		video.setAttribute("src", "http://www.youtube.com/embed/LcN3fdOR-FM");	  //embed sjukt viktig!
+	 	containDiv.className = "vidSize";
+		containDiv.appendChild(video);	
 		videoBoard.appendChild(containDiv);
 		
 
