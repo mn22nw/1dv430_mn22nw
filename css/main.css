@@ -65,11 +65,9 @@
 			overflow:hidden; /*http://stackoverflow.com/questions/3921761/floating-image-to-the-left-changes-container-divs-height*/
 
 	}
-	.vidSize { margin:0 auto;  width:100%;
-    	padding-bottom: 70.3125%;
-   	  height: 0; overflow: hidden;
-   	 
-   			 height: 0;
+	.vidSize { margin:0 auto;   height: 100%; width:100%;
+    		padding-bottom: 70.3125%;
+   	 		overflow: hidden;
 			background:#2D8C36;
 			margin-bottom:35px;}
 	

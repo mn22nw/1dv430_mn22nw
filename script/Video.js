@@ -5,7 +5,7 @@ var Video = {
 		var videoBoard = document.querySelector("#videoBoard");
 		var containDiv = document.createElement("div");
 		containDiv.className = "draggy";
-		var videoDiv = document.createElement("div");
+		var videoWrapper = document.createElement("div");
 		var video = document.createElement("iframe");
 		
 		var exitButton = document.createElement('div');
@@ -15,17 +15,17 @@ var Video = {
 		e.preventDefault(); 
 		containDiv.parentNode.removeChild(containDiv);
 		};	
-
-		video.setAttribute("src", "//www.youtube.com/embed/"+link);	  //embed sjukt viktig!
-	 	videoDiv.className = "vidSize";
-		videoDiv.appendChild(video);
+//www.youtube.com/watch?v=kdemFfbS5H0
+		video.setAttribute("src", "//www.youtube.com/embed/kdemFfbS5H0?html5=1");	  //embed sjukt viktig!
+	 	videoWrapper.className = "vidSize";
+		videoWrapper.appendChild(video);
 		containDiv.appendChild(exitButton);
-		containDiv.appendChild(videoDiv);
+		containDiv.appendChild(videoWrapper);
 		videoBoard.appendChild(containDiv); 
 	
 	//containDiv.addEventListener('mousedown', initDrag, false);   
 	
-	//function initDrag(e) {
+	/*//function initDrag(e) {
 			$(function() {
 	    $( ".draggy" ).draggable({
 	    	
@@ -54,8 +54,8 @@ var Video = {
 	
 	})  //end 
 		//}
-		},
-		
+		},*/
+	},
 	YouTubeGetID:function(url) {    //https://gist.github.com/takien/4077195
 		  var ID = '';
 		  url = url.replace(/(>|<)/gi,'').split(/(vi\/|v=|\/v\/|youtu\.be\/|\/embed\/)/);
