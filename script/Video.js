@@ -16,7 +16,7 @@ var Video = {
 		containDiv.parentNode.removeChild(containDiv);
 		};	
 
-		video.setAttribute("src", "https://www.youtube.com/embed/"+link);	  //embed sjukt viktig!
+		video.setAttribute("src", "//www.youtube.com/embed/"+link);	  //embed sjukt viktig!
 	 	videoDiv.className = "vidSize";
 		videoDiv.appendChild(video);
 		containDiv.appendChild(exitButton);
