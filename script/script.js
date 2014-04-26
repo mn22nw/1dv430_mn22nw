@@ -41,9 +41,9 @@ var FAVOTUBE = FAVOTUBE || {};
 			return linkInput.value;
 	};	
 	
-	Video.init("http://www.youtube.com/watch?v=kdemFfbS5H0");
-		FAVOTUBE.util.init();	
-		 $( "audio,video" ).mediaelementplayer();
+	
+		FAVOTUBE.util.init();		
+	
 	//FAVOTUBE.util.createVideos("https://www.youtube.com/watch?feature=player_embedded&v=LcN3fdOR-FM"); 
 	
 };

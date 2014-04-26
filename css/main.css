@@ -65,18 +65,12 @@
 			overflow:hidden; /*http://stackoverflow.com/questions/3921761/floating-image-to-the-left-changes-container-divs-height*/
 
 	}
-	.vidSize { margin:0 auto;   height: 100%; width:100%;
-    		padding-bottom: 70.3125%;
-   	 		overflow: hidden;
+	.vidSize { margin:0 auto;  width:500px;
+    	padding-bottom: 70.3125%;
+   	  height: 400px; overflow: hidden;
 			background:#2D8C36;
 			margin-bottom:35px;}
 	
-	.vidSize iframe {
-    margin:0 auto; 
-    width: 100%;
-    height: 100%;
-    border:none;
-}
 	
 	.draggy {
 		cursor:move; display:inline;

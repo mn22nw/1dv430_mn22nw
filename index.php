@@ -11,9 +11,6 @@
 	<link type="text/css" rel="stylesheet" media="print" href="print.css" />
 	<link rel="shortcut icon" href="pics/favicon1.ico" type="image/x-icon" />
 	<link rel="apple-touch-icon" href="pics/appleicon.png" />
-	
-	<script src="build/mediaelement-and-player.min.js"></script>
-	<link rel="stylesheet" href="build/mediaelementplayer.min.css" />
 	<script>  
 		 document.createElement("header"); 
 		 document.createElement("hgroup");  
@@ -39,9 +36,6 @@
 			<a id="okButton" href="#">OK</a>
 			
 		</header> 
-		<video width="640" height="360" id="player1" preload="none">
-    <source type="video/youtube" src="//www.youtube.com/watch?v=nOEw9iiopwI" />
-</video>
 		<div id="videoBoard"></div>
 	</div>
 	 <?php
