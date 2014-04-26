@@ -70,7 +70,7 @@
    	  height: 400px; overflow: hidden;
 			background:#2D8C36;
 			margin-bottom:35px;}
-	
+	iframe {border:0;}
 	
 	.draggy {
 		cursor:move; display:inline;

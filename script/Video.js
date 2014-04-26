@@ -3,10 +3,11 @@ var Video = {
 	{	
 		
 		var videoBoard = document.querySelector("#videoBoard");
-		var containDiv = document.createElement("div");
-		containDiv.className = "draggy";
+		var videoWrapper = document.createElement("div");
+		videoWrapper.className = "draggy1";
 		var videoDiv = document.createElement("div");
-		var video = document.createElement("iframe");
+
+		videoDiv.className = "youtube-video";
 		
 		var exitButton = document.createElement('div');
 	    exitButton.className = 'exitButton';
@@ -15,13 +16,17 @@ var Video = {
 		e.preventDefault(); 
 		containDiv.parentNode.removeChild(containDiv);
 		};	
-//www.youtube.com/watch?v=kdemFfbS5H0
-		video.setAttribute("src", "https://www.youtube.com/embed/" + link +  "?html5=1&showinfo=0&controls=0");	  //embed sjukt viktig!
-	 	videoDiv.className = "vidSize";
-		videoDiv.appendChild(video);
-		containDiv.appendChild(exitButton);
-		containDiv.appendChild(videoDiv);
-		videoBoard.appendChild(containDiv); 
+
+	 	videoWrapper.appendChild(videoDiv);
+		videoBoard.appendChild(videoWrapper); 
+		
+	 	$(".youtube-video").pPlayer({
+		    youtubeVideoId: link,
+		    autoplay: 0,
+		    origin: "http://yoursite.com"
+		});
+		
+		
 	
 	//containDiv.addEventListener('mousedown', initDrag, false);   
 	

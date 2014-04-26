@@ -6,6 +6,10 @@
 	<title>Favotube</title>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 	<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+	
+	<script src="//www.youtube.com/iframe_api"></script>
+	<link rel="stylesheet" type="text/css" href="pplayer/assets/pplayer.css">
+	
 	<script src="jquery.ui.touch-punch.min.js"></script>
 	<link type="text/css" rel="stylesheet" href="css/main.css"/>
 	<link type="text/css" rel="stylesheet" media="print" href="print.css" />
@@ -34,16 +38,18 @@
 				<div class="errorm"></div>
 			</div>
 			<a id="okButton" href="#">OK</a>
-			
 		</header> 
+		
 		<div id="videoBoard"></div>
 	</div>
 	 <?php
  		//include('script/database.php');
 	 ?> 
+	 <script type="text/javascript" src="pplayer/js/jquery.pplayer.js"></script>
 	<script type='text/javascript' src="script/Video.js"></script>
 	<script type='text/javascript' src="script/script.js"></script>
 	<script type="text/javascript" src="script/my_jquery.js"></script>
+	
 	
  	</body>
  </html>

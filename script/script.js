@@ -7,6 +7,10 @@ var FAVOTUBE = FAVOTUBE || {};
 	FAVOTUBE.util = FAVOTUBE.util || {};
 	
 	FAVOTUBE.util.init= function() { 
+		
+		
+		
+		
 			var linkInput = document.querySelector("#linkInput");
 				linkInput.focus();
 				
