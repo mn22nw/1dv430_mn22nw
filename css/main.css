@@ -72,12 +72,17 @@
 			margin-bottom:35px;}
 	iframe {border:0;}
 	
+	.videoWrapper
+	{ 	width:425px;
+		height:350px;
+		
+		}
 	.draggy {
 		cursor:move; display:inline;
-		max-height:450px;
-		max-width:480px;
-		width:30%;
+		width:425px;
+		height:350px;
 		
+		padding:10px;
 		background:#2D8C36;
 		margin:6px;
 		margin-top:10px;

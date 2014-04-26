@@ -3,10 +3,12 @@ var Video = {
 	{	
 		
 		var videoBoard = document.querySelector("#videoBoard");
+		var draggyDiv = document.createElement("div");
+		draggyDiv.className ="draggy";
 		var videoWrapper = document.createElement("div");
-		videoWrapper.className = "draggy1";
+		videoWrapper.className = "videoWrapper";
 		var videoDiv = document.createElement("div");
-
+		videoDiv.id = link;
 		videoDiv.className = "youtube-video";
 		
 		var exitButton = document.createElement('div');
@@ -18,9 +20,10 @@ var Video = {
 		};	
 
 	 	videoWrapper.appendChild(videoDiv);
-		videoBoard.appendChild(videoWrapper); 
+	 	draggyDiv.appendChild(videoWrapper);
+		videoBoard.appendChild(draggyDiv); 
 		
-	 	$(".youtube-video").pPlayer({
+	 	$("#"+link).pPlayer({
 		    youtubeVideoId: link,
 		    autoplay: 0,
 		    origin: "http://yoursite.com"
