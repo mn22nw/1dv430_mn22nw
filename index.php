@@ -41,8 +41,9 @@
 		</header> 
 		
 	<h1>Create Folder</h1>	
-	<form action="create.php" method="post">
-		<input id="folderName" type="text" name="Folder" value="" placeholder="Name">
+	<form action="script/create.php" method="post">
+		
+		<input id="folderName" type="text" name="folderName" value="" placeholder="Name">
 		<br />
 		
 		<input type="submit" name="submit" />
@@ -51,14 +52,16 @@
 		<div id="videoBoard"></div>
 	</div>
 	 <?php
- 		include('script/connection.php');
-		$query = "SELECT * FROM users";
-		$result = mysql_query($query);
-		
+	 	error_reporting(0);   //error_reporting(E_ALL);   om alla vill synas annars 0
+ 		require 'script/connection.php';
+	//	$query = "SELECT * FROM users";
+		//$result = mysql_query($query);
+	
+	/*	
 		while($users = mysql_fetch_array($result)){// as long as there is output data it is executing
 		echo "<h3>". $users['username'] . "</h3>";
 		} 
-		
+		*/
 	//echo("<script>console.log('PHP: "hwwy"');</script>");
 	 ?> 
 	 <script type="text/javascript" src="pplayer/js/jquery.pplayer.js"></script>
