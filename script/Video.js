@@ -16,9 +16,10 @@ var Video = {
 	    exitButton.onclick = function (e) { 
 	    e = e || window.event;
 		e.preventDefault(); 
-		containDiv.parentNode.removeChild(containDiv);
+		draggyDiv.parentNode.removeChild(draggyDiv);
 		};	
-
+		
+		draggyDiv.appendChild(exitButton);
 	 	videoWrapper.appendChild(videoDiv);
 	 	draggyDiv.appendChild(videoWrapper);
 		videoBoard.appendChild(draggyDiv); 
