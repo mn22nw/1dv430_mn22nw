@@ -45,22 +45,14 @@
 	<div id ="myFolders">        
 	</div>
 	
-	<script>
+	<!-- <script>
 		$(document).ready( function() {
 	    $("#load_folders").on("click", function() {
 	        $("#myFolders").load("pages/myfolders.php");
 	    });
 		});
-	</script>
+	</script> -->
 		
-	<h1>Create Folder</h1>	
-	<form action="script/create.php" method="post">
-		<label for="folderName">Folder Name:</label>
-		<input id="folderName" type="text" name="folderName" value="" placeholder="Name">
-		<br />
-		
-		<input type="submit" name="submit" />
-	</form>
 		
 		<div id="videoBoard"></div>
 	</div>

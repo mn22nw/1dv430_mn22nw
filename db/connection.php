@@ -13,7 +13,7 @@
 		die('Sorry we are having some problems.');
 	}
 	
-	if($result = $conn->query("SELECT * FROM users")) { // if succes 
+	if($result = $conn->query("SELECT * FROM user")) { // if succes 
 		
 		if ($result->num_rows){ // like saying: is this a positive number? 
 			echo 'succes!';

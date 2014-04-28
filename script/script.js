@@ -9,7 +9,18 @@ var FAVOTUBE = FAVOTUBE || {};
 	FAVOTUBE.util.init= function() { 
 		
 		
-		
+			var myFolderButton = document.querySelector("#load_folders");
+			
+			
+			myFolderButton.addEventListener('click', function(e) { 
+						e = e || window.event;
+						e.preventDefault(); 
+						FAVOTUBE.util.popUp();	
+						
+						 $("#popup").load("pages/myfolders.php");
+						 
+						});
+						
 		
 			var linkInput = document.querySelector("#linkInput");
 				linkInput.focus();
@@ -51,6 +62,40 @@ var FAVOTUBE = FAVOTUBE || {};
 			return linkInput.value;
 	};	
 	
+	FAVOTUBE.util.popUp =	function (){ console.log("det poppar");
+			var popup = document.createElement('div');
+			popup.id = 'popup';
+			var mask = document.createElement('div');
+			mask.id = 'mask';
+			var exitButton = document.createElement('div');
+			exitButton.classname = 'exitButton';
+			var textNodeExitButton = document.createTextNode("Stäng");
+			var pExitButton = document.createElement('p');
+			pExitButton.appendChild(textNodeExitButton);
+			exitButton.appendChild(pExitButton);
+			exitButton.onclick = function (e) { 
+				popup.parentNode.removeChild(popup); 
+				mask.parentNode.removeChild(mask)
+				};
+		
+					//---Cancel---//
+			var cancel = document.createElement('div');
+			cancel.id = 'cancel';
+			var textNodeCancel = document.createTextNode("Avbryt");
+			var pCancel = document.createElement('p');
+			pCancel.appendChild(textNodeCancel);
+			cancel.appendChild(pCancel);
+			cancel.onclick = function (e) { popup.parentNode.removeChild(popup) 
+				mask.parentNode.removeChild(mask)
+			};
+							
+			popup.appendChild(exitButton);
+
+			   
+			document.body.appendChild(popup);
+			document.body.appendChild(mask);
+			console.log("poppo"); 
+	};
 	
 		FAVOTUBE.util.init();		
 	

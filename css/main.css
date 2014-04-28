@@ -43,26 +43,30 @@
 			margin-top:15px;
 			height:20px;
 			border:2px solid green;
-			border-radius:10px;}
+			border-radius:10px;
+			outline:none;}
 
 #okButton {
 			background:#39B54A;
-			width:40px;
+			width:45px;
 			line-height:15px;
 			height:15px;
 			color:#FFF;
 			text-align:center;
 			margin:10px;
 			border-radius:5px;
+			outline:none;
 }
 	/** VIDEORUTA **
 -------------------------------------------------------------------*/
 	#videoBoard {
 			background: url(../pics/bk.jpg) center 0;
+			clear:both;
 			box-shadow: inset 0px 0px 30px 10px rgba(0,0,0,0.9);
 			border-radius:25px;
 			min-width:500px;
 			min-height:600px;
+			margin-top:80px;
 			height:100%; 
 			height:auto !important; 
 			width:100% -2px;
@@ -105,6 +109,56 @@
 				cursor:pointer;
 				background-image:url('../pics/exitbutton.png');
 	}
+	
+	/** MY FOLDERS*
+---------------------------------------------------------------------- */	
+	
+	#load_folders{
+					width:250px;
+					padding:10px 0;
+					height:20px;
+					background:#39B54A;
+					color:white;
+					clear:left;
+					text-align:center;
+					font-size:1.3em;
+					line-height:20px;
+	}
+
+	/** POPUP - MY FOLDERS*
+---------------------------------------------------------------------- */	
+	
+	
+	#popup {	position: absolute;
+				width:450px;
+				height:300px;
+				top: 10%;
+				left: 50%;
+				margin-left:-280px;
+				z-index: 9999; 
+				background-color: #FFF;
+				border: 5px solid #2f0916;
+				padding:45px;
+				border-radius:10px;}
+	#popup  p {
+		margin-top:30px;
+		text-align:justify;
+	}
+	#popup  h2 {
+		font-weight:bold;
+		font-size:18px;
+	}
+	
+	#mask{
+	width:1500px;
+	height:800px;
+	background:#000;
+	position: absolute;
+	z-index: 8888; 
+	top:0;
+	opacity:0.5;
+}
+	
 		/** Anger sidansstorlek och placering*
 ---------------------------------------------------------------------- */	
 #page {	width:90%; min-height: 800px; 
