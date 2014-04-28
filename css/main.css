@@ -41,7 +41,9 @@
 #linkInput {
 			width:300px;
 			margin-top:15px;
-			border:1px solid green;}
+			height:20px;
+			border:2px solid green;
+			border-radius:10px;}
 
 #okButton {
 			background:#39B54A;

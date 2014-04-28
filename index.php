@@ -34,7 +34,7 @@
 		<header>
 			<img class ="logo" src="pics/logo.png" alt="logo" />
 			<div class="validation">
-				<input id="linkInput" type="text" name="Förnamn" value="" placeholder="Paste videolink here">
+				<input id="linkInput" type="text" name="Förnamn" value="" placeholder=" Paste your videolink here...">
 				<div class="errorm"></div>
 			</div>
 			<a id="okButton" href="#">OK</a>

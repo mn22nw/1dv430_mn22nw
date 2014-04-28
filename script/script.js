@@ -17,15 +17,21 @@ var FAVOTUBE = FAVOTUBE || {};
 				okButton.addEventListener('click', function(e) { 
 						e = e || window.event;
 						e.preventDefault(); 
+				
 				//kanske ha detta i annan function
+				
+				var errorm = document.querySelector(".errorm");
+				
 				if (linkInput.value ===""|| linkInput.value === null){  //om formfält är tomt
-					console.log("men va 17 har nu gjort");
-					var errorm = document.querySelector(".errorm");
 					errorm.textContent ="";
 					var textNode1 = document.createTextNode("* This field can't be left empty.");
+					console.log("men va 17 har nu gjort");
+					errorm.textContent ="";
+					
 							errorm.appendChild(textNode1);
 					}
 				else{ //window.scrollTo(0,300);
+						errorm.textContent ="";
 						var urlValue = FAVOTUBE.util.getInputUrl();
 						FAVOTUBE.util.createVideos(urlValue);
 						linkInput.value=""; }
