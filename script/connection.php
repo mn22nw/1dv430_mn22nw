@@ -18,13 +18,13 @@
 		if ($result->num_rows){ // like saying: is this a positive number? 
 			echo 'succes!';
 			
-			$rows = $result->fetch_all(MYSQLI_ASSOC);
 			
-			foreach($rows as $row) {
-				echo $row['username'];
+			
+			while($row = $result->fetch_object()) { // bättre med object än assoc
+				echo $row->username;  // acces as property
 			}
 			
-			echo '<pre>', print_r($rows), '</pre>' ;
+			$result->free(); // cleaning up!!
 			
 			
 			

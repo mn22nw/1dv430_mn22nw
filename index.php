@@ -54,14 +54,40 @@
 	 <?php
 	 	error_reporting(0);   //error_reporting(E_ALL);   om alla vill synas annars 0
  		require 'script/connection.php';
-	//	$query = "SELECT * FROM users";
-		//$result = mysql_query($query);
 	
-	/*	
-		while($users = mysql_fetch_array($result)){// as long as there is output data it is executing
-		echo "<h3>". $users['username'] . "</h3>";
-		} 
-		*/
+	
+	
+	
+	
+	// INSERT //
+	
+	if(isset($_GET['username']) || isset($_GET['password'])){  
+		$username = $conn->real_escape_string(trim($_GET['username']));  // real_escape_string skyddar mot sql injections alla ' lägger den till \ framför
+		$password = $conn->real_escape_string(trim($_GET['password']));
+		
+		if($insert = $conn->query("
+		INSERT INTO users (username, password)
+		VALUES ('{$username}', '{$password}')
+		")) {echo $conn->affected_rows;
+		}
+	}
+	
+	
+	// UPPDATERA TABLE //
+		if($update = $conn->query("UPDATE folder SET name = 'Piano'")){
+			
+			// var_dump($update); returnerar true
+			echo $conn->affected_rows;
+		}
+	
+	// DELETE TABLE/Column //
+	
+	if($delete = $conn->query("DELETE FROM folder WHERE folderId = 15")){
+			
+			// var_dump($delete); returnerar true
+			echo $conn->affected_rows;
+		}
+		
 	//echo("<script>console.log('PHP: "hwwy"');</script>");
 	 ?> 
 	 <script type="text/javascript" src="pplayer/js/jquery.pplayer.js"></script>
