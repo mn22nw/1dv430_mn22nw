@@ -67,31 +67,27 @@ var FAVOTUBE = FAVOTUBE || {};
 			popup.id = 'popup';
 			var mask = document.createElement('div');
 			mask.id = 'mask';
+			
+			
 			var exitButton = document.createElement('div');
-			exitButton.classname = 'exitButton';
+			exitButton.classname = 'exitButton1';
 			var textNodeExitButton = document.createTextNode("Stäng");
 			var pExitButton = document.createElement('p');
 			pExitButton.appendChild(textNodeExitButton);
 			exitButton.appendChild(pExitButton);
+			
 			exitButton.onclick = function (e) { 
 				popup.parentNode.removeChild(popup); 
 				mask.parentNode.removeChild(mask)
 				};
 		
-					//---Cancel---//
-			var cancel = document.createElement('div');
-			cancel.id = 'cancel';
-			var textNodeCancel = document.createTextNode("Avbryt");
-			var pCancel = document.createElement('p');
-			pCancel.appendChild(textNodeCancel);
-			cancel.appendChild(pCancel);
-			cancel.onclick = function (e) { popup.parentNode.removeChild(popup) 
+			mask.onclick = function (e) { 
+				popup.parentNode.removeChild(popup); 
 				mask.parentNode.removeChild(mask)
-			};
-							
-			popup.appendChild(exitButton);
-
-			   
+				};
+			
+			
+			popup.appendChild(exitButton);   
 			document.body.appendChild(popup);
 			document.body.appendChild(mask);
 			console.log("poppo"); 
