@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="sv">
 	<head> 
 	<meta charset="utf-8" />
@@ -30,30 +30,16 @@
 	</head>
 
 	 	<body>
-	<div id="page">
+		<div id="page">
 		<header>
-			<img class ="logo" src="pics/logo.png" alt="logo" />
-			<div class="validation">
-				<input id="linkInput" type="text" name="Förnamn" value="" placeholder="Paste videolink here">
-				<div class="errorm"></div>
-			</div>
-			<a id="okButton" href="#">OK</a>
+			<img class ="folderHeader" src="pics/folderHeader.jpg" alt="header" />
 		</header> 
-	<div id="topBar">
-    <a href ="#" id="load_folders"> My Folders </a>
-	</div>
-	<div id ="myFolders">        
-	</div>
-	
-	<script>
-		$(document).ready( function() {
-	    $("#load_folders").on("click", function() {
-	        $("#myFolders").load("pages/myfolders.php");
-	    });
-		});
-	</script>
 		
-	<h1>Create Folder</h1>	
+	<h1>My Folders</h1>	
+	
+	<p>MINA MAPPAR BILDER HÄR</p>
+		
+	<h3>Add folder</h3>	
 	<form action="script/create.php" method="post">
 		<label for="folderName">Folder Name:</label>
 		<input id="folderName" type="text" name="folderName" value="" placeholder="Name">
@@ -61,8 +47,6 @@
 		
 		<input type="submit" name="submit" />
 	</form>
-		
-		<div id="videoBoard"></div>
 	</div>
 	 <?php
 	 	error_reporting(0);   //error_reporting(E_ALL);   om alla vill synas annars 0

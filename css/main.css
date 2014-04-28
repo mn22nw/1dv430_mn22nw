@@ -57,14 +57,14 @@
 -------------------------------------------------------------------*/
 	#videoBoard {
 			background: url(../pics/bk.jpg) center 0;
-			
+			box-shadow: inset 0px 0px 30px 10px rgba(0,0,0,0.9);
 			border-radius:25px;
 			min-width:500px;
 			min-height:600px;
 			height:100%; 
 			height:auto !important; 
 			width:100% -2px;
-			border:2px solid #000;
+			border:5px solid #000;
 			overflow:hidden; /*http://stackoverflow.com/questions/3921761/floating-image-to-the-left-changes-container-divs-height*/
 
 	}
@@ -84,7 +84,7 @@
 		cursor:move; display:inline;
 		width:425px;
 		height:350px;
-		
+		box-shadow:5px 5px 10px #160b02;
 		padding:10px;
 		background:#000;
 		/*background:#2D8C36;*/
