@@ -11,7 +11,7 @@
 	<link rel="stylesheet" type="text/css" href="pplayer/assets/pplayer.css">
 	
 	<script src="jquery.ui.touch-punch.min.js"></script>
-	<link type="text/css" rel="stylesheet" href="css/main.css"/>
+	<link type="text/css" rel="stylesheet" href="../css/main.css"/>
 	<link type="text/css" rel="stylesheet" media="print" href="print.css" />
 	<link rel="shortcut icon" href="pics/favicon1.ico" type="image/x-icon" />
 	<link rel="apple-touch-icon" href="pics/appleicon.png" />
@@ -31,13 +31,14 @@
 
 	 	<body>
 		<div id="page">
-		<header>
-			<img class ="folderHeader" src="pics/folderHeader.jpg" alt="header" />
+		<header id="headerFolders">
+			
 		</header> 
 		
-	<h1>My Folders</h1>	
+		
+	<p>MINA MAPPAR KOMMER HAMNA HÄR</p>
 	
-	<p>MINA MAPPAR BILDER HÄR</p>
+	<p>Det funkar inte att lägga till mapp just nu</p>
 		
 	<h3>Add folder</h3>	
 	<form action="script/create.php" method="post">

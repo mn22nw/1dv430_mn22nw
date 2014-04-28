@@ -87,7 +87,7 @@ var FAVOTUBE = FAVOTUBE || {};
 				};
 			
 			
-			popup.appendChild(exitButton);   
+			//popup.appendChild(exitButton);   
 			document.body.appendChild(popup);
 			document.body.appendChild(mask);
 			console.log("poppo"); 

@@ -31,7 +31,7 @@
 
 	 	<body>
 	<div id="page">
-		<header>
+		<header id="headerMain">
 			<img class ="logo" src="pics/logo.png" alt="logo" />
 			<div class="validation">
 				<input id="linkInput" type="text" name="Förnamn" value="" placeholder=" Paste your videolink here...">
@@ -61,7 +61,7 @@
  		require 'db/connection.php';
 		require 'functions/security.php';
 	 ?> 
-	 <script type="text/javascript" src="pplayer/js/jquery.pplayer.js"></script>
+	<script type="text/javascript" src="pplayer/js/jquery.pplayer.js"></script>
 	<script type='text/javascript' src="script/Video.js"></script>
 	<script type='text/javascript' src="script/script.js"></script>
 	<script type="text/javascript" src="script/my_jquery.js"></script>
