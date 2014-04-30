@@ -45,27 +45,14 @@
 	<div id ="myFolders">        
 	</div>
 	
-	<!-- <script>
-		$(document).ready( function() {
-	    $("#load_folders").on("click", function() {
-	        $("#myFolders").load("pages/myfolders.php");
-	    });
-		});
-	</script> -->
-		
-		
+	
+
 		<div id="videoBoard"></div>
 	</div>
-	 <?php
-	 	error_reporting(0);   //error_reporting(E_ALL);   om alla vill synas annars 0
- 		require 'db/connection.php';
-		require 'functions/security.php';
-	 ?> 
+	
 	<script type="text/javascript" src="pplayer/js/jquery.pplayer.js"></script>
 	<script type='text/javascript' src="script/Video.js"></script>
 	<script type='text/javascript' src="script/script.js"></script>
 	<script type="text/javascript" src="script/my_jquery.js"></script>
-	
-	
  	</body>
  </html>

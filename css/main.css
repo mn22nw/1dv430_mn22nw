@@ -6,6 +6,7 @@
 				margin:0 auto;
 				overflow-x: hidden;	
 				font-family:"Georgia", sans-serif;
+				position:relative;
 				}
 	h2 {			padding-top:30px;}
 	
@@ -70,6 +71,7 @@
 	/** VIDEORUTA **
 -------------------------------------------------------------------*/
 	#videoBoard {
+			background:#000;
 			background: url(../pics/bk.jpg) center 0;
 			clear:both;
 			box-shadow: inset 0px 0px 30px 10px rgba(0,0,0,0.9);
@@ -94,7 +96,8 @@
 	.videoWrapper
 	{ 	width:425px;
 		height:350px;
-		
+		margin:0 auto;
+		clear:both;
 		}
 	.draggy {
 		cursor:move; display:inline;
@@ -166,13 +169,14 @@
 	}
 	
 	#mask{
-	width:1500px;
-	min-height:800px;
-	height:100%;
+	
 	background:#000;
 	position: absolute;
 	z-index: 8888; 
-	top:0;
+    top:0;
+    left:0;
+    bottom:0;
+    right: 0;
 	opacity:0.8;
 }
 	

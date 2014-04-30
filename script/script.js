@@ -15,9 +15,10 @@ var FAVOTUBE = FAVOTUBE || {};
 			myFolderButton.addEventListener('click', function(e) { 
 						e = e || window.event;
 						e.preventDefault(); 
+						console.log("det poppar icke");
 						FAVOTUBE.util.popUp();	
 						
-						 $("#popup").load("pages/myfolders.php");
+						 $("#popup").load("../pages/myfolders.php");
 						 
 						});
 						
@@ -62,7 +63,8 @@ var FAVOTUBE = FAVOTUBE || {};
 			return linkInput.value;
 	};	
 	
-	FAVOTUBE.util.popUp =	function (){ console.log("det poppar");
+	FAVOTUBE.util.popUp =	function (){ 
+			console.log("det poppar");
 			var popup = document.createElement('div');
 			popup.id = 'popup';
 			var mask = document.createElement('div');

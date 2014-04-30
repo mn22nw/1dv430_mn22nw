@@ -1,7 +1,13 @@
 var Video = {
 	init:function(link)
 	{	
-		if(!document.querySelector("#"+ link)){  // om ett ytubeklipp inte finns i rutan
+		
+
+		var ifVideoExists = document.querySelector("#"+ link);
+		
+		console.log(ifVideoExists);
+		
+		if(ifVideoExists === null){  // om ett ytubeklipp inte finns i rutan
 			
 			var videoBoard = document.querySelector("#videoBoard");
 			var draggyDiv = document.createElement("div");
