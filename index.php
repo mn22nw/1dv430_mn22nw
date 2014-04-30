@@ -45,11 +45,45 @@
 	<div id ="myFolders">        
 	</div>
 	
+	<?php
+	 	error_reporting(0);   //error_reporting(E_ALL);   om alla vill synas annars 0
+ 		require 'db/connection.php';
+		require 'functions/security.php';
+		
+		$records = array();
+		
+		if($results = $conn->query("SELECT * FROM user")){
+			
+			if($results->num_rows){
+				while($row = $results->fetch_object()){
+					$records[] = $row;   
+				}
+				$results->free();  // we don't need it in the memory anymore
+			}
+		}
+		
+		//echo '<pre>', print_r($records), '</pre>'; 		funkar!!!
+		
+		if(!count($records)){
+			echo 'No records';
+		} else {	
+		 ?>	
+			
 	
 
-		<div id="videoBoard"></div>
+		<div id="videoBoard">
+			<?php
+			foreach($records as $r) {
+			?>
+			
+			<h3 class="phptest"><?php echo escape($r->username); ?></p>
+
+			<?php
+			}}
+			?>
+		</div>
 	</div>
-	
+
 	<script type="text/javascript" src="pplayer/js/jquery.pplayer.js"></script>
 	<script type='text/javascript' src="script/Video.js"></script>
 	<script type='text/javascript' src="script/script.js"></script>

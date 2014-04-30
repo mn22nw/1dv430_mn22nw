@@ -13,25 +13,23 @@
 		die('Sorry we are having some problems.');
 	}
 	
-	if($result = $conn->query("SELECT * FROM user")) { // if succes 
+	/*if($result = $conn->query("SELECT * FROM user")) { // if succes 
 		
 		if ($result->num_rows){ // like saying: is this a positive number? 
 			echo 'succes!';
-			
-			
-			
+
 			while($row = $result->fetch_object()) { // bättre med object än assoc
 				echo $row->username;  // acces as property
 			}
 			
 			$result->free(); // cleaning up!!
 			
-			
+		
 			
 		} else {
 			die($conn->error);
-		}	
-	}
+		}		
+	}*/
 		
 	//ger inget error om man gör fel
 	

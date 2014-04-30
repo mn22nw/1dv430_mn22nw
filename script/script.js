@@ -18,7 +18,7 @@ var FAVOTUBE = FAVOTUBE || {};
 						console.log("det poppar icke");
 						FAVOTUBE.util.popUp();	
 						
-						 $("#popup").load("../pages/myfolders.php");
+						 $("#popup").load("pages/myfolders.php");
 						 
 						});
 						
