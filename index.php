@@ -50,6 +50,9 @@
 			
 		</div>
 	</div>
+	<script type="text/javascript" src="script/ajaxTester.js"></script>
+	<script type="text/javascript" src="script/ajaxCon.js"></script>
+		
 	<script type="text/javascript" src="pplayer/js/jquery.pplayer.js"></script>
 	<script type='text/javascript' src="script/Video.js"></script>
 	<script type='text/javascript' src="script/script.js"></script>

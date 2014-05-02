@@ -53,8 +53,7 @@ var FAVOTUBE = FAVOTUBE || {};
 	};	
 	
 	FAVOTUBE.util.renderFolders = function() { 
-		console.log("renderf?");
-		var videoBoard = document.querySelector("#videoBoard");
+		/*var videoBoard = document.querySelector("#videoBoard");
 	    var hr = new XMLHttpRequest();
 	    hr.open("GET", "db/folderOutput.php", true);
 	    hr.setRequestHeader("Content-type", "application/json");
@@ -74,36 +73,10 @@ var FAVOTUBE = FAVOTUBE || {};
 		    }
 		    hr.send(null); //because no variables are being sent (exempelvis from input)
 		  
-		    videoBoard.innerHTML = "requesting...";
+		    videoBoard.innerHTML = "requesting..."; */
 
-			//AjaxTester.init();
-	
-	/*	var myTimer;
-		function ajax_json_data(){
-			var databox = document.getElementById("databox");
-			var arbitrarybox = document.getElementById("arbitrarybox");
-		    var hr = new XMLHttpRequest();
-		    hr.open("POST", "json_mysql_data.php", true);
-		    hr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-		    hr.onreadystatechange = function() {
-			    if(hr.readyState == 4 && hr.status == 200) {
-				    var d = JSON.parse(hr.responseText);
-					arbitrarybox.innerHTML = d.arbitrary.returntime;
-					databox.innerHTML = "";
-					for(var o in d){
-						if(d[o].title){
-						    databox.innerHTML += '<p><a href="page.php?id='+d[o].id+'">'+d[o].title+'</a><br>';
-							databox.innerHTML += ''+d[o].cd+'</p>';
-						}
-					}
-			    }
-		    }
-		    hr.send("limit=4");
-		    databox.innerHTML = "requesting...";
-			myTimer = setTimeout('ajax_json_data()',6000); 
-		}*/
-
-		
+			AjaxTester.init("db/folderOutput.php");
+			
 	};
 	
 	FAVOTUBE.util.createVideos = function(url) { 
