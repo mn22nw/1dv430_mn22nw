@@ -1,20 +1,56 @@
-<?php
+		<?php 
+		
+		require_once("connect_db.php");
 
-		header("Content-Type: application/json"); // ensure browser to that this is json data
-		error_reporting(0);   //error_reporting(E_ALL);   om alla vill synas annars 0
- 		require 'connection.php';
-		require 'security.php';
-	    $myArray = array();
-	    if ($result = $mysqli->query("SELECT * FROM user")) {
-	        $tempArray = array();
-	        while($row = $result->fetch_object()) {
-	                $tempArray = $row;
-	                array_push($myArray, $tempArray);
-	            }
-	        echo json_encode($myArray);
-	    }
+
+		$statement=$handler->prepare("SELECT name FROM folder");
+		$statement->execute();
+		$results=$statement->fetchAll(PDO::FETCH_ASSOC);
 	
-	    $result->close();
-	    $mysqli->close();
+		$json=json_encode($results);
+		
+		echo $json;
+
+
+
+/*
+    $stmt = $pdo->prepare("SELECT name FROM folder");
+
+    $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+echo json_encode($rows);
+		
+		
+		
+		<?php header("Content-Type: application/json");
 	
-		 ?>	
+			require_once("db/connect_db.php");
+			
+			$i = 0;
+			$jsonData = '{';
+		
+			$query = $handler->query('SELECT * from folder');
+		
+			/* while($r = $query->fetch(PDO::FETCH_ASSOC)){
+		 	echo $r['name'], '<br />';
+			} 
+			
+			$jsonData .= '"Användare":[';
+			
+			while($r = $query->fetch(PDO::FETCH_OBJ)){
+				//echo $r->name;
+				$i++;
+				$namn = $r->name;
+				$jsonData .= '{ "id":"'.$namn.'" },';
+				
+				
+		 	//echo '<script type="text/javascript"> console.log( "'. $r->name. '");</script>' .'<br />';
+				}
+		
+				$test = "test";
+				$jsonData .= '{"hehu?":'.$test.'"}]';
+	
+
+			$jsonData .= '}';
+			print_r($jsonData);
+		   // echo $jsonData;	*/	?>  

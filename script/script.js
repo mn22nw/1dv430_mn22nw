@@ -8,33 +8,6 @@ var FAVOTUBE = FAVOTUBE || {};
 	
 	FAVOTUBE.util.init= function() { 
 		
-		
-		function ajax_get_json(){
-		var results = document.getElementById("#videoBoard");
-	    var hr = new XMLHttpRequest();
-	    hr.open("GET", "db/folderOutput.php", true);
-	    hr.setRequestHeader("Content-type", "application/json");
-	    hr.onreadystatechange = function() {
-		    if(hr.readyState == 4 && hr.status == 200) {
-			    var data = JSON.parse(hr.responseText); // JSON.parse = helps it get ready for javascript parsing
-			//results.innerHTML = "";
-				for(var obj in data){
-					results.innerHTML += data[obj].user+" has "+data[obj].password+"<hr />";
-				}
-		    }
-		    }
-		    hr.send(null); //because no variables are being sent (exempelvis from input)
-		    results.innerHTML = "requesting...";
-		}
-			
-		ajax_get_json();
-		
-		
-		
-		
-		
-		
-		
 			var myFolderButton = document.querySelector("#load_folders");
 			
 			
@@ -79,9 +52,57 @@ var FAVOTUBE = FAVOTUBE || {};
 			
 	};	
 	
-	FAVOTUBE.util.renderPopUpImages = function() { 
+	FAVOTUBE.util.renderFolders = function() { 
+		console.log("renderf?");
+		var videoBoard = document.querySelector("#videoBoard");
+	    var hr = new XMLHttpRequest();
+	    hr.open("GET", "db/folderOutput.php", true);
+	    hr.setRequestHeader("Content-type", "application/json");
+	    hr.onreadystatechange = function() {
+	    	
+		    if(hr.readyState == 4 && hr.status == 200) {
 
-			AjaxTester.init();
+			 	var data = JSON.parse(hr.responseText);// JSON.parse = helps it get ready for javascript parsing
+			 	
+			 	
+			 	videoBoard.innerHTML = "";
+				for(var obj in data){
+					videoBoard.innerHTML += data[obj].name +"<hr />";
+					console.log("heey");
+				}
+		    }
+		    }
+		    hr.send(null); //because no variables are being sent (exempelvis from input)
+		  
+		    videoBoard.innerHTML = "requesting...";
+
+			//AjaxTester.init();
+	
+	/*	var myTimer;
+		function ajax_json_data(){
+			var databox = document.getElementById("databox");
+			var arbitrarybox = document.getElementById("arbitrarybox");
+		    var hr = new XMLHttpRequest();
+		    hr.open("POST", "json_mysql_data.php", true);
+		    hr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		    hr.onreadystatechange = function() {
+			    if(hr.readyState == 4 && hr.status == 200) {
+				    var d = JSON.parse(hr.responseText);
+					arbitrarybox.innerHTML = d.arbitrary.returntime;
+					databox.innerHTML = "";
+					for(var o in d){
+						if(d[o].title){
+						    databox.innerHTML += '<p><a href="page.php?id='+d[o].id+'">'+d[o].title+'</a><br>';
+							databox.innerHTML += ''+d[o].cd+'</p>';
+						}
+					}
+			    }
+		    }
+		    hr.send("limit=4");
+		    databox.innerHTML = "requesting...";
+			myTimer = setTimeout('ajax_json_data()',6000); 
+		}*/
+
 		
 	};
 	
@@ -129,7 +150,7 @@ var FAVOTUBE = FAVOTUBE || {};
 	};
 	
 		FAVOTUBE.util.init();		
-	
+		FAVOTUBE.util.renderFolders();
 	//FAVOTUBE.util.createVideos("https://www.youtube.com/watch?feature=player_embedded&v=LcN3fdOR-FM"); 
 	
 };
