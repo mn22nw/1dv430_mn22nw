@@ -9,6 +9,32 @@ var FAVOTUBE = FAVOTUBE || {};
 	FAVOTUBE.util.init= function() { 
 		
 		
+		function ajax_get_json(){
+		var results = document.getElementById("#videoBoard");
+	    var hr = new XMLHttpRequest();
+	    hr.open("GET", "db/folderOutput.php", true);
+	    hr.setRequestHeader("Content-type", "application/json");
+	    hr.onreadystatechange = function() {
+		    if(hr.readyState == 4 && hr.status == 200) {
+			    var data = JSON.parse(hr.responseText); // JSON.parse = helps it get ready for javascript parsing
+			//results.innerHTML = "";
+				for(var obj in data){
+					results.innerHTML += data[obj].user+" has "+data[obj].password+"<hr />";
+				}
+		    }
+		    }
+		    hr.send(null); //because no variables are being sent (exempelvis from input)
+		    results.innerHTML = "requesting...";
+		}
+			
+		ajax_get_json();
+		
+		
+		
+		
+		
+		
+		
 			var myFolderButton = document.querySelector("#load_folders");
 			
 			
@@ -52,6 +78,13 @@ var FAVOTUBE = FAVOTUBE || {};
 					}, false);
 			
 	};	
+	
+	FAVOTUBE.util.renderPopUpImages = function() { 
+
+			AjaxTester.init();
+		
+	};
+	
 	FAVOTUBE.util.createVideos = function(url) { 
 			var youtubeID = Video.YouTubeGetID(url);
 			Video.init(youtubeID);// att göra: korta av ytubesträng till rätt   YCvFdWnzkcI
