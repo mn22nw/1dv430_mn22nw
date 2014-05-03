@@ -9,19 +9,16 @@ var FAVOTUBE = FAVOTUBE || {};
 	FAVOTUBE.util.init= function() { 
 		
 			var myFolderButton = document.querySelector("#load_folders");
-			
-			
+					
 			myFolderButton.addEventListener('click', function(e) { 
 						e = e || window.event;
 						e.preventDefault(); 
 						console.log("det poppar icke");
 						FAVOTUBE.util.popUp();	
 						
-						 $("#popup").load("pages/myfolders.php");
-						 
+						 $("#popup").load("pages/myfolders.php");					 
 						});
-						
-		
+							
 			var linkInput = document.querySelector("#linkInput");
 				linkInput.focus();
 				
@@ -53,29 +50,14 @@ var FAVOTUBE = FAVOTUBE || {};
 	};	
 	
 	FAVOTUBE.util.renderFolders = function() { 
-		/*var videoBoard = document.querySelector("#videoBoard");
-	    var hr = new XMLHttpRequest();
-	    hr.open("GET", "db/folderOutput.php", true);
-	    hr.setRequestHeader("Content-type", "application/json");
-	    hr.onreadystatechange = function() {
-	    	
-		    if(hr.readyState == 4 && hr.status == 200) {
 
-			 	var data = JSON.parse(hr.responseText);// JSON.parse = helps it get ready for javascript parsing
-			 	
-			 	
-			 	videoBoard.innerHTML = "";
-				for(var obj in data){
-					videoBoard.innerHTML += data[obj].name +"<hr />";
-					console.log("heey");
-				}
-		    }
-		    }
-		    hr.send(null); //because no variables are being sent (exempelvis from input)
-		  
-		    videoBoard.innerHTML = "requesting..."; */
+			AjaxTester.initFolders("db/folderOutput.php");
+			
+	};
+	
+	FAVOTUBE.util.renderVideoboard = function() { 
 
-			AjaxTester.init("db/folderOutput.php");
+			AjaxTester.initVideoboard("db/videoBoardOutput.php",FAVOTUBE.util.createVideos );
 			
 	};
 	
@@ -124,6 +106,7 @@ var FAVOTUBE = FAVOTUBE || {};
 	
 		FAVOTUBE.util.init();		
 		FAVOTUBE.util.renderFolders();
+		FAVOTUBE.util.renderVideoboard(); 
 	//FAVOTUBE.util.createVideos("https://www.youtube.com/watch?feature=player_embedded&v=LcN3fdOR-FM"); 
 	
 };

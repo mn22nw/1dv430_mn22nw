@@ -7,7 +7,7 @@
 
 
 
-var videoBoard = document.querySelector("#videoBoard");
+		var videoBoard = document.querySelector("#videoBoard");
 	    var hr = this.getXHR();
 	    var timer;
 	    hr.open("get", url, true);
@@ -25,17 +25,12 @@ var videoBoard = document.querySelector("#videoBoard");
 		    }
 		    else
 			{
-				console.log("Läsfel, status:"+xhr.status);	
+				console.log("Läsfel, status:"+hr.status);	
 			}
-		 } ;
-		    hr.send(null); //because no variables are being sent (exempelvis from input)
+		 };
+		 hr.send(null); //because no variables are being sent (exempelvis from input)
 		  
-		    videoBoard.innerHTML = "requesting...";
-
-
-
-
-	
+		videoBoard.innerHTML = "requesting...";
 	
 	/*var loadBar = document.createElement('div'); 
 	loadBar.className = 'popupLoadBar';
