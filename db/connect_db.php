@@ -14,7 +14,10 @@
 			die(); 
 	 	}
 	 	 
-	 
+	 function Clean($val) {
+	 	
+		return mysql_real_escape_string($val);
+	 }
 		
 	 	
 	 	 // A query is a request for information from a database
