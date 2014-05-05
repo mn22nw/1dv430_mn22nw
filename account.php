@@ -1,5 +1,3 @@
-﻿<?php
+<?php
 include ('App_Core/Core.php');
 ?>
-
-
