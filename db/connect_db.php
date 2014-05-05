@@ -4,6 +4,9 @@
 		//require 'db/security.php';
 	 	// print_r(PDO::getAvailableDrivers());
 	 	
+	 	session_start();
+		ob_start();
+	 	
 	 	try {
 	 		$handler = new PDO('mysql:host=127.0.0.1;dbname=favotube','root','');
 			$handler->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -13,11 +16,10 @@
 	 		echo $e->getMessage();
 			die(); 
 	 	}
+		
+		
 	 	 
-	 function Clean($val) {
-	 	
-		return mysql_real_escape_string($val);
-	 }
+	 
 		
 	 	
 	 	 // A query is a request for information from a database

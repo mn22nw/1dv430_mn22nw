@@ -1,8 +1,7 @@
 ﻿
 <?php
 //phpinfo();
-include("db/connect_db.php");
-include("App_Core/Class/login.php");
+include("db/connect_login.php");
 
 if(isset($_POST['Login_Btn']) && $_POST['Login_Btn'] == 'Login'){
 	
@@ -15,6 +14,7 @@ if(isset($_POST['Login_Btn']) && $_POST['Login_Btn'] == 'Login'){
 	
 	echo $login->doLogin();
 }
+
 ?>
 
 <!DOCTYPE html>
