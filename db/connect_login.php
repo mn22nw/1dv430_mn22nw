@@ -1,5 +1,8 @@
 <?php	
 	
+	session_start();
+	ob_start();
+	
 	$DBhost = 'localhost';
 	$DBuser = 'root';
 	$DBPass = '';
@@ -16,5 +19,8 @@
 	
 	include("App_Core/Class/login.php");
 	
-	
+/*$mysql_host = "mysql17.000webhost.com";
+$mysql_database = "a6072281_data1";
+$mysql_user = "a6072281_miaaim";
+$mysql_password = "test123";*/	
 ?>

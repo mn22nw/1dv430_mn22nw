@@ -1,0 +1,93 @@
+@charset "UTF-8";
+
+
+
+		/** BUTTONS - TOP *
+---------------------------------------------------------------------- */
+
+#okButton {
+			background:#39B54A;
+			width:45px;
+			height:45px;
+			line-height:15px;
+			height:15px;
+			color:#FFF;
+			text-align:center;
+			margin:10px;
+			border-radius:5px;
+			outline:none;
+}
+
+#load_folders {
+					display:block;
+					position:relative;
+					width:270px;
+					padding:2px 0;
+					height:55px;
+					color:white;
+					clear:left;
+					background: url('../pics/sprites.png') no-repeat;
+					text-align:center;
+					font-size:1.3em;
+					line-height:40px;
+					text-indent:100%;
+					white-space:nowrap;
+					overflow:hidden;
+					background-position:6px -40px; 
+	}
+
+/*Load folders*/
+	#load_folders span{ 			
+					position: absolute;
+					top: 0; left: 0; bottom: 0; right: 0;
+					background: url('../pics/sprites.png') no-repeat;
+					background-position:-254px -40px;  }  
+
+
+		/** BUTTONS - VIDEOBOARD *
+---------------------------------------------------------------------- */
+
+
+	#videoBoard a {	
+					display:block;					
+					text-decoration:none;
+					background: url('../pics/sprites.png') no-repeat;
+					text-indent:100%;
+					white-space:nowrap;
+					overflow:hidden;
+					}
+					
+	#videoBoard a:link {	color:#FFF;	font-weight:bold; letter-spacing:1px; }
+	#videoBoard a:visited{ color:#FFF;}               
+												    
+	#videoBoard a:hover{  	color:#0c3331;}
+	#videoBoard a:active{ 	color:#FFF; border:none;}
+
+	.exitButton{
+				width:30px;
+				height:30px;
+				float:right;
+				margin-right:7px;
+				cursor:pointer;}
+	
+	/*Exitbutton*/
+	#videoBoard .exitButton { 		background-position:0 0;  }  /*The first value is the horizontal position and the second value is the vertical.*/
+	#videoBoard .exitButton:hover{ 		background-position:-30px 0;  }
+
+	
+	/*labbknapp*/
+	#videoBoard .labbKnapp a{ 					background-position:-250px 0;}
+	#videoBoard .labbKnapp a:hover{ 			background-position:-250px 100%;}
+	#videoBoard .activeLabb a{ 				background-position:-250px 100%;}
+	
+	/*Presentationsknapp*/
+	#videoBoard .presentationKnapp a{			background-position:-500px 0;}
+	#videoBoard .presentationKnapp a:hover{	background-position:-500px 100%;}  
+	#videoBoard .activePresentation a {		background-position:-500px 100%;}
+	
+	/*DailyScrumknapp*/
+	#videoBoard .dailyKnapp a {					background-position:-750px 0;}
+	#videoBoard .dailyKnapp a:hover { 			background-position:-750px 100%;}
+	#videoBoard .dailyActive a{ 				background-position:-750px 100%;}
+	
+/**visdomsord från Annie - Det som inte finns syns inte!*/

@@ -6,7 +6,6 @@ include("db/connect_login.php");
 if(isset($_POST['Login_Btn']) && $_POST['Login_Btn'] == 'Login'){
 	
 	//&& ($_POST['Login_Username']) && ($_POST['Login_Password'])
-	echo 'Hello';
 	$login = new login;
 	$login->username = $_POST['Login_Username'];
 	$login->password = $_POST['Login_Password'];
@@ -43,7 +42,7 @@ if(isset($_POST['Login_Btn']) && $_POST['Login_Btn'] == 'Login'){
 				<input type="password" name="Login_Password" class="textbox"/>
 				
 				<input type="submit" name="Login_Btn" class="LoginBtn" value="Login" />
-				<input type="hidden" name="Login_Redirect"  value="Account" />
+				<input type="hidden" name="Login_Redirect"  value="account.php" />
 				
 				
 			</form>

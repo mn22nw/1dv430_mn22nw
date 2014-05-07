@@ -10,11 +10,13 @@
 				}
 	h2 {			padding-top:30px;}
 	
-	a {			display:block; 
-				width:80px; height:80px;
-				float:left;
-				padding:10px; 
-				}
+	.unselectable {
+    -WEBKIT-USER-SELECT: NONE; /* SAFARI, CHROME */
+    -KHTML-USER-SELECT: NONE; /* KONQUEROR */
+    -MOZ-USER-SELECT: NONE; /* FIREFOX */
+    -MS-USER-SELECT: NONE; /* IE */
+    USER-SELECT: NONE; /* CSS3 */
+}
 				
 	.phptest {color:#FFF; }
 	article, aside, details, figcaption, figure, main
@@ -59,17 +61,7 @@
 			border-radius:10px;
 			outline:none;}
 
-#okButton {
-			background:#39B54A;
-			width:45px;
-			line-height:15px;
-			height:15px;
-			color:#FFF;
-			text-align:center;
-			margin:10px;
-			border-radius:5px;
-			outline:none;
-}
+
 	/** VIDEORUTA **
 -------------------------------------------------------------------*/
 	#videoBoard {
@@ -89,11 +81,11 @@
 
 	}
 	.vidSize { margin:0 auto;  width:500px;
-    	padding-bottom: 70.3125%;
-   	  height: 400px; overflow: hidden;
+    		padding-bottom: 70.3125%;
+   	  		height: 400px; overflow: hidden;
 			background:#2D8C36;
 			margin-bottom:35px;}
-	iframe {border:0;}
+			iframe {border:0;}
 	
 	.videoWrapper
 	{ 	width:425px;
@@ -116,31 +108,11 @@
 		
 	}
 	
-	.exitButton{
-				width:30px;
-				height:30px;
-				float:right;
-				margin-right:7px;
-				cursor:pointer;
-				background-image:url('../pics/exitbutton.png');
-	}
-	
-	
+
 	/** MY FOLDERS*
 ---------------------------------------------------------------------- */	
 	
-	#load_folders{
-					width:250px;
-					padding:10px 0;
-					height:20px;
-					background:#39B54A;
-					color:white;
-					clear:left;
-					text-align:center;
-					font-size:1.3em;
-					line-height:20px;
-	}
-
+	
 	/** POPUP - MY FOLDERS*
 ---------------------------------------------------------------------- */	
 	

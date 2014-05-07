@@ -105,7 +105,7 @@ var FAVOTUBE = FAVOTUBE || {};
 	};
 	
 		FAVOTUBE.util.init();		
-		FAVOTUBE.util.renderFolders();
+	//	FAVOTUBE.util.renderFolders();
 		FAVOTUBE.util.renderVideoboard(); 
 	//FAVOTUBE.util.createVideos("https://www.youtube.com/watch?feature=player_embedded&v=LcN3fdOR-FM"); 
 	

@@ -18,7 +18,8 @@ var Video = {
 			videoDiv.id = link;
 			videoDiv.className = "youtube-video";
 			
-			var exitButton = document.createElement('div');
+			var exitButton = document.createElement('a');
+			exitButton.href = "#";
 		    exitButton.className = 'exitButton';
 		    exitButton.onclick = function (e) { 
 		    e = e || window.event;

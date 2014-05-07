@@ -12,7 +12,8 @@
 	
 	<script src="jquery.ui.touch-punch.min.js"></script>
 	<link type="text/css" rel="stylesheet" href="css/main.css"/>
-	<link type="text/css" rel="stylesheet" media="print" href="print.css" />
+	<link type="text/css" rel="stylesheet" href="css/buttons.css"/>
+	<!--<link type="text/css" rel="stylesheet" media="print" href="print.css" />-->
 	<link rel="shortcut icon" href="pics/favicon1.ico" type="image/x-icon" />
 	<link rel="apple-touch-icon" href="pics/appleicon.png" />
 	<script>  
@@ -30,11 +31,11 @@
 	</head>
 
 	 	<body>
-	<div id="page">
+	<div id="page" class="unselectable">
 		
 		
 		<header id="headerMain">
-			<img class ="logo" src="pics/logo.png" alt="logo" />
+			<img class ="logo unselectable" src="pics/logo.png" alt="logo" />
 			<div class="validation">
 				<input id="linkInput" type="text" name="Förnamn" value="" placeholder=" Paste your videolink here...">
 				<div class="errorm"></div>
@@ -42,13 +43,10 @@
 			<a id="okButton" href="#">OK</a>
 		</header> 
 	<div id="topBar">
-    <a href ="#" id="load_folders"> My Folders </a>
+    <a href ="#" id="load_folders"> My Folders<span></span> </a>
 	</div>
-		<div id ="myFolders"> </div>		
-		<div id="videoBoard">
-		
-			
-		</div>
+		<div id ="myFolders"></div>		
+		<div id="videoBoard"></div>
 	</div>
 	
 		

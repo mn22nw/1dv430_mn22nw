@@ -1,14 +1,15 @@
  $(document).ready(function(){
  	
- /*	 $(function() {
-    $( "#test" ).draggable({
-    	
-    	containment: 'parent'
-    });
-  });
- 	
-  $("p").click(function(){
-    $(this).hide();
-  });*/
+		$(function() {
+			$("#load_folders")
+			.find("span")
+			.hide()
+			.end()
+			.hover(function() {
+				$(this).find("span").stop(true, true).fadeIn();
+			}, function() {
+				$(this).find("span").stop(true, true).fadeOut();
+			});
+		});
 });
 
