@@ -14,7 +14,7 @@
 	<link type="text/css" rel="stylesheet" href="css/main.css"/>
 	<link type="text/css" rel="stylesheet" href="css/buttons.css"/>
 	<!--<link type="text/css" rel="stylesheet" media="print" href="print.css" />-->
-	<link rel="shortcut icon" href="pics/favicon1.ico" type="image/x-icon" />
+	<link rel="shortcut icon" href="pics/favicon.ico" type="image/x-icon" />
 	<link rel="apple-touch-icon" href="pics/appleicon.png" />
 	<script>  
 		 document.createElement("header"); 

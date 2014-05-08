@@ -7,6 +7,7 @@
 				overflow-x: hidden;	
 				font-family:"Georgia", sans-serif;
 				position:relative;
+				background: url(../pics/seamless.jpg);
 				}
 	h2 {			padding-top:30px;}
 	
@@ -54,6 +55,7 @@
 			margin-top:5px;
 }
 #linkInput {
+			float:left;
 			width:300px;
 			margin-top:15px;
 			height:20px;
@@ -160,7 +162,6 @@
 		height:100%; 
 		height:auto !important; 
 		margin:0 auto;
-		background:#FFF;
 		overflow:hidden;
 		padding-bottom: 20px;}
 
