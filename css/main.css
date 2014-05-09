@@ -27,9 +27,8 @@
 -------------------------------------------------------------------*/
 
 	#headerMain {
-			height:100px;
-			width:100%;
-			margin:0 auto;
+			height:300px;
+			width:400px; float:left;
 	}
 	
 	#headerFolders{
@@ -46,10 +45,13 @@
 			width:250px;
 			height:110px;
 			float:left;
+			margin-bottom:50px;
 	}
 .validation {
 			float:left;
-			margin-left:35px;
+			clear:left;
+			margin-left:20px;
+			
 }
 .errorm {
 			margin-top:5px;
@@ -58,8 +60,9 @@
 			float:left;
 			width:300px;
 			margin-top:15px;
+			
 			height:20px;
-			border:2px solid green;
+			border:2px solid gray;
 			border-radius:10px;
 			outline:none;}
 
@@ -74,7 +77,6 @@
 			border-radius:25px;
 			min-width:500px;
 			min-height:600px;
-			margin-top:80px;
 			height:100%; 
 			height:auto !important; 
 			width:100% -2px;
@@ -91,7 +93,7 @@
 	
 	.videoWrapper
 	{ 	width:425px;
-		height:350px;
+		height:250px;
 		margin:0 auto;
 		clear:both;
 		}
@@ -113,7 +115,18 @@
 
 	/** MY FOLDERS*
 ---------------------------------------------------------------------- */	
-	
+	#folderHeader {
+		float:left;
+		width:50%;
+		margin-top:27px;
+	}
+	#myFolders {
+		display:block;
+		clear:left;
+		height:120px;
+		margin-top:5px;
+		margin-bottom: 50px;
+	}
 	
 	/** POPUP - MY FOLDERS*
 ---------------------------------------------------------------------- */	

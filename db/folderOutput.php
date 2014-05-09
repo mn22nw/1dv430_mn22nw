@@ -1,7 +1,6 @@
-		<?php 
+<?php 
 		
 		require_once("connect_db.php");
-
 
 		$statement=$handler->prepare("SELECT name FROM folder");
 		$statement->execute();
@@ -9,48 +8,23 @@
 	
 		$json=json_encode($results);
 		
-		echo $json;
-
-
-
-/*
-    $stmt = $pdo->prepare("SELECT name FROM folder");
-
-    $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-echo json_encode($rows);
+		$data=json_encode($results);  //json string
 		
+		if(array_key_exists('callback', $_GET)){
+
+		    header('Content-Type: text/javascript; charset=utf8');
+		    header('Access-Control-Allow-Origin: http://www.example.com/');
+		    header('Access-Control-Max-Age: 3628800');
+		    header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE');
 		
-		
-		<?php header("Content-Type: application/json");
+		    $callback = $_GET['callback'];
+		    echo $callback.'('.$data.');';
 	
-			require_once("db/connect_db.php");
-			
-			$i = 0;
-			$jsonData = '{';
+		}else{
+		    // normal JSON string
+		    header('Content-Type: application/json; charset=utf8');
 		
-			$query = $handler->query('SELECT * from folder');
-		
-			/* while($r = $query->fetch(PDO::FETCH_ASSOC)){
-		 	echo $r['name'], '<br />';
-			} 
-			
-			$jsonData .= '"Användare":[';
-			
-			while($r = $query->fetch(PDO::FETCH_OBJ)){
-				//echo $r->name;
-				$i++;
-				$namn = $r->name;
-				$jsonData .= '{ "id":"'.$namn.'" },';
-				
-				
-		 	//echo '<script type="text/javascript"> console.log( "'. $r->name. '");</script>' .'<br />';
-				}
-		
-				$test = "test";
-				$jsonData .= '{"hehu?":'.$test.'"}]';
+		    echo $data;
+		}
+	?>  
 	
-
-			$jsonData .= '}';
-			print_r($jsonData);
-		   // echo $jsonData;	*/	?>  

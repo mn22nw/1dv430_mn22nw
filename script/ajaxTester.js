@@ -1,3 +1,4 @@
+
 var AjaxTester = {
 	initFolders:function(url) {			
 		
@@ -9,14 +10,33 @@ var AjaxTester = {
 					
 					var folderdata= JSON.parse(data);
 									
-					var videoBoard = document.querySelector("#videoBoard");
-			 	
-				 	videoBoard.innerHTML = "";
+					var folderDiv = document.querySelector("#myFolders");
+
+			 		if(folderdata.length == 0 ){
+			 		folderDiv.innerHTML += folderdata[obj].name;
+			 		}
+			 		
+				 	folderDiv.innerHTML = "";
 					for(var obj in folderdata){
-						videoBoard.innerHTML += folderdata[obj].name +"<hr />";
-						console.log("heey");
-						console.log(folderdata);}
-				
+											
+						// -- FOLDERBUTTON --//
+						var openFolderBtn = document.createElement('a');
+						openFolderBtn.href = "#";
+					    openFolderBtn.className = 'openFolderBtn';
+					    
+					    var folderTitle = document.createElement('p');
+					    folderTitle.innerHTML = folderdata[obj].name;
+					   
+					    openFolderBtn.onclick = function (e) { 
+					    e = e || window.event;
+						e.preventDefault(); 
+						//opens folder with a list of folderITEMS
+						};	
+						
+						openFolderBtn.appendChild(folderTitle);
+						folderDiv.appendChild(openFolderBtn);
+					}
+					
 					});
 	},
 	initVideoboard:function(url, renderfunction){				
@@ -25,21 +45,9 @@ var AjaxTester = {
 					NodeList.prototype.forEach = Array.prototype.forEach;
 					};
 					
-					new AjaxCon(url, function(data){
+					getVideos (url, renderfunction);
 					
-					var videoBoardData= JSON.parse(data);
-									
-					var videoBoard = document.querySelector("#videoBoard");
-			 	
-				 	videoBoard.innerHTML = "";
-					for(var obj in videoBoardData){
-						var youtubeId = videoBoardData[obj].youtubeid;
-						
-						//$.getScript("script/script.js");
-						renderfunction(youtubeId);
-						console.log("videoo");				
-					}});		
-	}
+					}		
 	
 };
 

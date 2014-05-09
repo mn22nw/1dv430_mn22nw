@@ -9,25 +9,30 @@
 			display:block;
 			float:left;
 			background:#39B54A;
-			width:55px;
-			height:25px;
+			background: url('../pics/sprites.png') no-repeat;
+			width:63px;
+			height:40px;
 			line-height:25px;
 			color:#FFF;
-			text-align:center;
+			text-indent:100%;
+			white-space:nowrap;
+			overflow:hidden;
 			margin:0;
-			margin:15px;
-			border-radius:5px;
+			margin:15px 0 0 15px;
 			outline:none;
+			background-position:-12px -112px; 
 }
+#okButton:hover{ 	background-position:-82px -112px;   }
 
 #load_folders {
 					display:block;
+					float:left;
 					position:relative;
+					margin-top:10px;
 					width:278px;
 					padding:2px 0;
 					height:55px;
 					color:white;
-					clear:left;
 					background: url('../pics/sprites.png') no-repeat;
 					text-align:center;
 					font-size:1.3em;
@@ -48,6 +53,36 @@
 					background-position:9px -40px;  }  
 
 
+
+		/** BUTTONS - FOLDERS *
+---------------------------------------------------------------------- */
+
+	.openFolderBtn {
+		display:block;
+		float:left;
+		width:100px;
+		height:100px;
+		border:5px solid #160E07;
+		border-radius:10px;
+		margin:5px;
+		background: url('../pics/seamless1.jpg'); 
+		text-decoration:none;
+		font-size:1em;
+		color:#160E07;
+		text-align:center;
+		font-family: Futura, Futura-Medium, "Futura Medium", "Century Gothic", CenturyGothic, "Apple Gothic", AppleGothic, "URW Gothic L", "Avant Garde", sans-serif;
+	}
+	
+	.openFolderBtn p {
+		display:block;
+		background:#FFF;
+		width:100%;
+		height:25px;
+		line-height:25px;
+		font-weight:900;
+		
+	}
+
 		/** BUTTONS - VIDEOBOARD *
 ---------------------------------------------------------------------- */
 
@@ -61,37 +96,43 @@
 					overflow:hidden;
 					}
 					
-	#videoBoard a:link {	color:#FFF;	font-weight:bold; letter-spacing:1px; }
-	#videoBoard a:visited{ color:#FFF;}               
-												    
-	#videoBoard a:hover{  	color:#0c3331;}
-	#videoBoard a:active{ 	color:#FFF; border:none;}
-
-	.exitButton{
+	
+	/*Exitbutton*/
+	.exitButton , .hideButton , .enLarge ,.favouriteBtn{
 				width:30px;
 				height:30px;
 				float:right;
 				margin-right:7px;
 				cursor:pointer;}
 	
-	/*Exitbutton*/
-	#videoBoard .exitButton { 		background-position:0 0;  }  /*The first value is the horizontal position and the second value is the vertical.*/
+	
+	#videoBoard .exitButton { 			background-position:0 0;  }  /*The first value is the horizontal position and the second value is the vertical.*/
 	#videoBoard .exitButton:hover{ 		background-position:-30px 0;  }
+	
+	/*hideButton*/
+	.hideButton{	float:right;
+				width:30px;
+				height:30px;
+				margin-right:7px;
+				cursor:pointer;}
+	
+	
+	#videoBoard .hideButton { 		background-position:-95px 0;  }  /*The first value is the horizontal position and the second value is the vertical.*/
+	#videoBoard .hideButton:hover{ 	background-position:-125px 0;  }
+
+	/*enLarge - Button*/
 
 	
-	/*labbknapp*/
-	#videoBoard .labbKnapp a{ 					background-position:-250px 0;}
-	#videoBoard .labbKnapp a:hover{ 			background-position:-250px 100%;}
-	#videoBoard .activeLabb a{ 				background-position:-250px 100%;}
+	#videoBoard .enLarge { 		background-position:-155px 0;  }  
+	#videoBoard .enLarge:hover{ background-position:-185px 0;  }
 	
-	/*Presentationsknapp*/
-	#videoBoard .presentationKnapp a{			background-position:-500px 0;}
-	#videoBoard .presentationKnapp a:hover{	background-position:-500px 100%;}  
-	#videoBoard .activePresentation a {		background-position:-500px 100%;}
+	/*Favourite - Button*/
 	
-	/*DailyScrumknapp*/
-	#videoBoard .dailyKnapp a {					background-position:-750px 0;}
-	#videoBoard .dailyKnapp a:hover { 			background-position:-750px 100%;}
-	#videoBoard .dailyActive a{ 				background-position:-750px 100%;}
+	#videoBoard .favouriteBtn { 		margin-top:25px; 
+										background-position:-2px -155px;  }  
+	#videoBoard .favouriteBtn:hover{ 	background-position:-36px -155px;  }
+
+
+	
 	
 /**visdomsord från Annie - Det som inte finns syns inte!*/

@@ -4,6 +4,7 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width:device-width, initial-scale=1.0" />
 	<title>Favotube</title>
+	<script src="http://jpillora.com/xdomain/dist/0.6/xdomain.min.js" slave="http://xyz.example.com/proxy.html"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 	<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 	
@@ -36,16 +37,17 @@
 		
 		<header id="headerMain">
 			<img class ="logo unselectable" src="pics/logo.png" alt="logo" />
-			<div class="validation">
+		</header> 
+		
+		<div id="folderHeader">
+	    	<a href ="#" id="load_folders"> My Folders<span></span> </a>
+			<div id ="myFolders"></div>	
+		</div>
+		<div class="validation">
 				<input id="linkInput" type="text" name="Förnamn" value="" placeholder=" Paste your videolink here...">
 				<div class="errorm"></div>
 			</div>
-			<a id="okButton" href="#">OK</a>
-		</header> 
-	<div id="topBar">
-    <a href ="#" id="load_folders"> My Folders<span></span> </a>
-	</div>
-		<div id ="myFolders"></div>		
+			<a id="okButton" href="#">OK</a>	
 		<div id="videoBoard"></div>
 	</div>
 	

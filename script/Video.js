@@ -18,6 +18,7 @@ var Video = {
 			videoDiv.id = link;
 			videoDiv.className = "youtube-video";
 			
+			// -- EXITBUTTON --//
 			var exitButton = document.createElement('a');
 			exitButton.href = "#";
 		    exitButton.className = 'exitButton';
@@ -27,9 +28,42 @@ var Video = {
 			draggyDiv.parentNode.removeChild(draggyDiv);
 			};	
 			
+			// -- ENLARGE-BUTTON --//
+			var enLarge = document.createElement('a');
+			enLarge.href = "#";
+		    enLarge.className = 'enLarge';
+		    enLarge.onclick = function (e) { 
+		    e = e || window.event;
+			e.preventDefault(); 
+			console.log("förstorar!");
+			};
+			
+			// -- HideBUTTON --//
+			var hideButton = document.createElement('a');
+			hideButton.href = "#";
+		    hideButton.className = 'hideButton';
+		    hideButton.onclick = function (e) { 
+		    e = e || window.event;
+			e.preventDefault(); 
+			console.log("förstorar!");
+			};	
+			
+			// -- FavouriteBUTTON --//
+			var favouriteBtn = document.createElement('a');
+			favouriteBtn.href = "#";
+		    favouriteBtn.className = 'favouriteBtn';
+		    favouriteBtn.onclick = function (e) { 
+		    e = e || window.event;
+			e.preventDefault(); 
+			console.log("favorit!");
+			};	
+			
 			draggyDiv.appendChild(exitButton);
+			draggyDiv.appendChild(enLarge);
+			draggyDiv.appendChild(hideButton);
 		 	videoWrapper.appendChild(videoDiv);
 		 	draggyDiv.appendChild(videoWrapper);
+		 	draggyDiv.appendChild(favouriteBtn);
 			videoBoard.appendChild(draggyDiv); 
 			
 		 	$("#"+link).pPlayer({

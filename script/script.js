@@ -50,14 +50,14 @@ var FAVOTUBE = FAVOTUBE || {};
 	};	
 	
 	FAVOTUBE.util.renderFolders = function() { 
-
-			AjaxTester.initFolders("db/folderOutput.php");
+			
+			AjaxCon.initFolders("/000webhost/db/folderOutput.php");
 			
 	};
 	
 	FAVOTUBE.util.renderVideoboard = function() { 
 
-			AjaxTester.initVideoboard("db/videoBoardOutput.php",FAVOTUBE.util.createVideos );
+			AjaxCon.initVideoboard("/000webhost/db/videoBoardOutput.php",FAVOTUBE.util.createVideos );
 			
 	};
 	
@@ -105,7 +105,7 @@ var FAVOTUBE = FAVOTUBE || {};
 	};
 	
 		FAVOTUBE.util.init();		
-	//	FAVOTUBE.util.renderFolders();
+		FAVOTUBE.util.renderFolders();
 		FAVOTUBE.util.renderVideoboard(); 
 	//FAVOTUBE.util.createVideos("https://www.youtube.com/watch?feature=player_embedded&v=LcN3fdOR-FM"); 
 	
