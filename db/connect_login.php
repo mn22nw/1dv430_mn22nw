@@ -17,7 +17,7 @@
 		return mysql_real_escape_string($val);
 	 }
 	
-	include("App_Core/Class/login.php");
+	include("db/Class/login.php");
 	
 	/*
 	

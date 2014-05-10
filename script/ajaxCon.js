@@ -2,6 +2,7 @@
 
 initVideoboard: function getVideos(url, renderfunction) {
  	$("#videoBoard").append("<img src='pics/loader.gif' alt='Loading'/>");
+ 	console.log(url);
 
 $.ajax({
     url: url,

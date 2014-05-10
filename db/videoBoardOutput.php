@@ -1,9 +1,10 @@
 <?php 
 		
 		require_once("connect_db.php");
+		
 
-		$statement=$handler->prepare('SELECT youtubeid FROM videogroup VG INNER JOIN `user` U 
-		ON VG.videoboardID = U.videoboardID WHERE U.username = "miaaim";');
+		$statement=$handler->prepare("SELECT youtubeid FROM videogroup VG INNER JOIN `user` U 
+		ON VG.videoboardID = U.videoboardID WHERE U.username = '".$_SESSION['username']. "';");
 		$statement->execute();
 		$results=$statement->fetchAll(PDO::FETCH_ASSOC);
 	
@@ -25,5 +26,6 @@
 		
 		    echo $data;
 		}
+		
 
 	?>  

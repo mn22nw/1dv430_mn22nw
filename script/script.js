@@ -51,13 +51,13 @@ var FAVOTUBE = FAVOTUBE || {};
 	
 	FAVOTUBE.util.renderFolders = function() { 
 			
-			AjaxCon.initFolders("/000webhost/db/folderOutput.php");
+			AjaxCon.initFolders("/favotube/db/folderOutput.php");
 			
 	};
 	
 	FAVOTUBE.util.renderVideoboard = function() { 
 
-			AjaxCon.initVideoboard("/000webhost/db/videoBoardOutput.php",FAVOTUBE.util.createVideos );
+			AjaxCon.initVideoboard("/favotube/db/videoBoardOutput.php",FAVOTUBE.util.createVideos );
 			
 	};
 	

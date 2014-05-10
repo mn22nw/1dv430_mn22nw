@@ -2,6 +2,9 @@
 <?php
 //phpinfo();
 include("db/connect_login.php");
+$username = $_POST['Login_Username'];
+
+$_SESSION['username']=$username;
 
 if(isset($_POST['Login_Btn']) && $_POST['Login_Btn'] == 'Login'){
 	
