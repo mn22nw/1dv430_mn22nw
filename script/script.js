@@ -43,7 +43,7 @@ var FAVOTUBE = FAVOTUBE || {};
 						var urlValue = FAVOTUBE.util.getInputUrl();
 						FAVOTUBE.util.createVideos(urlValue);
 						linkInput.value=""; }
-						
+											
 						linkInput.focus();
 					}, false);
 			
@@ -61,10 +61,15 @@ var FAVOTUBE = FAVOTUBE || {};
 			
 	};
 	
-	FAVOTUBE.util.createVideos = function(url) { 
+	FAVOTUBE.util.createVideos = function(url) {   //ska till databas dessutom!
 			var youtubeID = Video.YouTubeGetID(url);
 			Video.init(youtubeID);// att göra: korta av ytubesträng till rätt   YCvFdWnzkcI
 			//Video.init("YCvFdWnzkcI");
+			
+			$.post('/favotube/db/addyoutubeid.php', {variable: youtubeID});
+		
+			
+
 	};
 	
 	FAVOTUBE.util.getInputUrl= function() { 

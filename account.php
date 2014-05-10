@@ -1,5 +1,5 @@
 <?php session_start(); 
-	$hej = $_SESSION['username']; ?>
+	$profilename = $_SESSION['username']; ?>
 <!doctype html>
 <html lang="sv">
 	<head> 
@@ -39,7 +39,8 @@
 		
 		<header id="headerMain">
 			<img class ="logo unselectable" src="pics/logo.png" alt="logo" />
-			<p id="username"> <?php echo $hej ?></p>
+			
+			<p id="username"> <?php echo $profilename ?></p>
 		</header> 
 		
 		<div id="folderHeader">
