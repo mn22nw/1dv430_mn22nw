@@ -57,7 +57,7 @@ var FAVOTUBE = FAVOTUBE || {};
 	
 	FAVOTUBE.util.renderVideoboard = function() { 
 
-			AjaxCon.initVideoboard("/favotube/db/videoBoardOutput.php",FAVOTUBE.util.createVideos );
+			//AjaxCon.initVideoboard("/favotube/db/videoBoardOutput.php",FAVOTUBE.util.createVideos );
 			
 	};
 	
@@ -65,9 +65,25 @@ var FAVOTUBE = FAVOTUBE || {};
 			var youtubeID = Video.YouTubeGetID(url);
 			Video.init(youtubeID);// att göra: korta av ytubesträng till rätt   YCvFdWnzkcI
 			//Video.init("YCvFdWnzkcI");
+			console.log("rumple video");
+			//$.post('/favotube/db/addyoutubeid.php', {variable: youtubeID});
 			
-			$.post('/favotube/db/addyoutubeid.php', {variable: youtubeID});
-		
+			
+		    $.ajax({
+		            type: 'post',                    
+		            url:'/favotube/db/addyoutubeid.php',            
+		            data:{"youtubeid" : url},
+		            dataType:'text',                
+		            success: function(rs)
+		            {
+		               console.log("hej2" + rs);
+		            },
+		            error: function(result) {
+           			 alert("Erroraddyoutubeid");
+     			   }
+    		    });  
+
+// try to fetch "imgSrc" on "somepage.php" as "$_post["imgSrc"].
 			
 
 	};

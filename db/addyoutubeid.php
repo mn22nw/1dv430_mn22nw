@@ -1,9 +1,10 @@
 <?php 
 	
-	include("db/connect_db.php");
-	include("functions/security.php");
+	include("connect_db.php");
+	include("../functions/security.php");
 		
-		//$variable = $_POST['variable'];
+		$variable = $_POST['youtubeid'];
+		$jsontesting ='{"a":1,"b":2,"c":3,"d":4}';
 		//echo $variable;
 
 		error_reporting(E_ALL);
@@ -80,23 +81,6 @@
 		    $handler->rollback();
 		}
 		
-/*
-		try {
-		    // First of all, let's begin a transaction
-		    $handler->beginTransaction();
+		echo $jsontesting;
 		
-		    // A set of queries; if one fails, an exception should be thrown
-		    $handler->query("INSERT INTO `favotube`.`youtubeid` (`youtubeid`, `title`) 
-				VALUES ('xxx', 'titel')");
-		  //  $handler->query('second query');
-		    //$handler->query('third query');
-		
-		    // If we arrive here, it means that no exception was thrown
-		    // i.e. no query has failed, and we can commit the transaction
-		    $handler->commit();
-		} catch (Exception $e) {
-		    // An exception has been thrown
-		    // We must rollback the transaction
-		    $handler->rollback();
-		}*/
 ?>

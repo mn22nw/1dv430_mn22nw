@@ -2,7 +2,7 @@
 
 initVideoboard: function getVideos(url, renderfunction) {
  	$("#videoBoard").append("<img src='pics/loader.gif' alt='Loading'/>");
- 	console.log(url);
+ 	console.log("kommer hit iaf!")
 
 $.ajax({
     url: url,
