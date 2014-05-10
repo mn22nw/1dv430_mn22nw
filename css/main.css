@@ -65,7 +65,12 @@
 			border:2px solid gray;
 			border-radius:10px;
 			outline:none;}
-
+#username {
+	
+	width:100px;
+	border:1px solid green;
+	font-size:1.3em;
+}
 
 	/** VIDEORUTA **
 -------------------------------------------------------------------*/

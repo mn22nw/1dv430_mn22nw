@@ -72,6 +72,13 @@ var FAVOTUBE = FAVOTUBE || {};
 			return linkInput.value;
 	};	
 	
+	FAVOTUBE.util.createprofile= function() {
+		
+		document.getElementById("username").innerHTML ="<?php echo 'heej'; ?>" ;
+		console.log(username);
+	  
+	};
+	
 	FAVOTUBE.util.popUp =	function (){ 
 			console.log("det poppar");
 			var popup = document.createElement('div');
@@ -104,7 +111,8 @@ var FAVOTUBE = FAVOTUBE || {};
 			console.log("poppo"); 
 	};
 	
-		FAVOTUBE.util.init();		
+		FAVOTUBE.util.init();	
+		//FAVOTUBE.util.createprofile();	
 		FAVOTUBE.util.renderFolders();
 		FAVOTUBE.util.renderVideoboard(); 
 	//FAVOTUBE.util.createVideos("https://www.youtube.com/watch?feature=player_embedded&v=LcN3fdOR-FM"); 

@@ -1,3 +1,5 @@
+<?php session_start(); 
+	$hej = $_SESSION['username']; ?>
 <!doctype html>
 <html lang="sv">
 	<head> 
@@ -37,6 +39,7 @@
 		
 		<header id="headerMain">
 			<img class ="logo unselectable" src="pics/logo.png" alt="logo" />
+			<p id="username"> <?php echo $hej ?></p>
 		</header> 
 		
 		<div id="folderHeader">
@@ -50,8 +53,6 @@
 			<a id="okButton" href="#">OK</a>	
 		<div id="videoBoard"></div>
 	</div>
-	
-		
 	<script type="text/javascript" src="pplayer/js/jquery.pplayer.js"></script>
 	<script type='text/javascript' src="script/Video.js"></script>
 	<script type='text/javascript' src="script/script.js"></script>
