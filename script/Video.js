@@ -143,15 +143,16 @@ var Video = {
 		},
 		
 	getTitle: function(id){
-		console.log("Rumple says" + id);
-		
-		var url = "http://gdata.youtube.com/feeds/api/videos/"+ id +"?v=2&alt=json";
+		console.log("Rumple says" + id);  //id är korrekt
+
+		var url = "http://gdata.youtube.com/feeds/api/videos/" + id +" ?v=2&alt=json";
 
 		
 		$.getJSON(url, function(response){ 
-			console.log(response.data.items[0].title);
+			//console.log(response);
+			console.log(response.entry.title.$t + "FIRA?! :D");
 			
-			return response.data.items[0].title;
+			return response.entry.title.$t;
 		});
 		
 	}
