@@ -56,23 +56,26 @@ var FAVOTUBE = FAVOTUBE || {};
 	};
 	
 	FAVOTUBE.util.renderVideoboard = function() { 
-
-			//AjaxCon.initVideoboard("/favotube/db/videoBoardOutput.php",FAVOTUBE.util.createVideos );
-			
+			AjaxCon.initVideoboard("/favotube/db/videoBoardOutput.php",FAVOTUBE.util.renderVideo );	
+	};
+	
+	FAVOTUBE.util.renderVideo = function(url) {  
+			var youtubeID = Video.YouTubeGetID(url);
+			//var title = Video.getTitle(youtubeID);
+			Video.init(youtubeID);
 	};
 	
 	FAVOTUBE.util.createVideos = function(url) {   //ska till databas dessutom!
 			var youtubeID = Video.YouTubeGetID(url);
+			var title = Video.getTitle(youtubeID);
 			Video.init(youtubeID);// att göra: korta av ytubesträng till rätt   YCvFdWnzkcI
 			//Video.init("YCvFdWnzkcI");
-			console.log("rumple video");
-			//$.post('/favotube/db/addyoutubeid.php', {variable: youtubeID});
 			
-			
+			// hämtar php som läggertill youtubeid till databasen //
 		    $.ajax({
 		            type: 'post',                    
 		            url:'/favotube/db/addyoutubeid.php',            
-		            data:{"youtubeid" : url},
+		            data:{"youtubeid" : youtubeID},
 		            dataType:'text',                
 		            success: function(rs)
 		            {
@@ -82,10 +85,6 @@ var FAVOTUBE = FAVOTUBE || {};
            			 alert("Erroraddyoutubeid");
      			   }
     		    });  
-
-// try to fetch "imgSrc" on "somepage.php" as "$_post["imgSrc"].
-			
-
 	};
 	
 	FAVOTUBE.util.getInputUrl= function() { 
@@ -124,19 +123,20 @@ var FAVOTUBE = FAVOTUBE || {};
 				popup.parentNode.removeChild(popup); 
 				mask.parentNode.removeChild(mask)
 				};
-			
-			
+				
 			//popup.appendChild(exitButton);   
 			document.body.appendChild(popup);
 			document.body.appendChild(mask);
 			console.log("poppo"); 
 	};
 	
+		//--- RUNNING FUNCTIONS --- //
+	
 		FAVOTUBE.util.init();	
 		//FAVOTUBE.util.createprofile();	
 		FAVOTUBE.util.renderFolders();
 		FAVOTUBE.util.renderVideoboard(); 
-	//FAVOTUBE.util.createVideos("https://www.youtube.com/watch?feature=player_embedded&v=LcN3fdOR-FM"); 
+
 	
 };
    // jQuery methods go here...

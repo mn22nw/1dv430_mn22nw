@@ -1,5 +1,23 @@
  <?php	
  
+ 
+/* session login logout 
+ * [20:24:19] annie sahlberg: <?php
+ 
+session_start();
+
+if($_SESSION['username']){
+}else{
+ header('Location: ../index.php');
+}
+
+
+if(isset($_POST['logout'])){
+ session_destroy();
+ header('Location: ../index.php');
+} */
+ 
+ 
  // BINDING VALUES //
 	
 /*	if(isset($_GET['username'], $_GET['password'])){

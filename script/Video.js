@@ -1,9 +1,7 @@
 var Video = {
-	init:function(link)
+	init:function(youtubeID)
 	{	
-		
-
-		var ifVideoExists = document.querySelector("#"+ link);
+		var ifVideoExists = document.querySelector("[id='" + youtubeID + "']");   
 		
 		console.log(ifVideoExists);
 		
@@ -15,7 +13,7 @@ var Video = {
 			var videoWrapper = document.createElement("div");
 			videoWrapper.className = "videoWrapper";
 			var videoDiv = document.createElement("div");
-			videoDiv.id = link;
+			videoDiv.id = youtubeID;
 			videoDiv.className = "youtube-video";
 			
 			// -- EXITBUTTON --//
@@ -26,6 +24,23 @@ var Video = {
 		    e = e || window.event;
 			e.preventDefault(); 
 			draggyDiv.parentNode.removeChild(draggyDiv);
+			
+			// hämtar php som läggertill youtubeid till databasen //
+		    $.ajax({
+		            type: 'post',                    
+		            url:'/favotube/db/deleteyoutubeid.php',            
+		            data:{"youtubeid" : youtubeID},
+		            dataType:'text',                
+		            success: function(rs)
+		            {
+		               console.log("den deletade" + rs);
+		            },
+		            error: function(result) {
+           			 alert("Error with delete youtubeid");
+     			   }
+    		    });
+			
+			
 			};	
 			
 			// -- ENLARGE-BUTTON --//
@@ -66,8 +81,8 @@ var Video = {
 		 	draggyDiv.appendChild(favouriteBtn);
 			videoBoard.appendChild(draggyDiv); 
 			
-		 	$("#"+link).pPlayer({
-			    youtubeVideoId: link,
+		 	$("#"+youtubeID).pPlayer({
+			    youtubeVideoId: youtubeID,
 			    autoplay: 0,
 			    origin: "http://yoursite.com"
 			});
@@ -125,4 +140,19 @@ var Video = {
 		  }
 		  console.log(ID);
 		    return ID;
-		}}
+		},
+		
+	getTitle: function(id){
+		console.log("Rumple says" + id);
+		
+		var url = "http://gdata.youtube.com/feeds/api/videos/"+ id +"?v=2&alt=json";
+
+		
+		$.getJSON(url, function(response){ 
+			console.log(response.data.items[0].title);
+			
+			return response.data.items[0].title;
+		});
+		
+	}
+	}

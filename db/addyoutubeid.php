@@ -3,7 +3,7 @@
 	include("connect_db.php");
 	include("../functions/security.php");
 		
-		$variable = $_POST['youtubeid'];
+		$youtubeid = $_POST['youtubeid'];
 		$jsontesting ='{"a":1,"b":2,"c":3,"d":4}';
 		//echo $variable;
 
@@ -16,15 +16,15 @@
 		$handler->beginTransaction();
 		
 		// SELECT videoboardid from USER //	
-		$videoboardid= "SELECT `videoboardid` FROM `user` WHERE `username` = '".$username. "' LIMIT 1";
+		$SELECTid= "SELECT `videoboardid` FROM `user` WHERE `username` = '".$username. "' LIMIT 1";
 		
-		$videoboardid = $handler->prepare($videoboardid);
+		$videoboardid = $handler->prepare($SELECTid);
 		
 		$vId = $videoboardid->execute();  //value of videoboardid example for miaaim it = 1;
 		// --------------- END SELECT//	
 		
 		$title = escape("RUMPLE");
-		$youtubeid = escape("erhdjsgrhsj");
+		$youtubeid = $_POST['youtubeid'];
 		
 		 // INSERT INTO TABLE youtubeid //
 		$InsertYTB = "INSERT INTO `{$databasename}`.`youtubeid` (`youtubeid`, `title`)   
