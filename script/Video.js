@@ -40,6 +40,7 @@ var Video = {
 		            success: function(rs)
 		            {
 		               console.log("den deletade" + rs);
+		               console.log(youtubeID);
 		            },
 		            error: function(result) {
            			 alert("Error with delete youtubeid");

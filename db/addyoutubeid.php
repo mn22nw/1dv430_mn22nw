@@ -30,7 +30,7 @@
 		$InsertYTB = "INSERT INTO `{$databasename}`.`youtubeid` (`youtubeid`, `title`)   
 		VALUES (
             :youtubeid, 
-            :title)"; 
+            :title) ON DUPLICATE KEY update `youtubeid` = VALUES(`youtubeid`);"; 
 			//ON DUPLICATE KEY UPDATE `youtubeid` = `{$youtubeid}`
                                           
 		$stmt = $handler->prepare($InsertYTB);                                              

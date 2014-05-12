@@ -2,6 +2,10 @@
 
 
 // FIXA DATABAS / PHP //
+
+om youtubevideo redan finns i videoboard id / databas kan det inte deletas senare...?! 
+bara under sessionens gang
+
 om youtubeId redan existerar i databasen i tabell youtubeid kan det inte läggas till i videogroup!! använd typ Keysomething....:O
 
 https://www.youtube.com/watch?feature=player_embedded&v=LWX4Hk4_O7A     -ägg
