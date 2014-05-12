@@ -4,7 +4,9 @@
 	include("../functions/security.php");
 		
 		$youtubeid = $_POST['youtubeid'];
-		$jsontesting ='{"a":1,"b":2,"c":3,"d":4}';
+		$title = $_POST['title'];
+		
+		$jsontesting ='{ $title:1,"b":2,"c":3,"d":4}';
 		//echo $variable;
 
 		error_reporting(E_ALL);
@@ -22,9 +24,7 @@
 		
 		$vId = $videoboardid->execute();  //value of videoboardid example for miaaim it = 1;
 		// --------------- END SELECT//	
-		
-		$title = escape("RUMPLE");
-		$youtubeid = $_POST['youtubeid'];
+	
 		
 		 // INSERT INTO TABLE youtubeid //
 		$InsertYTB = "INSERT INTO `{$databasename}`.`youtubeid` (`youtubeid`, `title`)   

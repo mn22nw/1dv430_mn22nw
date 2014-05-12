@@ -1,5 +1,5 @@
 var Video = {
-	init:function(youtubeID)
+	init:function(youtubeID, title)
 	{	
 		var ifVideoExists = document.querySelector("[id='" + youtubeID + "']");   
 		
@@ -15,6 +15,12 @@ var Video = {
 			var videoDiv = document.createElement("div");
 			videoDiv.id = youtubeID;
 			videoDiv.className = "youtube-video";
+			
+			// -- TITLE --//
+			var ptitle = document.createElement('a');
+			ptitle.className = "title";
+			ptitle.innerHTML = title;
+		
 			
 			// -- EXITBUTTON --//
 			var exitButton = document.createElement('a');
@@ -76,6 +82,7 @@ var Video = {
 			draggyDiv.appendChild(exitButton);
 			draggyDiv.appendChild(enLarge);
 			draggyDiv.appendChild(hideButton);
+			draggyDiv.appendChild(ptitle);
 		 	videoWrapper.appendChild(videoDiv);
 		 	draggyDiv.appendChild(videoWrapper);
 		 	draggyDiv.appendChild(favouriteBtn);
@@ -143,17 +150,41 @@ var Video = {
 		},
 		
 	getTitle: function(id){
-		console.log("Rumple says" + id);  //id är korrekt
+		console.log("Rumple says " + id);  //id är korrekt
 
 		var url = "http://gdata.youtube.com/feeds/api/videos/" + id +" ?v=2&alt=json";
-
+		var title;
 		
 		$.getJSON(url, function(response){ 
 			//console.log(response);
 			console.log(response.entry.title.$t + "FIRA?! :D");
 			
-			return response.entry.title.$t;
+			title = response.entry.title.$t;
+			
+			Video.init(id, title);  
+			
+			// hämtar php som läggertill youtubeid till databasen //
+		    $.ajax({
+		            type: 'post',                    
+		            url:'/favotube/db/addyoutubeid.php',            
+		            data:{"youtubeid" : id, "title" : title},
+		            dataType:'text',                
+		            success: function(rs)
+		            {
+		               console.log("hej titelreturn fran php" + rs);
+		            },
+		            error: function(result) {
+           			 alert("Erroraddyoutubeid");
+     			   }
+    		    });  
+			
+			
 		});
 		
+		
+	},
+	getReturnTitle: function(title){
+		
+	 return title;
 	}
 	}

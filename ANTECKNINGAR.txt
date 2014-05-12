@@ -1,5 +1,10 @@
 
+lägg in title i databas!
 
+
+
+// FIXA DATABAS / PHP //
+om youtubeId redan existerar i databasen i tabell youtubeid kan det inte läggas till i videogroup!! använd typ Keysomething....:O
 
 
 

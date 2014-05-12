@@ -61,30 +61,15 @@ var FAVOTUBE = FAVOTUBE || {};
 	
 	FAVOTUBE.util.renderVideo = function(url) {  
 			var youtubeID = Video.YouTubeGetID(url);
-			//var title = Video.getTitle(youtubeID);
-			Video.init(youtubeID);
+			var title = Video.getTitle(youtubeID);
+			//Video.init(youtubeID, title);  flyttar denna till titelfunktionen annars funkar det aldriii
 	};
 	
 	FAVOTUBE.util.createVideos = function(url) {   //ska till databas dessutom!
 			var youtubeID = Video.YouTubeGetID(url);
 			var title = Video.getTitle(youtubeID);
-			Video.init(youtubeID);// att göra: korta av ytubesträng till rätt   YCvFdWnzkcI
-			//Video.init("YCvFdWnzkcI");
-			
-			// hämtar php som läggertill youtubeid till databasen //
-		    $.ajax({
-		            type: 'post',                    
-		            url:'/favotube/db/addyoutubeid.php',            
-		            data:{"youtubeid" : youtubeID},
-		            dataType:'text',                
-		            success: function(rs)
-		            {
-		               console.log("hej2" + rs);
-		            },
-		            error: function(result) {
-           			 alert("Erroraddyoutubeid");
-     			   }
-    		    });  
+			//Video.init(youtubeID, title);  flyttar denna till titelfunktionen annars funkar det aldriii
+
 	};
 	
 	FAVOTUBE.util.getInputUrl= function() { 

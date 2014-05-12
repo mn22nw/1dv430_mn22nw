@@ -89,6 +89,11 @@
 			overflow:hidden; /*http://stackoverflow.com/questions/3921761/floating-image-to-the-left-changes-container-divs-height*/
 
 	}
+	
+	.title {
+		
+		text-overflow: ellipsis;
+	}
 	.vidSize { margin:0 auto;  width:500px;
     		padding-bottom: 70.3125%;
    	  		height: 400px; overflow: hidden;
