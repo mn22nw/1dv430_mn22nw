@@ -54,21 +54,6 @@
 		    
 		$stmtVid->execute(); 
 		// --------------- END INSERT// 
-	/*	
-		// INSERT INTO TABLE videoboardid //
-		$InsertVID = "INSERT INTO `favotube`.`youtubeid` (`youtubeid`, `title`)   
-		VALUES (
-            :youtubeid, 
-            :title)";
-                                          
-		$stmt = $handler->prepare($InsertVID);                                              
-		$stmt->bindParam(':youtubeid', $youtubeid, PDO::PARAM_STR);       
-		$stmt->bindParam(':title', $title , PDO::PARAM_STR);  
-		    
-		$stmt->execute(); 
-		// --------------- END INSERT// 
-	 */
-		
 		
 		$handler->commit();                  //commits the transaction if it is succesfull              
 		

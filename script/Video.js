@@ -17,7 +17,7 @@ var Video = {
 			videoDiv.className = "youtube-video";
 			
 			// -- TITLE --//
-			var ptitle = document.createElement('a');
+			var ptitle = document.createElement('p');
 			ptitle.className = "title";
 			ptitle.innerHTML = title;
 		
@@ -88,6 +88,8 @@ var Video = {
 		 	draggyDiv.appendChild(favouriteBtn);
 			videoBoard.appendChild(draggyDiv); 
 			
+			// --- VIKTIG !!! SKAPAR VIDEON !!!!! //
+			
 		 	$("#"+youtubeID).pPlayer({
 			    youtubeVideoId: youtubeID,
 			    autoplay: 0,
@@ -145,7 +147,6 @@ var Video = {
 		  else {
 		    ID = url;
 		  }
-		  console.log(ID);
 		    return ID;
 		},
 		
@@ -171,7 +172,7 @@ var Video = {
 		            dataType:'text',                
 		            success: function(rs)
 		            {
-		               console.log("hej titelreturn fran php" + rs);
+		              // Don't need anything here! It's just successfull :D
 		            },
 		            error: function(result) {
            			 alert("Erroraddyoutubeid");

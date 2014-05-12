@@ -58,7 +58,9 @@
                                     hd: settings.hd,
                                     wmode: "transparent",
                                     rel: 0,
-                                    origin: settings.origin
+                                    origin: settings.origin,
+                                    //lade till detta
+                                    showinfo: settings.showinfo
                                 },
                                 events: {
                                     'onReady': handlers.onReady,
@@ -196,7 +198,7 @@
                $progressBarCursor,
                $quality,
                playingTrigger;
-
+				//fixa//
                settings = $.extend({
                     boundingBox: null,
                     youtubeVideoId: undefined,
@@ -210,7 +212,8 @@
                         settings.adapter === "Youtube" ? "quality" : null,
                         "timer",
                         "mute",
-                        "fullscreen" ]
+                        "fullscreen" ] ,
+                    showinfo:0
                }, settings);
 
            return {

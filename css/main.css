@@ -91,7 +91,8 @@
 	}
 	
 	.title {
-		
+		color:#FFF;
+		overflow:hidden;
 		text-overflow: ellipsis;
 	}
 	.vidSize { margin:0 auto;  width:500px;
