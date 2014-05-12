@@ -3,10 +3,9 @@
 	include("connect_db.php");
 	include("../functions/security.php");
 			
-		$youtubeid = $_POST['youtubeid'];
+		$ytbid = $_POST['ytbid'];
 		
-		$jsontesting ='{"a":1,"b":2,"c":3,"d":4}';
-
+		echo $ytbid;
 		error_reporting(E_ALL);
 		
 		$username = "miaaim"; //'".$_SESSION['username']. "'
@@ -27,7 +26,7 @@
 		
 		
 		// DELETE YOUTUBEVIDEO FROM VIDEOGROUP //	
-		$deleteSQL= "DELETE FROM `videogroup` WHERE  `youtubeid` = '".$youtubeid."' &&  `videoboardid` = '".$vId."' ";
+		$deleteSQL= "DELETE FROM `videogroup` WHERE  `youtubeid` = '".$ytbid."' &&  `videoboardid` = '".$vId."' ";
 		
 		$deleteYTB = $handler->prepare($deleteSQL);
 		
@@ -45,8 +44,10 @@
 		    // We must rollback the transaction
 		    
 		    $handler->rollback();
+			$jsontesting ='{"nej":1,"b":2,"c":3,"d":4}';
+			echo $jsontesting;
 		}
 		
-		echo $jsontesting;
+		
 		
 ?> 

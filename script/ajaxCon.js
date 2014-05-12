@@ -31,6 +31,7 @@ $.ajax({
 					for(var obj in data){
 						var youtubeId = data[obj].youtubeid;
 						renderfunction(youtubeId);
+						
 						}	
     },
     error: function(result) {

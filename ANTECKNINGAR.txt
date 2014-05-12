@@ -3,6 +3,10 @@
 
 // FIXA DATABAS / PHP //
 
+att det inte gar att deleta har att göra med --->
+de vidosar som renderas ut fran databasen har inte rätt id som skickas med!
+
+
 om youtubevideo redan finns i videoboard id / databas kan det inte deletas senare...?! 
 bara under sessionens gang
 

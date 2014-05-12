@@ -3,7 +3,9 @@ var Video = {
 	{	
 		var ifVideoExists = document.querySelector("[id='" + youtubeID + "']");   
 		
-		console.log(ifVideoExists);
+		
+		
+		console.log("id fran existerande i skapande" + youtubeID);
 		
 		if(ifVideoExists === null){  // om ett ytubeklipp inte finns i rutan
 			
@@ -31,17 +33,19 @@ var Video = {
 			e.preventDefault(); 
 			draggyDiv.parentNode.removeChild(draggyDiv);
 			
-			// hämtar php som läggertill youtubeid till databasen //
+			var idTostring = youtubeID.toString();
+			// hämtar php som deletar youtubeid i databasen //
 		    $.ajax({
 		            type: 'post',                    
 		            url:'/favotube/db/deleteyoutubeid.php',            
-		            data:{"youtubeid" : youtubeID},
+		            data:{"ytbid" : idTostring},
 		            dataType:'text',                
 		            success: function(rs)
 		            {
 		               console.log("den deletade" + rs);
-		               console.log(youtubeID);
-		            },
+		               console.log("tyopeod"+ typeof idTostring);
+		               
+		              		            },
 		            error: function(result) {
            			 alert("Error with delete youtubeid");
      			   }
@@ -147,12 +151,14 @@ var Video = {
 		    return ID;
 		},
 	getTitle: function(id){
+		console.log("Rumple says " + id);  //id är korrekt
 		var url = "http://gdata.youtube.com/feeds/api/videos/" + id +" ?v=2&alt=json";
 		var title;
 		
 		$.getJSON(url, function(response){ 	
 			title = response.entry.title.$t;			
 			Video.init(id, title);  
+			console.log(id + "detta id skickas med till existerande video");
 			
 		});	
 		
