@@ -55,6 +55,7 @@
 }
 .errorm {
 			margin-top:5px;
+			float:left;
 }
 #linkInput {
 			float:left;
@@ -91,9 +92,16 @@
 	}
 	
 	.title {
-		color:#FFF;
-		overflow:hidden;
-		text-overflow: ellipsis;
+		
+		font-family: Arial, Helvetica, sans-serif;
+		color:#312b2d;
+	  overflow: hidden;
+	  text-overflow: ellipsis;
+	  display: -webkit-box;
+	  line-height: 16px;     /* fallback */
+	  max-height: 32px;      /* fallback */
+	  -webkit-line-clamp: 1; /* number of lines to show */
+	  -webkit-box-orient: vertical;
 	}
 	.vidSize { margin:0 auto;  width:500px;
     		padding-bottom: 70.3125%;
@@ -111,7 +119,7 @@
 	.draggy {
 		cursor:move; display:inline;
 		width:425px;
-		height:350px;
+		height:400px;
 		box-shadow:5px 5px 10px #160b02;
 		padding:10px;
 		background:#000;

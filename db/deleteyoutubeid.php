@@ -4,8 +4,7 @@
 	include("../functions/security.php");
 			
 		$youtubeid = $_POST['youtubeid'];
-		$jsontesting ='{"a":$youtubeid,"b":2,"c":3,"d":4}';
-		//echo $variable;
+		$jsontesting ='{"a":1,"b":2,"c":3,"d":4}';
 
 		error_reporting(E_ALL);
 		

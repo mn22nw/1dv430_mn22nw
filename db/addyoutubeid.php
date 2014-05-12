@@ -13,7 +13,7 @@
 		
 		$username = "miaaim"; //'".$_SESSION['username']. "'
 		$databasename = "favotube";
-		try {
+		try { 
 			
 		$handler->beginTransaction();
 		
@@ -30,7 +30,8 @@
 		$InsertYTB = "INSERT INTO `{$databasename}`.`youtubeid` (`youtubeid`, `title`)   
 		VALUES (
             :youtubeid, 
-            :title)";
+            :title)"; 
+			//ON DUPLICATE KEY UPDATE `youtubeid` = `{$youtubeid}`
                                           
 		$stmt = $handler->prepare($InsertYTB);                                              
 		$stmt->bindParam(':youtubeid', $youtubeid, PDO::PARAM_STR);       

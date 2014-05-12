@@ -1,12 +1,14 @@
-
-lägg in title i databas!
-
+-title blir fler rader för det är en p och inte textnode?
 
 
 // FIXA DATABAS / PHP //
 om youtubeId redan existerar i databasen i tabell youtubeid kan det inte läggas till i videogroup!! använd typ Keysomething....:O
 
+https://www.youtube.com/watch?feature=player_embedded&v=LWX4Hk4_O7A     -ägg
 
+// LÄGG TILL  - USER FRIENDLY //
+
+hoppa direkt till ny inlagd video!! 
 
 
 
@@ -19,3 +21,8 @@ https://www.youtube.com/watch?feature=player_embedded&v=5XjNlpe7hII
 https://www.youtube.com/watch?v=9xUo7g5CQbs
 
 // ----------- //
+
+
+
+PBL:
+ - lägg in title i databas

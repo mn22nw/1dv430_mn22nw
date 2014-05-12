@@ -49,9 +49,10 @@
 		</div>
 		<div class="validation">
 				<input id="linkInput" type="text" name="Förnamn" value="" placeholder=" Paste your videolink here...">
-				<div class="errorm"></div>
+				
 			</div>
 			<a id="okButton" href="#">OK</a>	
+			<div class="errorm"></div>
 		<div id="videoBoard"></div>
 	</div>
 	<script type="text/javascript" src="pplayer/js/jquery.pplayer.js"></script>

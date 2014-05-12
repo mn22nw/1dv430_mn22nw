@@ -35,7 +35,7 @@ var Video = {
 		    $.ajax({
 		            type: 'post',                    
 		            url:'/favotube/db/deleteyoutubeid.php',            
-		            data:{"youtubeid" : youtubeID},
+		            data:{"youtubeid" : "youtubeID"},
 		            dataType:'text',                
 		            success: function(rs)
 		            {
@@ -96,11 +96,7 @@ var Video = {
 			    origin: "http://yoursite.com"
 			});
 			
-			
-		
-		//containDiv.addEventListener('mousedown', initDrag, false);   
-		
-		//function initDrag(e) {
+		/*    // IGNORERAR DRAG JUST NU!!!! // 
 				$(function() {
 		    $( ".draggy" ).draggable({
 		    	
@@ -127,7 +123,7 @@ var Video = {
 		      // function for mouseleave	
 		       //"this" is selector
 		
-		})  //end 
+		}) */ //end  
 			//}
 		} else {
 			
@@ -149,8 +145,19 @@ var Video = {
 		  }
 		    return ID;
 		},
-		
 	getTitle: function(id){
+		var url = "http://gdata.youtube.com/feeds/api/videos/" + id +" ?v=2&alt=json";
+		var title;
+		
+		$.getJSON(url, function(response){ 	
+			title = response.entry.title.$t;			
+			Video.init(id, title);  
+			
+		});	
+		
+	},
+		
+	getTitleAndAddTitleToDataBase: function(id){
 		console.log("Rumple says " + id);  //id är korrekt
 
 		var url = "http://gdata.youtube.com/feeds/api/videos/" + id +" ?v=2&alt=json";
@@ -178,14 +185,8 @@ var Video = {
            			 alert("Erroraddyoutubeid");
      			   }
     		    });  
-			
-			
+
 		});
 		
-		
-	},
-	getReturnTitle: function(title){
-		
-	 return title;
 	}
 	}
