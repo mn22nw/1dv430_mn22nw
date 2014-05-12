@@ -35,7 +35,7 @@ var Video = {
 		    $.ajax({
 		            type: 'post',                    
 		            url:'/favotube/db/deleteyoutubeid.php',            
-		            data:{"youtubeid" : "youtubeID"},
+		            data:{"youtubeid" : youtubeID},
 		            dataType:'text',                
 		            success: function(rs)
 		            {
