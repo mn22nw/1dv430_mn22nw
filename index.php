@@ -33,7 +33,7 @@
 				include("functions/security.php");
 				include("functions/functions.php");		
 			
-				if(isset($_POST['submit'])) {
+				if(isset($_POST['Login_Btn'])) {
 			
 				error_reporting(E_ALL);
 						
