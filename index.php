@@ -25,7 +25,55 @@
 				
 				<input type="submit" name="Login_Btn" class="LoginBtn" value="Login" />
 				<input type="hidden" name="Login_Redirect"  value="account.php" />
+				
 			</form>
+			<div id = "feedbackLogin">
+				<?php 
+				include("db/connect_db.php");
+				include("functions/security.php");
+				include("functions/functions.php");		
+			
+				if(isset($_POST['submit'])) {
+			
+				error_reporting(E_ALL);
+						
+				$username = $_POST['Login_Username'];
+				$safe_username = escape($username);
+				
+				$password = $_POST['Login_Password'];
+		
+				//echo $testing = password_encrypt($safe_password) . "<br />";
+				//echo $hash = crypt($safe_password, $testing); 
+				
+				$query= "SELECT * FROM `user` WHERE `username` = '".$safe_username. "'";
+				
+				$sq= $handler->prepare($query);
+				
+				$sq->execute(); 
+				
+				$r = $sq->fetchALL();
+				
+				    if ($sq->rowCount() != 1) {
+				      echo "The username does not exist!";
+				    }		    
+				    else
+					    {
+					    foreach($r as $row)
+					    {
+						$set_password = $row['password']; // password from database
+						
+						$input_password = crypt($password, $set_password); // compares password from database with input
+						
+							if($input_password == $set_password) {
+								$redirect = $_POST['Login_Redirect']; 
+									header("Location: ".$redirect);
+							} else {
+								echo "Wrong Password";
+							}
+					    }   
+				    }  
+			} ?> 
+			</div>
 	
 		</div>
 		<!--	<footer>
@@ -33,29 +81,7 @@
 					&copy; Copyright  by Mia
 				</p>
 		</footer>-->
-		<?php
-		//phpinfo();
-		include("db/connect_login.php");
-		include("functions/security.php");
 		
-		if(isset($_POST['Login_Username'])){ 
-		$username = $_POST['Login_Username'];
-		
-		$_SESSION['username']=$username;
-		}
-		
-		if(isset($_POST['Login_Btn']) && $_POST['Login_Btn'] == 'Login' && $_POST['Login_Username'] && $_POST['Login_Password']){
-			
-		
-			$login = new login;
-			$login->username = escape($_POST['Login_Username']);
-			$login->password = escape($_POST['Login_Password']);
-			$login->redirect = escape($_POST['Login_Redirect']);
-			
-			echo $login->doLogin();
-		}
-		
-		?>
 		<script type='text/javascript'> 
 		var inputfocus = document.querySelector("#username");
 		inputfocus.focus();

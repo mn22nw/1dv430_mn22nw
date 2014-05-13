@@ -31,8 +31,7 @@
 			width:400px; float:left;
 	}
 	
-	#headerFolders{
-		
+	#headerFolders{		
 		height:200px;
 		width:100%;
 		margin:0 auto;
@@ -75,7 +74,8 @@
 
 	/** VIDEORUTA **
 -------------------------------------------------------------------*/
-	#videoBoard {
+	#videoboardContainer {
+			position:relative;
 			background:#000;
 			background: url(../pics/bk.jpg) center 0;
 			clear:both;
@@ -88,21 +88,22 @@
 			width:100% -2px;
 			border:5px solid #000;
 			overflow:hidden; /*http://stackoverflow.com/questions/3921761/floating-image-to-the-left-changes-container-divs-height*/
-
+		
 	}
 	
-	.title {
-		
-		font-family: Arial, Helvetica, sans-serif;
-		color:#312b2d;
-	  overflow: hidden;
-	  text-overflow: ellipsis;
-	  display: -webkit-box;
-	  line-height: 16px;     /* fallback */
-	  max-height: 32px;      /* fallback */
-	  -webkit-line-clamp: 1; /* number of lines to show */
-	  -webkit-box-orient: vertical;
+	
+	#videoBoard {
+			position:absolute;
+			width:98%;
+			height:96%;
+			height:auto !important; 
+			margin: 0 auto;
+			margin-top:1%;
+			margin-bottom:2%;
+			  	left: 0;
+			 	right: 0;
 	}
+	
 	.vidSize { margin:0 auto;  width:500px;
     		padding-bottom: 70.3125%;
    	  		height: 400px; overflow: hidden;
@@ -117,18 +118,28 @@
 		clear:both;
 		}
 	.draggy {
-		cursor:move; display:inline;
+		display:inline;
 		width:425px;
 		height:400px;
 		box-shadow:5px 5px 10px #160b02;
 		padding:10px;
 		background:#000;
-		/*background:#2D8C36;*/
+		/* cursor:move; background:#2D8C36;*/
 		margin:6px;
 		margin-top:10px;
 		float:left;
 		border-radius:5px;
 		
+	}
+	
+	.loading{
+		
+			  	position:absolute;
+			  	margin: 0 auto;
+			  	left:0;
+			  	right:0;
+			  	margin-top:15%;
+
 	}
 	
 
@@ -190,7 +201,7 @@
 	
 		/** Anger sidansstorlek och placering*
 ---------------------------------------------------------------------- */	
-#page {	width:90%; min-height: 800px; 
+#page {	width:95%; min-height: 800px; 
 		height:100%; 
 		height:auto !important; 
 		margin:0 auto;

@@ -1,6 +1,32 @@
  <?php	
  
- 
+ /* RESERV PHP LOGIN
+  
+  <?php
+		//phpinfo();
+		include("db/connect_login.php");
+		include("functions/security.php");
+		
+		if(isset($_POST['Login_Username'])){ 
+		$username = $_POST['Login_Username'];
+		
+		$_SESSION['username']=$username;
+		}
+		
+		if(isset($_POST['Login_Btn']) && $_POST['Login_Btn'] == 'Login' && $_POST['Login_Username'] && $_POST['Login_Password']){
+			
+		
+			$login = new login;
+			$login->username = escape($_POST['Login_Username']);
+			$login->password = escape($_POST['Login_Password']);
+			$login->redirect = escape($_POST['Login_Redirect']);
+			
+			echo $login->doLogin();
+		}
+		
+		?>
+  */
+  
 /* session login logout 
  * [20:24:19] annie sahlberg: <?php
  

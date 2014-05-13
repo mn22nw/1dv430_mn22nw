@@ -8,7 +8,7 @@
 		echo $ytbid;
 		error_reporting(E_ALL);
 		
-		$username = "miaaim"; //'".$_SESSION['username']. "'
+		$username = $_SESSION['username'];
 		$databasename = "favotube";
 		
 		try {

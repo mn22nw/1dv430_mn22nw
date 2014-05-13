@@ -3,10 +3,6 @@ var Video = {
 	{	
 		var ifVideoExists = document.querySelector("[id='" + youtubeID + "']");   
 		
-		
-		
-		console.log("id fran existerande i skapande" + youtubeID);
-		
 		if(ifVideoExists === null){  // om ett ytubeklipp inte finns i rutan
 			
 			var videoBoard = document.querySelector("#videoBoard");
@@ -42,16 +38,12 @@ var Video = {
 		            dataType:'text',                
 		            success: function(rs)
 		            {
-		               console.log("den deletade" + rs);
-		               console.log("tyopeod"+ typeof idTostring);
-		               
+		               console.log("den deletade " + rs);               
 		              		            },
 		            error: function(result) {
            			 alert("Error with delete youtubeid");
      			   }
-    		    });
-			
-			
+    		    });			
 			};	
 			
 			// -- ENLARGE-BUTTON --//
@@ -151,22 +143,18 @@ var Video = {
 		    return ID;
 		},
 	getTitle: function(id){
-		console.log("Rumple says " + id);  //id är korrekt
+		//console.log("Rumple says " + id);  //id är korrekt
 		var url = "http://gdata.youtube.com/feeds/api/videos/" + id +" ?v=2&alt=json";
 		var title;
 		
 		$.getJSON(url, function(response){ 	
 			title = response.entry.title.$t;			
 			Video.init(id, title);  
-			console.log(id + "detta id skickas med till existerande video");
-			
 		});	
 		
 	},
 		
 	getTitleAndAddTitleToDataBase: function(id){
-		console.log("Rumple says " + id);  //id är korrekt
-
 		var url = "http://gdata.youtube.com/feeds/api/videos/" + id +" ?v=2&alt=json";
 		var title;
 		

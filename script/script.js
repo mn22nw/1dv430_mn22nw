@@ -19,8 +19,13 @@ var FAVOTUBE = FAVOTUBE || {};
 						 $("#popup").load("pages/myfolders.php");					 
 						});
 							
-			var linkInput = document.querySelector("#linkInput");
-				linkInput.focus();
+			//var linkInput = document.querySelector("#linkInput");
+				//linkInput.focus();
+			
+			$('#linkInput').focus();	
+			$('#linkInput').focusout(function(){
+       			  $('#linkInput').focus();
+     				});
 				
 				okButton.addEventListener('click', function(e) { 
 						e = e || window.event;
@@ -111,8 +116,7 @@ var FAVOTUBE = FAVOTUBE || {};
 				
 			//popup.appendChild(exitButton);   
 			document.body.appendChild(popup);
-			document.body.appendChild(mask);
-			console.log("poppo"); 
+			document.body.appendChild(mask); 
 	};
 	
 		//--- RUNNING FUNCTIONS --- //

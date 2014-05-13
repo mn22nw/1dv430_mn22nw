@@ -9,7 +9,6 @@
 	<script src="http://jpillora.com/xdomain/dist/0.6/xdomain.min.js" slave="http://xyz.example.com/proxy.html"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 	<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-	
 	<script src="//www.youtube.com/iframe_api"></script>
 	<link rel="stylesheet" type="text/css" href="pplayer/assets/pplayer.css">
 	
@@ -34,8 +33,7 @@
 	</head>
 
 	 	<body>
-	<div id="page" class="unselectable">
-		
+	<div id="page" class="unselectable">		
 		
 		<header id="headerMain">
 			<img class ="logo unselectable" src="pics/logo.png" alt="logo" />
@@ -48,12 +46,12 @@
 			<div id ="myFolders"></div>	
 		</div>
 		<div class="validation">
-				<input id="linkInput" type="text" name="Förnamn" value="" placeholder=" Paste your videolink here...">
-				
+				<input id="linkInput" type="text" name="Förnamn" value="" placeholder=" Paste your videolink here...">			
 			</div>
 			<a id="okButton" href="#">OK</a>	
 			<div class="errorm"></div>
-		<div id="videoBoard"></div>
+		<div id="videoboardContainer"><div id="videoBoard"></div></div>
+		
 	</div>
 	<script type="text/javascript" src="pplayer/js/jquery.pplayer.js"></script>
 	<script type='text/javascript' src="script/Video.js"></script>

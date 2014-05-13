@@ -1,8 +1,13 @@
 ﻿var AjaxCon = {
 
 initVideoboard: function getVideos(url, renderfunction) {
- 	$("#videoBoard").append("<img src='pics/loader.gif' alt='Loading'/>");
- 	console.log("kommer hit iaf!")
+	
+	var timer= setInterval(function(){
+		
+		$("#videoboardContainer").append("<img src='pics/loader.gif' class='loading' alt='Loading'/>");
+		 },400);
+		 
+ 		console.log("kommer hit iaf i ajaxCon!");
 
 $.ajax({
     url: url,
@@ -21,6 +26,9 @@ $.ajax({
  
     // work with the response
     success: function( data ) {
+    				
+    				clearInterval(timer);
+    				$(".loading").remove();
 			    	if (!NodeList.prototype.forEach) {
 								NodeList.prototype.forEach = Array.prototype.forEach;
 							};
@@ -42,8 +50,8 @@ $.ajax({
 
 initFolders:function(url) {			
 		
-		
-		$("#myFolders").append("<img src='pics/loader.gif' alt='Loading'/>");
+	//	var timer;
+		//$("#myFolders").append("<img src='pics/loader.gif' alt='Loading'/>");
 
 $.ajax({
     url: url,
@@ -54,6 +62,8 @@ $.ajax({
     },
  
     success: function( folderdata ) {
+    	
+    	
     				if (!NodeList.prototype.forEach) {
 					NodeList.prototype.forEach = Array.prototype.forEach;
 					};
@@ -87,7 +97,7 @@ $.ajax({
 					}
     },
     error: function(result) {
-            alert("Error");
+            console.log("There was an error with collecting the data from the database");
         }
 	});
 	}
