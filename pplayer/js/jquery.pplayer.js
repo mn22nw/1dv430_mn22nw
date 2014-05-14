@@ -60,7 +60,8 @@
                                     rel: 0,
                                     origin: settings.origin,
                                     //lade till detta
-                                    showinfo: settings.showinfo
+                                    showinfo: settings.showinfo,
+                                    modestbranding:settings.modestbranding
                                 },
                                 events: {
                                     'onReady': handlers.onReady,
@@ -213,7 +214,9 @@
                         "timer",
                         "mute",
                         "fullscreen" ] ,
-                    showinfo:0
+                    showinfo:0,
+                    modestbranding:1
+                    
                }, settings);
 
            return {

@@ -57,7 +57,7 @@
         height: 35px;
         width: 100%;
         bottom: 0;
-        background-color: #191919;
+        background-color: #000;
     }
 
 /* Desktops and laptops ----------- */
@@ -165,7 +165,7 @@ and (min-width : 1224px) {
             display: block;
             width: 100%;
             height: 16px;
-            background: #333333 url(./img/progress-bg.png) 0 0 repeat-x;
+          	background: #333333 url(./img/progress-bg.png) 0 0 repeat-x;
             cursor: col-resize;
         }
         :root .ppVideoWrapper .controls .progressBar {

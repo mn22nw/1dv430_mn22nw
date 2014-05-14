@@ -40,7 +40,7 @@
 					text-indent:100%;
 					white-space:nowrap;
 					overflow:hidden;
-					margin-left:-9px;
+					margin-left:-25px;
 					background-position:-266px -40px; 
 	}
 
@@ -60,24 +60,30 @@
 	.openFolderBtn {
 		display:block;
 		float:left;
-		width:90px;
-		height:90px;
-		border:5px solid #160E07;
-		border-radius:10px;
+		width:92px;
+		height:92px;
+		/*border:5px solid #160E07;*/
 		margin:5px;
-		background: url('../pics/seamless1.jpg'); 
+		background: url('../pics/sprites.png') no-repeat;
 		text-decoration:none;
 		font-size:1em;
-		color:#160E07;
+		color:#BBBBBB;
 		text-align:center;
-		font-family: Futura, Futura-Medium, "Futura Medium", "Century Gothic", CenturyGothic, "Apple Gothic", AppleGothic, "URW Gothic L", "Avant Garde", sans-serif;
+		font-family: Arial, Helvetica, sans-serif;
+		background-position:-295px -112.9px; 
+	}
+	
+	.openFolderBtn:hover{
+		background-position:-408px -112.9px; 
+		color:#006837;
 	}
 	
 	.openFolderBtn p {
 		display:block;
-		background:#FFF;
+		margin-top:20px;
+
 		width:100%;
-		height:25px;
+		height:50px;
 		line-height:25px;
 		font-weight:900;
 		
