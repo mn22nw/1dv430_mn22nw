@@ -1,5 +1,12 @@
 <?php session_start(); 
-	$profilename = $_SESSION['username']; ?>
+
+	if(!$_SESSION['username']){
+		header('Location: index.php');
+	}
+
+	$profilename = $_SESSION['username']; 
+	
+	?>
 <!doctype html>
 <html lang="sv">
 	<head> 

@@ -14,7 +14,9 @@
 		<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 	</head>
 
-	<body>		
+	<body>	
+		<div id="header"> <header id="headerMain">
+			<img class ="logo unselectable" src="pics/logo_small.png" alt="small logo " /> </div>
 			<div class="LoginBox">
 			<div class="title">Login</div>
 			<form method="post">
@@ -34,12 +36,11 @@
 				include("functions/functions.php");		
 			
 				if(isset($_POST['Login_Btn'])) {
-			
+				
 				error_reporting(E_ALL);
-						
+		
 				$username = $_POST['Login_Username'];
 				$safe_username = escape($username);
-				
 				$password = $_POST['Login_Password'];
 		
 				//echo $testing = password_encrypt($safe_password) . "<br />";
@@ -65,8 +66,9 @@
 						$input_password = crypt($password, $set_password); // compares password from database with input
 						
 							if($input_password == $set_password) {
+								$_SESSION['username']=$username;
 								$redirect = $_POST['Login_Redirect']; 
-									header("Location: ".$redirect);
+								header("Location: ".$redirect);
 							} else {
 								echo "Wrong Password";
 							}

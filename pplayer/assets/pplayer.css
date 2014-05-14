@@ -155,6 +155,7 @@ and (min-width : 1224px) {
 
 
         .ppVideoWrapper .controls .timer {
+        	 font-family:"Courier New", Courier, monospace;
             font-size: 0.917em;
             color: white;
             width: 120px;
