@@ -40,18 +40,20 @@
 	</head>
 
 	 	<body>
-	<div id="page" class="unselectable">		
+	<div id="page">		
 		
 		<header id="headerMain">
 			<img class ="logo unselectable" src="pics/logo.png" alt="logo" />
-			
-			<p id="username"> <?php echo $profilename ?></p>
 		</header> 
 		
 		<div id="folderHeader">
 	    	<a href ="#" id="load_folders"> My Folders<span></span> </a>
 			<div id ="myFolders"></div>	
 		</div>
+		<div id="profilediv" class="selectable">
+				<div id="profilepic"></div>
+				<p id="username"> <?php echo $profilename ?></p>
+			</div>
 		<div class="validation">
 				<input id="linkInput" type="text" name="Förnamn" value="" placeholder=" Paste your videolink here...">			
 			</div>
