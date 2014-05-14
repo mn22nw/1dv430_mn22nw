@@ -39,14 +39,6 @@
 			width:400px; float:left;
 	}
 	
-	#headerFolders{		
-		height:200px;
-		width:100%;
-		margin:0 auto;
-		background-image:url('../pics/folderHeader.jpg');
-		background-repeat:no-repeat;
-		background-position:center;
-	}
 	
 	.logo {
 			width:250px;
@@ -107,7 +99,7 @@
 	/** VIDEORUTA **
 -------------------------------------------------------------------*/
 	#videoboardContainer {
-			position:relative;
+			float:left;
 			background:#000;
 			background: url(../pics/bk.jpg) center 0;
 			clear:both;
@@ -119,21 +111,20 @@
 			height:auto !important; 
 			width:100% -2px;
 			border:5px solid #000;
-			overflow:hidden; /*http://stackoverflow.com/questions/3921761/floating-image-to-the-left-changes-container-divs-height*/
+		/*	overflow:hidden; /*http://stackoverflow.com/questions/3921761/floating-image-to-the-left-changes-container-divs-height*/
 		
 	}
 	
 	
 	#videoBoard {
-			position:absolute;
+			float:left;
 			width:98%;
 			height:96%;
 			height:auto !important; 
 			margin: 0 auto;
-			margin-top:1%;
-			margin-bottom:2%;
-			  	left: 0;
-			 	right: 0;
+			margin:2%;
+			margin-left:1.5%;
+			  	
 	}
 	
 	.vidSize { margin:0 auto;  width:382.5px;
@@ -182,6 +173,9 @@
 		width:30%;
 		margin-top:27px;
 	}
+	
+	
+	
 	#myFolders {
 		display:block;
 		clear:left;
@@ -192,20 +186,27 @@
 	
 	/** POPUP - MY FOLDERS*
 ---------------------------------------------------------------------- */	
-	
+	.folderTag{		
+		height:162px;
+		width:274px;
+		float:left;
+		margin-top:-15px;
+		margin-left:-20px;
+		background-image:url('../pics/sprites.png');
+		background-repeat:no-repeat;
+		background-position:0px -208px;
+	}
 	
 	#popup {	position: absolute;
 				min-width:250px;
 				width:70%;
-				min-height:300px;
+				min-height:500px;
 				height:auto !important;
 				top: 10%;
 				z-index: 9999; 
 				background-color: #FFF;
-				border: 5px solid #2f0916;
-				padding:45px;
+				border: 5px solid #160E07;
 				border-radius:10px;
-				
 				margin: 0 auto;
 			  	left: 0;
 			 	right: 0;

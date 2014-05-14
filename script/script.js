@@ -13,14 +13,11 @@ var FAVOTUBE = FAVOTUBE || {};
 			myFolderButton.addEventListener('click', function(e) { 
 						e = e || window.event;
 						e.preventDefault(); 
-						console.log("det poppar icke");
-						FAVOTUBE.util.popUp();	
+
+						FAVOTUBE.util.popUp("pages/myfolders.php");	
 						
-						 $("#popup").load("pages/myfolders.php");					 
-						});
-							
-			//var linkInput = document.querySelector("#linkInput");
-				//linkInput.focus();
+				});		 
+
 			
 			$('#linkInput').focus();	
 			$('#linkInput').focusout(function(){
@@ -89,34 +86,39 @@ var FAVOTUBE = FAVOTUBE || {};
 	  
 	};
 	
-	FAVOTUBE.util.popUp =	function (){ 
-			console.log("det poppar");
+	FAVOTUBE.util.popUp =	function (pageurl){ 
+					
 			var popup = document.createElement('div');
 			popup.id = 'popup';
 			var mask = document.createElement('div');
 			mask.id = 'mask';
 			
+			var folderTag = document.createElement('div');
+			folderTag.className= 'folderTag';
 			
-			var exitButton = document.createElement('div');
-			exitButton.classname = 'exitButton1';
-			var textNodeExitButton = document.createTextNode("Stäng");
-			var pExitButton = document.createElement('p');
-			pExitButton.appendChild(textNodeExitButton);
-			exitButton.appendChild(pExitButton);
-			
-			exitButton.onclick = function (e) { 
-				popup.parentNode.removeChild(popup); 
-				mask.parentNode.removeChild(mask)
-				};
-		
+			// -- EXITBUTTON --//
+			var exitButton = document.createElement('a');
+			exitButton.href = "#";
+		    exitButton.className = 'exitButton';
+		    exitButton.onclick = function (e) { 
+		    e = e || window.event;
+			e.preventDefault(); 
+			dpopup.parentNode.removeChild(popup); 
+				mask.parentNode.removeChild(mask);
+			};
+
 			mask.onclick = function (e) { 
 				popup.parentNode.removeChild(popup); 
-				mask.parentNode.removeChild(mask)
+				mask.parentNode.removeChild(mask);
 				};
 				
-			//popup.appendChild(exitButton);   
-			document.body.appendChild(popup);
+			//popup.appendChild(exitButton);  
+			popup.appendChild(exitButton);
+			popup.appendChild(folderTag);
 			document.body.appendChild(mask); 
+			document.body.appendChild(popup);
+			
+			//$("#popup").load(pageurl); 
 	};
 	
 		//--- RUNNING FUNCTIONS --- //

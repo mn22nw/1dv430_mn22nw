@@ -31,9 +31,6 @@
 
 	 	<body>
 		<div id="page">
-		<header id="headerFolders">
-			
-		</header> 
 		
 		
 	<p>MINA MAPPAR KOMMER HAMNA HÄR</p>
