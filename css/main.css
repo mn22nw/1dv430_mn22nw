@@ -61,7 +61,6 @@
 			float:left;
 			width:300px;
 			margin-top:15px;
-			
 			height:20px;
 			border:2px solid gray;
 			border-radius:10px;
@@ -73,7 +72,7 @@
 	width:200px;
 	height:200px;
 	padding:20px;
-	margin-top:20px;
+	margin-top:22px;
 }
 #profilepic {
 	border:4px solid #000;
@@ -170,8 +169,10 @@
 ---------------------------------------------------------------------- */	
 	#folderHeader {
 		float:left;
-		width:30%;
-		margin-top:27px;
+		width:45%;
+		height:200px;
+		overflow:hidden; border:1px solid green;
+		margin-top:30px;
 	}
 	
 	
@@ -199,19 +200,26 @@
 		padding-right:10px;
 		font-size:1.1em;
 		color:#000;
-		margin-top:0px;
+		margin-top:2px;
+		line-height:20px;
 	}
 		
 	.inputPopup {
+	padding-left:10px;
 	display:inline; 
 	border:1px solid green;
 	height:20px;
+	border:2px solid gray;
+	border-radius:10px;
+	outline:none;
 	}
 	
 	.headerPopup {
 		padding-top:20px;
 		float:right;
 		width:400px;
+		height:150px;
+		
 	}
 	
 	

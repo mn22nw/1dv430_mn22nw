@@ -6,11 +6,9 @@
 	error_reporting(E_ALL);
 		
 		$username = "miaaim"; //$_SESSION['username']; //already safe!
-		$foldername = $_POST['foldername'];
-
+		$foldername = $_POST['foldername']; 
+		//print_r($foldername);
 				error_reporting(E_ALL);
-		
-				$foldername = ucfirst($_POST['folderName']);
 				$safe_foldername = escape($foldername);
 
 		try { 
@@ -47,5 +45,7 @@
 
 			    $handler->rollback();
 			}
+			
+			echo "heeej";
 
 ?>

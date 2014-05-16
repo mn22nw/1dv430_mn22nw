@@ -18,9 +18,8 @@ var FAVOTUBE = FAVOTUBE || {};
 						var contentfunction = AjaxCon.initFolders("/favotube/db/folderOutput.php", "insidePopup", "openFolderBtn2");
 						
 						// headercontent to sent to popup-window //
-						var headercontent = "/favotube/pages/addfolder.php";
 						
-						FAVOTUBE.util.popUp("pages/myfolders.php", contentfunction, headercontent);	
+						FAVOTUBE.util.popUp(contentfunction, "/favotube/db/addfolder.php");	
 						
 				});		 
 
@@ -95,7 +94,7 @@ var FAVOTUBE = FAVOTUBE || {};
 	  
 	};
 	
-	FAVOTUBE.util.popUp =	function (pageurl, contentfunction, headercontent ){ 
+	FAVOTUBE.util.popUp =	function (contentfunction, url){ 
 					
 			var popup = document.createElement('div');
 			popup.id = 'popup';
@@ -108,7 +107,6 @@ var FAVOTUBE = FAVOTUBE || {};
 			// HEADER - WITH INPUT!! //
 			var header = document.createElement('div');
 			header.className= 'headerPopup';
-			//header.innerHTML = headercontent;
 			
 			var add = document.createElement("p");
 			add.className ="addTitle";
@@ -117,38 +115,48 @@ var FAVOTUBE = FAVOTUBE || {};
 				
 			var i = document.createElement("input"); //input element, text
 			i.setAttribute('type',"text");
+			i.setAttribute('maxlength',"30");
 			i.className = "inputPopup";
 			
 			var p = document.createElement("p");
 			p.innerHTML = "Name:";
 			p.className = "titleheaderPopup";
 			
-			var errormheader = document.createElement("p");
-			errormheader.innerHTML = "This field can't be empty!"
+			
 			
 			var addButton = document.createElement("a"); //input element, Submit button
 			addButton.href ="#";
 			addButton.innerHTML = "Add Folder";
 			addButton.className = "addFolderBtn";
 			
-			
-			
+			var errormheader = document.createElement("p");
+
 			addButton.onclick = function (e) { 
 		    e = e || window.event;
 			e.preventDefault(); 
-			console.log (i.value);
+			
 				if (i.value ===""|| i.value === null){  //om formfält är tomt
-					errorm.textContent ="";
-					var textNode1 = document.createTextNode("* This field can't be left empty.");
-					console.log("men va 17 har nu gjort");
-					errorm.textContent ="";
-					
-							errorm.appendChild(textNode1);
+					errormheader.innerHTML = "";
+					errormheader.innerHTML = "*This field can't be left empty.";
 					}
 				else{ //window.scrollTo(0,300);
-						errorm.textContent ="";
-						FAVOTUBE.util.createVideos(linkInput.value);
-						linkInput.value=""; }
+						errormheader.innerHTML = "";
+						console.log (i.value);
+						 $.ajax({
+				            type: 'post',                    
+				            url: url,            
+				            data:{"foldername" : i.value},
+				            dataType:'text',                
+				            success: function(rs)
+				            {
+				              // Don't need anything here! It's just successfull :D
+				              console.log("den borde lagt till!" + rs);
+				            },
+				            error: function(result) {
+		           			 alert("Error adding folder!");
+		     			   }
+		    		    });  
+					}
 			};
 			
 			
