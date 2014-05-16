@@ -109,17 +109,56 @@ var FAVOTUBE = FAVOTUBE || {};
 			var header = document.createElement('div');
 			header.className= 'headerPopup';
 			//header.innerHTML = headercontent;
+			
+			var add = document.createElement("p");
+			add.className ="addTitle";
+			add.innerHTML="Add Folder";
+			
 				
 			var i = document.createElement("input"); //input element, text
 			i.setAttribute('type',"text");
-			i.setAttribute('name',"username");
+			i.className = "inputPopup";
+			
+			var p = document.createElement("p");
+			p.innerHTML = "Name:";
+			p.className = "titleheaderPopup";
+			
+			var errormheader = document.createElement("p");
+			errormheader.innerHTML = "This field can't be empty!"
 			
 			var addButton = document.createElement("a"); //input element, Submit button
 			addButton.href ="#";
+			addButton.innerHTML = "Add Folder";
+			addButton.className = "addFolderBtn";
 			
+			
+			
+			addButton.onclick = function (e) { 
+		    e = e || window.event;
+			e.preventDefault(); 
+			console.log (i.value);
+				if (i.value ===""|| i.value === null){  //om formfält är tomt
+					errorm.textContent ="";
+					var textNode1 = document.createTextNode("* This field can't be left empty.");
+					console.log("men va 17 har nu gjort");
+					errorm.textContent ="";
+					
+							errorm.appendChild(textNode1);
+					}
+				else{ //window.scrollTo(0,300);
+						errorm.textContent ="";
+						FAVOTUBE.util.createVideos(linkInput.value);
+						linkInput.value=""; }
+			};
+			
+			
+			
+			header.appendChild(add);
+			header.appendChild(p);
 			header.appendChild(i);
 			header.appendChild(addButton);
-
+			header.appendChild (errormheader);
+			
 			var insidePopup = document.createElement('div');
 			insidePopup.id= 'insidePopup';			
 			

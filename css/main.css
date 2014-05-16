@@ -186,6 +186,35 @@
 	
 	/** POPUP - MY FOLDERS*
 ---------------------------------------------------------------------- */	
+	.addTitle {
+		display:block;
+		font-size:1.3em;
+		text-align:left;
+		font-weight:900;
+	}
+	/** HEADER POPUP **/
+	.titleheaderPopup {
+		display:block;
+		float:left;
+		padding-right:10px;
+		font-size:1.1em;
+		color:#000;
+		margin-top:0px;
+	}
+		
+	.inputPopup {
+	display:inline; 
+	border:1px solid green;
+	height:20px;
+	}
+	
+	.headerPopup {
+		padding-top:20px;
+		float:right;
+		width:400px;
+	}
+	
+	
 	.folderTag{		
 		height:162px;
 		width:274px;
@@ -197,9 +226,6 @@
 		background-position:0px -208px;
 	}
 	
-	#addfolder {
-				background:red;
-	}
 	
 	#popup {	position: absolute;
 				min-width:250px;
@@ -215,7 +241,7 @@
 			  	left: 0;
 			 	right: 0;
 				}
-	#popup  p {
+	#insidePopup  p {
 		margin-top:30px;
 		text-align:center;
 	}
@@ -223,9 +249,7 @@
 		font-weight:bold;
 		font-size:18px;
 	}
-	.headerPopup {
-		float:right;
-	}
+	
 	
 	#insidePopup {
 		width:90%;

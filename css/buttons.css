@@ -54,6 +54,7 @@
 
 
 
+
 		/** BUTTONS - FOLDERS *
 ---------------------------------------------------------------------- */
 
@@ -94,6 +95,19 @@
 		font-weight:900;
 		
 	}
+	
+		/** BUTTONS - POPUP *
+---------------------------------------------------------------------- */
+#popup .exitButton { 			 background-position:-30px 0;  } 
+	#popup .exitButton:hover{ 		background-position:-30px 0;  }
+	
+.addFolderBtn {
+	margin-left:10px;
+	height:20px;
+	
+}
+
+
 
 		/** BUTTONS - VIDEOBOARD *
 ---------------------------------------------------------------------- */
@@ -133,8 +147,7 @@
 	
 	#videoBoard .exitButton { 			background-position:0 0;  }  /*The first value is the horizontal position and the second value is the vertical.*/
 	#videoBoard .exitButton:hover{ 		background-position:-30px 0;  }
-	#popup .exitButton { 			 background-position:-30px 0;  } 
-	#popup .exitButton:hover{ 		background-position:-30px 0;  }
+	
 	
 	/*hideButton*/
 	.hideButton{	float:right;
