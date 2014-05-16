@@ -126,8 +126,8 @@ var FAVOTUBE = FAVOTUBE || {};
 			
 			var addButton = document.createElement("a"); //input element, Submit button
 			addButton.href ="#";
-			addButton.innerHTML = "Add Folder";
 			addButton.className = "addFolderBtn";
+			addButton.innerHTML = "Add folder";
 			
 			var errormheader = document.createElement("p");
 

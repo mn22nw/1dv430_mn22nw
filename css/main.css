@@ -171,7 +171,7 @@
 		float:left;
 		width:45%;
 		height:200px;
-		overflow:hidden; border:1px solid green;
+		overflow:hidden; 
 		margin-top:30px;
 	}
 	
@@ -206,12 +206,14 @@
 		
 	.inputPopup {
 	padding-left:10px;
+	margin-right:10px;
 	display:inline; 
 	border:1px solid green;
 	height:20px;
 	border:2px solid gray;
 	border-radius:10px;
 	outline:none;
+	float:left;
 	}
 	
 	.headerPopup {
@@ -219,10 +221,10 @@
 		float:right;
 		width:400px;
 		height:150px;
+		overflow:hidden
 		
 	}
-	
-	
+		
 	.folderTag{		
 		height:162px;
 		width:274px;
@@ -260,9 +262,10 @@
 	
 	
 	#insidePopup {
+		padding-top:15px;
 		width:90%;
 		height:80%;
-		border: 1px solid green;
+		border-top: 4px solid #160E07;
 		clear:both;
 		margin:0 auto;
 		
