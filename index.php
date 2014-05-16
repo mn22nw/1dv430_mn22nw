@@ -66,7 +66,7 @@
 						$input_password = crypt($password, $set_password); // compares password from database with input
 						
 							if($input_password == $set_password) {
-								$_SESSION['username']=$username;
+								$_SESSION['username']=$safe_username;
 								$redirect = $_POST['Login_Redirect']; 
 								header("Location: ".$redirect);
 							} else {

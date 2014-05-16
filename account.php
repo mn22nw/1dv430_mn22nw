@@ -46,7 +46,7 @@
 			<img class ="logo unselectable" src="pics/logo.png" alt="logo" />
 		</header> 
 		
-		<div id="folderHeader">
+		<div id="folderHeader" class="unselectable">
 	    	<a href ="#" id="load_folders"> My Folders<span></span> </a>
 			<div id ="myFolders"></div>	
 		</div>

@@ -13,48 +13,42 @@ var FAVOTUBE = FAVOTUBE || {};
 			myFolderButton.addEventListener('click', function(e) { 
 						e = e || window.event;
 						e.preventDefault(); 
-
-						FAVOTUBE.util.popUp("pages/myfolders.php");	
+										
+						//Function that renders content, to send to popup-window//
+						var contentfunction = AjaxCon.initFolders("/favotube/db/folderOutput.php", "insidePopup", "openFolderBtn2");
+						
+						// headercontent to sent to popup-window //
+						var headercontent = "/favotube/pages/addfolder.php";
+						
+						FAVOTUBE.util.popUp("pages/myfolders.php", contentfunction, headercontent);	
 						
 				});		 
 
 			
 			$('#linkInput').focus();	
-			$('#linkInput').focusout(function(){
-       			  $('#linkInput').focus();
-     				});
 				
-				okButton.addEventListener('click', function(e) { 
+			$('#linkInput').on('keyup', function(e) {
+			    if (e.keyCode === 13) {
+			       // $('#mySubmit').click();
+			       console.log("hoppla");
+			    }
+			});
+			
+			okButton.addEventListener('click', function(e) { 
 						e = e || window.event;
 						e.preventDefault(); 
+						$('#linkInput').focus();	
+						FAVOTUBE.util.getInputUrl();
+				}, false);
 				
-				//kanske ha detta i annan function
-				
-				var errorm = document.querySelector(".errorm");
-				
-				if (linkInput.value ===""|| linkInput.value === null){  //om formfält är tomt
-					errorm.textContent ="";
-					var textNode1 = document.createTextNode("* This field can't be left empty.");
-					console.log("men va 17 har nu gjort");
-					errorm.textContent ="";
-					
-							errorm.appendChild(textNode1);
-					}
-				else{ //window.scrollTo(0,300);
-						errorm.textContent ="";
-						var urlValue = FAVOTUBE.util.getInputUrl();
-						FAVOTUBE.util.createVideos(urlValue);
-						linkInput.value=""; }
-											
-						linkInput.focus();
-					}, false);
 			
 	};	
 	
 	FAVOTUBE.util.renderFolders = function() { 
 			
-			AjaxCon.initFolders("/favotube/db/folderOutput.php");
-			
+		AjaxCon.initFolders("/favotube/db/folderOutput.php", "myFolders", "openFolderBtn");
+						// Link to php-file ---------- Div to render to --- classname of folderbuttons //
+
 	};
 	
 	FAVOTUBE.util.renderVideoboard = function() { 
@@ -64,7 +58,6 @@ var FAVOTUBE = FAVOTUBE || {};
 	FAVOTUBE.util.renderVideo = function(url) {  
 			var youtubeID = Video.YouTubeGetID(url);
 			var title = Video.getTitle(youtubeID);
-			//Video.init(youtubeID, title);  flyttar denna till titelfunktionen annars funkar det aldriii
 	};
 	
 	FAVOTUBE.util.createVideos = function(url) {   //ska till databas dessutom!
@@ -76,7 +69,23 @@ var FAVOTUBE = FAVOTUBE || {};
 	
 	FAVOTUBE.util.getInputUrl= function() { 
 			var linkInput = document.querySelector("#linkInput");
-			return linkInput.value;
+			var errorm = document.querySelector(".errorm");
+				
+				if (linkInput.value ===""|| linkInput.value === null){  //om formfält är tomt
+					errorm.textContent ="";
+					var textNode1 = document.createTextNode("* This field can't be left empty.");
+					console.log("men va 17 har nu gjort");
+					errorm.textContent ="";
+					
+							errorm.appendChild(textNode1);
+					}
+				else{ //window.scrollTo(0,300);
+						errorm.textContent ="";
+						FAVOTUBE.util.createVideos(linkInput.value);
+						linkInput.value=""; }
+											
+			
+					
 	};	
 	
 	FAVOTUBE.util.createprofile= function() {
@@ -86,7 +95,7 @@ var FAVOTUBE = FAVOTUBE || {};
 	  
 	};
 	
-	FAVOTUBE.util.popUp =	function (pageurl){ 
+	FAVOTUBE.util.popUp =	function (pageurl, contentfunction, headercontent ){ 
 					
 			var popup = document.createElement('div');
 			popup.id = 'popup';
@@ -96,6 +105,24 @@ var FAVOTUBE = FAVOTUBE || {};
 			var folderTag = document.createElement('div');
 			folderTag.className= 'folderTag';
 			
+			// HEADER - WITH INPUT!! //
+			var header = document.createElement('div');
+			header.className= 'headerPopup';
+			//header.innerHTML = headercontent;
+				
+			var i = document.createElement("input"); //input element, text
+			i.setAttribute('type',"text");
+			i.setAttribute('name',"username");
+			
+			var addButton = document.createElement("a"); //input element, Submit button
+			addButton.href ="#";
+			
+			header.appendChild(i);
+			header.appendChild(addButton);
+
+			var insidePopup = document.createElement('div');
+			insidePopup.id= 'insidePopup';			
+			
 			// -- EXITBUTTON --//
 			var exitButton = document.createElement('a');
 			exitButton.href = "#";
@@ -103,22 +130,28 @@ var FAVOTUBE = FAVOTUBE || {};
 		    exitButton.onclick = function (e) { 
 		    e = e || window.event;
 			e.preventDefault(); 
-			dpopup.parentNode.removeChild(popup); 
-				mask.parentNode.removeChild(mask);
+			popup.parentNode.removeChild(popup); 
+			mask.parentNode.removeChild(mask);
 			};
 
 			mask.onclick = function (e) { 
 				popup.parentNode.removeChild(popup); 
 				mask.parentNode.removeChild(mask);
 				};
-				
 			//popup.appendChild(exitButton);  
 			popup.appendChild(exitButton);
+			popup.appendChild(header);
 			popup.appendChild(folderTag);
+			popup.appendChild(insidePopup);
 			document.body.appendChild(mask); 
 			document.body.appendChild(popup);
 			
-			//$("#popup").load(pageurl); 
+			var timer= setInterval(function(){
+			contentfunction();}
+			,300);
+			
+			clearInterval(timer);
+			//$(".headerPopup").load(headercontent); 
 	};
 	
 		//--- RUNNING FUNCTIONS --- //

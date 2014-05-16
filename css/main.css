@@ -197,12 +197,16 @@
 		background-position:0px -208px;
 	}
 	
+	#addfolder {
+				background:red;
+	}
+	
 	#popup {	position: absolute;
 				min-width:250px;
 				width:70%;
-				min-height:500px;
+				min-height:700px;
 				height:auto !important;
-				top: 10%;
+				top: 9%;
 				z-index: 9999; 
 				background-color: #FFF;
 				border: 5px solid #160E07;
@@ -213,11 +217,23 @@
 				}
 	#popup  p {
 		margin-top:30px;
-		text-align:justify;
+		text-align:center;
 	}
 	#popup  h2 {
 		font-weight:bold;
 		font-size:18px;
+	}
+	.headerPopup {
+		float:right;
+	}
+	
+	#insidePopup {
+		width:90%;
+		height:80%;
+		border: 1px solid green;
+		clear:both;
+		margin:0 auto;
+		
 	}
 	
 	#mask{

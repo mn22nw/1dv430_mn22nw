@@ -57,7 +57,7 @@
 		/** BUTTONS - FOLDERS *
 ---------------------------------------------------------------------- */
 
-	.openFolderBtn {
+	.openFolderBtn , .openFolderBtn2 {
 		display:block;
 		float:left;
 		width:92px;
@@ -67,21 +67,27 @@
 		background: url('../pics/sprites.png') no-repeat;
 		text-decoration:none;
 		font-size:1em;
-		color:#BBBBBB;
 		text-align:center;
 		font-family: Arial, Helvetica, sans-serif;
-		background-position:-295px -112.9px; 
+		
 	}
+	.openFolderBtn {color:#BBBBBB; background-position:-295px -112.9px; }
 	
 	.openFolderBtn:hover{
 		background-position:-408px -112.9px; 
 		color:#006837;
 	}
 	
-	.openFolderBtn p {
+	.openFolderBtn2 {background-position:-408px -112.9px; 
+		color:#006837; }
+	
+	.openFolderBtn2:hover{
+		color:#BBBBBB; background-position:-295px -112.9px;
+	}
+	
+	.openFolderBtn p, .openFolderBtn2 p  {
 		display:block;
 		margin-top:20px;
-
 		width:100%;
 		height:50px;
 		line-height:25px;
@@ -95,7 +101,8 @@
 		
 		font-family: Arial, Helvetica, sans-serif;
 		color:#312b2d;
-		padding:2px 5px 2px 20px;
+		margin:10px 5px 5px 20px;
+		padding-bottom:1px;
 	  overflow: hidden;
 	  text-overflow: ellipsis;
 	  display: -webkit-box;
@@ -116,7 +123,7 @@
 					
 	
 	/*Exitbutton*/
-	.exitButton , .hideButton , .enLarge ,.favouriteBtn{
+	.exitButton ,  .hideButton , .enLarge ,.favouriteBtn{
 				width:30px;
 				height:30px;
 				float:right;
@@ -126,6 +133,8 @@
 	
 	#videoBoard .exitButton { 			background-position:0 0;  }  /*The first value is the horizontal position and the second value is the vertical.*/
 	#videoBoard .exitButton:hover{ 		background-position:-30px 0;  }
+	#popup .exitButton { 			 background-position:-30px 0;  } 
+	#popup .exitButton:hover{ 		background-position:-30px 0;  }
 	
 	/*hideButton*/
 	.hideButton{	float:right;

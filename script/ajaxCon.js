@@ -48,7 +48,7 @@ $.ajax({
 	});
 },
 
-initFolders:function(url) {			
+initFolders:function(url, divId , classN) {			
 		
 	//	var timer;
 		//$("#myFolders").append("<img src='pics/loader.gif' alt='Loading'/>");
@@ -67,9 +67,8 @@ $.ajax({
     				if (!NodeList.prototype.forEach) {
 					NodeList.prototype.forEach = Array.prototype.forEach;
 					};
-	
-			
-       				var folderDiv = document.querySelector("#myFolders");
+       				
+       				var folderDiv = document.querySelector("[id='" + divId + "']");  
 
 			 		if(folderdata.length == 0 ){
 			 		folderDiv.innerHTML += folderdata[obj].name;
@@ -81,7 +80,7 @@ $.ajax({
 						// -- FOLDERBUTTON --//
 						var openFolderBtn = document.createElement('a');
 						openFolderBtn.href = "#";
-					    openFolderBtn.className = 'openFolderBtn';
+					    openFolderBtn.className = classN;
 					    
 					    var folderTitle = document.createElement('p');
 					    folderTitle.innerHTML = folderdata[obj].name;
@@ -89,16 +88,72 @@ $.ajax({
 					    openFolderBtn.onclick = function (e) { 
 					    e = e || window.event;
 						e.preventDefault(); 
+						
 						//opens folder with a list of folderITEMS
 						};	
 						
 						openFolderBtn.appendChild(folderTitle);
 						folderDiv.appendChild(openFolderBtn);
 					}
+					
     },
     error: function(result) {
             console.log("There was an error with collecting the data from the database");
         }
 	});
-	}
+},
+PopupHeader:function(url) {
+	
+	$.ajax({
+    url: url,
+    jsonp: "callback",
+    dataType: "jsonp",
+    data: {
+        format: "jsonp"
+    },
+ 
+    success: function( folderdata ) {
+    	
+    	
+    				if (!NodeList.prototype.forEach) {
+					NodeList.prototype.forEach = Array.prototype.forEach;
+					};
+       				
+       				var folderDiv = document.querySelector("[id='" + divId + "']");  
+
+			 		if(folderdata.length == 0 ){
+			 		folderDiv.innerHTML += folderdata[obj].name;
+			 		}
+			 		
+				 	folderDiv.innerHTML = "";
+					for(var obj in folderdata){
+											
+						// -- FOLDERBUTTON --//
+						var openFolderBtn = document.createElement('a');
+						openFolderBtn.href = "#";
+					    openFolderBtn.className = classN;
+					    
+					    var folderTitle = document.createElement('p');
+					    folderTitle.innerHTML = folderdata[obj].name;
+					   
+					    openFolderBtn.onclick = function (e) { 
+					    e = e || window.event;
+						e.preventDefault(); 
+						
+						//opens folder with a list of folderITEMS
+						};	
+						
+						openFolderBtn.appendChild(folderTitle);
+						folderDiv.appendChild(openFolderBtn);
+					}
+					
+    },
+    error: function(result) {
+            console.log("There was an error with collecting the data from the database");
+        }
+	});
+	
+	
+}
+
 };
