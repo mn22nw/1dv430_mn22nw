@@ -12,7 +12,7 @@ var Video = {
 			videoWrapper.className = "videoWrapper";
 			var videoDiv = document.createElement("div");
 			videoDiv.id = youtubeID;
-			videoDiv.className = "youtubeVideo";
+			videoDiv.className = "youtube-video";
 			
 			// -- TITLE --//
 			var ptitle = document.createElement('p');
@@ -48,13 +48,13 @@ var Video = {
 			};	
 			
 			// -- EXITBUTTON --//
-			/*var imgOver = document.createElement('img');
+			var imgOver = document.createElement('img');
 
 			imgOver.setAttribute("src", "http://img.youtube.com/vi/MwpMEbgC7DA/0.jpg");
 			imgOver.className = "imgOver";
 			//imgOver.style.backgroundImage="url('//img.youtube.com/vi/" + youtubeID + "/0.jpg')";
 			//imgOver.style.backgroundSize="60px 120px";
-			imgOver.id ="imgOver";*/
+			imgOver.id ="imgOver";
 			
 			// -- ENLARGE-BUTTON --//
 			var enLarge = document.createElement('a');
@@ -63,8 +63,9 @@ var Video = {
 		    enLarge.onclick = function (e) { 
 		    e = e || window.event;
 			e.preventDefault(); 
+			console.log("förstorar!");
+			console.log(youtubeID);
 			Video.Enlarge(youtubeID);
-			window.scrollTo(0,100);
 			};
 			
 			// -- HideBUTTON --//
@@ -110,10 +111,10 @@ var Video = {
 			}
 			
 			
-		/*	$('#imgOver').click(function(){
+			$('#imgOver').click(function(){
 	     	 $(this).hide();
 	     	 $("#"+youtubeID).get(0).playVideo();
-			});*/
+			});
 
 			draggyDiv.appendChild(exitButton);
 			draggyDiv.appendChild(ptitle);
@@ -222,7 +223,10 @@ var Video = {
 			mask2.parentNode.removeChild(mask2);
 			};
 
-
+			mask2.onclick = function (e) { 
+				bigVideo.parentNode.removeChild(bigVideo); 
+				mask2.parentNode.removeChild(mask2);
+				};
 			//popup.appendChild(exitButton);  
 			bigVideo.appendChild(exitButton);
 			bigVideo.appendChild(bigVideoWrapper);

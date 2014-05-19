@@ -29,7 +29,7 @@
 					float:left;
 					position:relative;
 					margin-top:10px;
-					width:278px;
+					width:388px;
 					padding:2px 0;
 					height:55px;
 					color:white;
@@ -41,7 +41,7 @@
 					white-space:nowrap;
 					overflow:hidden;
 					margin-left:-25px;
-					background-position:-266px -40px; 
+					background-position:-399px -40px; 
 	}
 
 /*Load folders*/
@@ -116,7 +116,7 @@
 		/** BUTTONS - VIDEOBOARD *
 ---------------------------------------------------------------------- */
 	.title {
-		
+				text-align:left;
 		font-family: Arial, Helvetica, sans-serif;
 		color:#312b2d;
 		margin:10px 5px 5px 20px;
@@ -130,7 +130,7 @@
 	  -webkit-box-orient: vertical;
 	}
 
-	#videoBoard a {	
+	#videoBoard a , #bigVideo a  {	
 					display:block;					
 					text-decoration:none;
 					background: url('../pics/sprites.png') no-repeat;
@@ -152,6 +152,8 @@
 	#videoBoard .exitButton { 			background-position:0 0;  }  /*The first value is the horizontal position and the second value is the vertical.*/
 	#videoBoard .exitButton:hover{ 		background-position:-30px 0;  }
 	
+	#bigVideo .exitButton { 			background-position:0 0;  }  /*The first value is the horizontal position and the second value is the vertical.*/
+	#bigVideo .exitButton:hover{ 		background-position:-30px 0;  }
 	
 	/*hideButton*/
 	.hideButton{	float:right;
@@ -167,7 +169,7 @@
 	/*enLarge - Button*/
 
 	
-	#videoBoard .enLarge { 		background-position:-155px 0;  }  
+	#videoBoard .enLarge { 		margin-top:26px; background-position:-155px 0;  }  
 	#videoBoard .enLarge:hover{ background-position:-185px 0;  }
 	
 	/*Favourite - Button*/
@@ -175,7 +177,20 @@
 	#videoBoard .favouriteBtn { 		margin-top:25px; 
 										background-position:-2px -155px;  }  
 	#videoBoard .favouriteBtn:hover{ 	background-position:-36px -155px;  }
-
+	.infoAdd {	width:100px;
+				height:30px;
+				float:right;
+				margin-top:25px; 
+				line-height:30px;
+				margin-right:5px;
+				background#000;
+				color:#FFF;}
+	
+	.imgOver {
+				background:red;
+				width:100%;
+				z-index:1000;
+				}
 
 	
 	

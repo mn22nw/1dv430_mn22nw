@@ -15,7 +15,7 @@ var FAVOTUBE = FAVOTUBE || {};
 						e.preventDefault(); 
 										
 						//Function that renders content, to send to popup-window//
-						var contentfunction = AjaxCon.initFolders("/favotube/db/folderOutput.php", "insidePopup", "openFolderBtn2");
+						var contentfunction = FAVOTUBE.util.renderFoldersPopup();
 						
 						// headercontent to sent to popup-window //
 						
@@ -44,10 +44,14 @@ var FAVOTUBE = FAVOTUBE || {};
 	};	
 	
 	FAVOTUBE.util.renderFolders = function() { 
-			
+		
 		AjaxCon.initFolders("/favotube/db/folderOutput.php", "myFolders", "openFolderBtn");
 						// Link to php-file ---------- Div to render to --- classname of folderbuttons //
 
+	};
+	
+	FAVOTUBE.util.renderFoldersPopup = function() { 
+		AjaxCon.initFolders("/favotube/db/folderOutput.php", "insidePopup", "openFolderBtn2");	
 	};
 	
 	FAVOTUBE.util.renderVideoboard = function() { 
@@ -151,6 +155,8 @@ var FAVOTUBE = FAVOTUBE || {};
 				            {
 				              // Don't need anything here! It's just successfull :D
 				              console.log("den borde lagt till!" + rs);
+				              
+				              
 				            },
 				            error: function(result) {
 		           			 alert("Error adding folder!");
@@ -202,6 +208,7 @@ var FAVOTUBE = FAVOTUBE || {};
 	};
 	
 		//--- RUNNING FUNCTIONS --- //
+		
 	
 		FAVOTUBE.util.init();	
 		//FAVOTUBE.util.createprofile();	

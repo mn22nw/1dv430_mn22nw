@@ -10,8 +10,7 @@
 				background: url(../pics/seamless.jpg);
 				}
 	h2 {			padding-top:30px;}
-	a:focus {outline:0;}
-	
+	iframe {border:1px solid black; z-index: 1;}
 	.unselectable {
     -WEBKIT-USER-SELECT: NONE; /* SAFARI, CHROME */
     -KHTML-USER-SELECT: NONE; /* KONQUEROR */
@@ -133,7 +132,7 @@
 			background:#2D8C36;
 			margin-bottom:35px;}
 			
-	.youtubeVideo:focus {outline:0;}
+	
 	.videoWrapper
 	{ 	width:382.5px;
 		height:225px;
@@ -165,6 +164,7 @@
 			  	margin-top:15%;
 
 	}
+	
 	/** LARGE VIDEO *
 ---------------------------------------------------------------------- */	
 	
@@ -173,7 +173,7 @@
 				min-height:480px;
 				padding:40px;
 				height:auto !important;
-				top: 5%;
+				top: 9%;
 				z-index: 9999; 
 				background-color: #000;
 				margin: 0 auto;
@@ -183,7 +183,7 @@
 	#bigVideoWrapper{
 		
 		
-	}	
+	}
 
 	/** MY FOLDERS*
 ---------------------------------------------------------------------- */	
@@ -291,7 +291,7 @@
 		
 	}
 	
-#mask , #mask2 {
+	#mask , #mask2 {
 	
 	background:#000;
 	position: absolute;
@@ -303,7 +303,7 @@
 	opacity:0.8;
 }
 
-#mask2 {opacity:1;}
+#mask2 {opacity:0.9;}
 	
 		/** Anger sidansstorlek och placering*
 ---------------------------------------------------------------------- */	

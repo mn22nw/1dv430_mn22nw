@@ -61,6 +61,7 @@
                                     origin: settings.origin,
                                     //lade till detta
                                     showinfo: settings.showinfo,
+                                    title:settings.title,
                                     modestbranding:settings.modestbranding
                                 },
                                 events: {
@@ -162,7 +163,7 @@
             }
         },
         pPlayer = function( settings ) {
-
+		//fixa play //
            var  tpls = {
                 playpause:
                     '     <div class="button">' +
@@ -215,6 +216,7 @@
                         "mute",
                         "fullscreen" ] ,
                     showinfo:0,
+                    title:'',
                     modestbranding:1
                     
                }, settings);
@@ -497,7 +499,7 @@
                             if ($boundingBox.hasClass( "ppVideoWrapper" )) {
                                 timerRef = setTimeout( timerFn, delay );
                             }
-                        }, delay );
+                        }, delay );  //session cookie
                     })( 500 );
                }
            }
