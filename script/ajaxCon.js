@@ -47,11 +47,16 @@ $.ajax({
         }
 	});
 },
+getRightFoldername:function(n) {
+								return n;
+							}
+,
 
 initFolders:function(url, divId , classN) {			
 		
 	//	var timer;
 		//$("#myFolders").append("<img src='pics/loader.gif' alt='Loading'/>");
+
 
 $.ajax({
     url: url,
@@ -62,7 +67,6 @@ $.ajax({
     },
  
     success: function( folderdata ) {
-    				console.log(folderdata);
     	
     				if (!NodeList.prototype.forEach) {
 					NodeList.prototype.forEach = Array.prototype.forEach;
@@ -85,36 +89,38 @@ $.ajax({
 					    openFolderBtn.className = classN;
 					    
 					    var folderTitle = document.createElement('p');
-					    var name = folderdata[obj].name;
+					
+					    var name = AjaxCon.getRightFoldername(folderdata[obj].name);
+					    console.log(name);
 					    folderTitle.innerHTML = name;
 					   
-					    openFolderBtn.onclick = function (e) { 
+					    openFolderBtn.addEventListener("click", function(e){
 					    e = e || window.event;
 						e.preventDefault(); 
-						
+						var folderN = this.firstChild.innerHTML;
 						//opens folder with a list of folderITEMS
 						$.ajax({
 								type: 'post',
 							    url: "/favotube/db/insideFolderOutput.php",
 							    jsonp: "callback",
-							    data:{"foldername" : name},
+							    data:{"foldername" : folderN},
 							    dataType: "text",
 							 
 							    success: function( insidefolder ) {
-							    	console.log(insidefolder);
 							    	var obj = JSON.parse(insidefolder);
-							    	console.log("inne i" +name+"ligger ju" + obj[0].youtubeId);
+							    	console.log("inne i"+ folderN +" ligger ju " + obj[0].youtubeId);
 							    },
   						  error: function(result) {
   						  	console.log(result);
            				 console.log("There was an error with collecting the data from the database");
-        }
-	});
+      					  }
+						});
+						});	
     	
 
 						
 						
-						};	
+						
 						
 						openFolderBtn.appendChild(folderTitle);
 						folderDiv.appendChild(openFolderBtn);
