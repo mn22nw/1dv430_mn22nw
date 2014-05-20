@@ -47,11 +47,14 @@ var FAVOTUBE = FAVOTUBE || {};
 		
 		AjaxCon.initFolders("/favotube/db/folderOutput.php", "myFolders", "openFolderBtn");
 						// Link to php-file ---------- Div to render to --- classname of folderbuttons //
-
 	};
 	
 	FAVOTUBE.util.renderFoldersPopup = function() { 
 		AjaxCon.initFolders("/favotube/db/folderOutput.php", "insidePopup", "openFolderBtn2");	
+	};
+	
+	FAVOTUBE.util.renderFolderContent = function() { 
+		AjaxCon.initFolders("/favotube/db/insideFolderOutput.php", "insidePopup", "openFolderBtn2");	
 	};
 	
 	FAVOTUBE.util.renderVideoboard = function() { 

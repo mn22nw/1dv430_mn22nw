@@ -62,7 +62,7 @@ $.ajax({
     },
  
     success: function( folderdata ) {
-    	
+    				console.log(folderdata);
     	
     				if (!NodeList.prototype.forEach) {
 					NodeList.prototype.forEach = Array.prototype.forEach;
@@ -74,6 +74,8 @@ $.ajax({
 			 		folderDiv.innerHTML += folderdata[obj].name;
 			 		}
 			 		
+			 		
+			 		
 				 	folderDiv.innerHTML = "";
 					for(var obj in folderdata){
 											
@@ -83,13 +85,35 @@ $.ajax({
 					    openFolderBtn.className = classN;
 					    
 					    var folderTitle = document.createElement('p');
-					    folderTitle.innerHTML = folderdata[obj].name;
+					    var name = folderdata[obj].name;
+					    folderTitle.innerHTML = name;
 					   
 					    openFolderBtn.onclick = function (e) { 
 					    e = e || window.event;
 						e.preventDefault(); 
 						
 						//opens folder with a list of folderITEMS
+						$.ajax({
+								type: 'post',
+							    url: "/favotube/db/insideFolderOutput.php",
+							    jsonp: "callback",
+							    data:{"foldername" : name},
+							    dataType: "text",
+							 
+							    success: function( insidefolder ) {
+							    	console.log(insidefolder);
+							    	var obj = JSON.parse(insidefolder);
+							    	console.log("inne i" +name+"ligger ju" + obj[0].youtubeId);
+							    },
+  						  error: function(result) {
+  						  	console.log(result);
+           				 console.log("There was an error with collecting the data from the database");
+        }
+	});
+    	
+
+						
+						
 						};	
 						
 						openFolderBtn.appendChild(folderTitle);

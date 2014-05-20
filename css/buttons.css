@@ -41,7 +41,7 @@
 					white-space:nowrap;
 					overflow:hidden;
 					margin-left:-25px;
-					background-position:-399px -40px; 
+					background-position:-399px -39px; 
 	}
 
 /*Load folders*/
@@ -50,7 +50,7 @@
 					top: 0; left: 0; bottom: 0; right: 0;
 					background: url('../pics/sprites.png') no-repeat;
 					
-					background-position:9px -40px;  }  
+					background-position:9px -39px;  }  
 
 
 
