@@ -94,11 +94,6 @@ var Video = {
 			console.log("favorit!");
 			};	*/
 			
-			
-			infoAdd.style.visibility = "hidden";
-			favouriteBtn.addEventListener("mouseover", func, false);
-			favouriteBtn.addEventListener("mouseout", func1, false);
-			
 			function func()
 			{  
 			   infoAdd.style.visibility = "visible";
@@ -108,6 +103,11 @@ var Video = {
 			{  
 			   infoAdd.setAttribute("style", "visibility:hidden;");
 			}
+			
+			infoAdd.style.visibility = "hidden";
+			favouriteBtn.addEventListener("mouseover", func, false);
+			favouriteBtn.addEventListener("mouseout", func1, false);
+			
 			
 			
 		/*	$('#imgOver').click(function(){

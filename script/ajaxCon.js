@@ -108,6 +108,11 @@ $.ajax({
 							 
 							    success: function( insidefolder ) {
 							    	var obj = JSON.parse(insidefolder);
+							    	if (obj[0] === undefined )
+									 {
+							    		console.log("tom");
+							    	}
+							    	
 							    	console.log("inne i"+ folderN +" ligger ju " + obj[0].youtubeId);
 							    },
   						  error: function(result) {

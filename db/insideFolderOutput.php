@@ -39,12 +39,6 @@
 	
 			$results=$getVideos->fetchAll(PDO::FETCH_ASSOC);
 			
-				
-		 if ($getVideos->rowCount() != 1) {
-
-			$results= '{"1":"There is no folders yet"}';
-			}	
-
 	
 			$data=json_encode($results);  //json string
 		
