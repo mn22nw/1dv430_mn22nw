@@ -22,72 +22,30 @@ PopUpFoundation.prototype.render = {
 			// HEADER - WITH INPUT + ADD!! //
 			var header = document.createElement('div');
 			header.className= 'headerPopup';
-			
-			var add = document.createElement("p");
-			add.className ="addTitle";
-			add.innerHTML="Add Folder";
-			
-			var i = document.createElement("input"); //input element, text
-			i.setAttribute('type',"text");
-			i.setAttribute('maxlength',"30");
-			i.className = "inputPopup";
-			
-			var p = document.createElement("p");
-			p.innerHTML = "Name:";
-			p.className = "titleheaderPopup";
-			
-			
-			var addButton = document.createElement("a"); //input element, Submit button
-			addButton.href ="#";
-			addButton.className = "addFolderBtn";
-			addButton.innerHTML = "Add folder";
-			
-			var errormheader = document.createElement("p");
 
-			addButton.onclick = function (e) { 
-		    e = e || window.event;
-			e.preventDefault(); 
-			
-				if (i.value ===""|| i.value === null){  //om formfält är tomt
-					errormheader.innerHTML = "";
-					errormheader.innerHTML = "*This field can't be left empty.";
-					}
-				else{ //window.scrollTo(0,300);
-						errormheader.innerHTML = "";
-						console.log (i.value);
-						 $.ajax({
-				            type: 'post',                    
-				            url: url,            
-				            data:{"foldername" : i.value},
-				            dataType:'text',                
-				            success: function(rs)
-				            {
-				              // Don't need anything here! It's just successfull :D
-				              console.log("den borde lagt till!" + rs);
-				              
-				              
-				            },
-				            error: function(result) {
-		           			 alert("Error adding folder!");
-		     			   }
-		    		    });  
-					}
-			};
-			
 			var title = document.createElement("p");
 			title.className = "folderTitle";
 			
 			var insidePopup = document.createElement('div');
 			insidePopup.id= 'insidePopup';			
 			
+			
 			var backBtn = document.createElement("a");
 			backBtn.className = "backBtn";
+			backBtn.addEventListener('click', function(e) { 
+						e = e || window.event;
+						e.preventDefault(); 
+						title.innerHTML="";
+						insidePopup.innerHTML="";
+						
+						
+						AjaxCon.initFolders("/favotube/db/folderOutput.php", "insidePopup", "openFolderBtn2");
+						backBtn.style.visibility ="hidden";	
+				});	
+			backBtn.style.visibility ="hidden";	 
+
 			
-			header.appendChild(add);
-			header.appendChild(p);
-			header.appendChild(i);
-			header.appendChild(addButton);
-			header.appendChild (errormheader);
+			
 			
 			
 			
@@ -112,6 +70,7 @@ PopUpFoundation.prototype.render = {
 			popup.appendChild(folderTag);
 			popup.appendChild(title);
 			popup.appendChild(insidePopup);
+			popup.appendChild(backBtn);
 			document.body.appendChild(mask); 
 			document.body.appendChild(popup);
 			
@@ -121,6 +80,7 @@ PopUpFoundation.prototype.render = {
 			
 			clearInterval(timer);
 			//$(".headerPopup").load(headercontent); 
+			AjaxCon.PopupHeader(url);
 	}};
 
 
