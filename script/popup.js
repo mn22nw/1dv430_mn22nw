@@ -38,16 +38,14 @@ PopUpFoundation.prototype.render = {
 						title.innerHTML="";
 						insidePopup.innerHTML="";
 						
+						AjaxCon.initFolders(urlList.folderOutput, "insidePopup", "openFolderBtn2");
+						// CHANCE HEADERCONTENT OF POPUP HERE //
+						AjaxCon.PopupHeader(url, "Add Folder", "30", "addFolderBtn", "Add folder");
 						
-						AjaxCon.initFolders("/favotube/db/folderOutput.php", "insidePopup", "openFolderBtn2");
 						backBtn.style.visibility ="hidden";	
 				});	
 			backBtn.style.visibility ="hidden";	 
 
-			
-			
-			
-			
 			
 			// -- EXITBUTTON --//
 			var exitButton = document.createElement('a');
@@ -79,8 +77,9 @@ PopUpFoundation.prototype.render = {
 			,300);
 			
 			clearInterval(timer);
-			//$(".headerPopup").load(headercontent); 
-			AjaxCon.PopupHeader(url);
+			
+			// CHANCE HEADERCONTENT OF POPUP HERE //
+			AjaxCon.PopupHeader(url, "Add Folder", "30", "addFolderBtn", "Add folder");
 	}};
 
 

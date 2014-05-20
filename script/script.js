@@ -17,14 +17,9 @@ var FAVOTUBE = FAVOTUBE || {};
 						//Function that renders content, to send to popup-window//
 						var contentfunction = FAVOTUBE.util.renderFoldersPopup();
 						
-						// headercontent to sent to popup-window //
-						
-						
 						var folderPop = new PopUpFolders(); 
 
-						folderPop.render.init(contentfunction, "/favotube/db/addfolder.php");
-									
-						//FAVOTUBE.util.popUp(contentfunction, "/favotube/db/addfolder.php");	
+						folderPop.render.init(contentfunction, urlList.addfolder);
 						
 				});		 
 
@@ -53,20 +48,20 @@ var FAVOTUBE = FAVOTUBE || {};
 	
 	FAVOTUBE.util.renderFolders = function() { 
 		
-		AjaxCon.initFolders("/favotube/db/folderOutput.php", "myFolders", "openFolderBtn");
+		AjaxCon.initFolders(urlList.folderOutput, "myFolders", "openFolderBtn");
 						// Link to php-file ---------- Div to render to --- classname of folderbuttons //
 	};
 	
 	FAVOTUBE.util.renderFoldersPopup = function() { 
-		AjaxCon.initFolders("/favotube/db/folderOutput.php", "insidePopup", "openFolderBtn2");	
+		AjaxCon.initFolders(urlList.folderOutput, "insidePopup", "openFolderBtn2");	
 	};
 	
 	FAVOTUBE.util.renderFolderContent = function() { 
-		AjaxCon.initFolders("/favotube/db/insideFolderOutput.php", "insidePopup", "openFolderBtn2");	
+		AjaxCon.initFolders(urlList. insideFolderOutput, "insidePopup", "openFolderBtn2");	
 	};
 	
 	FAVOTUBE.util.renderVideoboard = function() { 
-			AjaxCon.initVideoboard("/favotube/db/videoBoardOutput.php",FAVOTUBE.util.renderVideo );	
+			AjaxCon.initVideoboard(urlList.videoBoardOutput,FAVOTUBE.util.renderVideo );	
 	};
 	
 	FAVOTUBE.util.renderVideo = function(url) {  
@@ -108,8 +103,6 @@ var FAVOTUBE = FAVOTUBE || {};
 		console.log(username);
 	  
 	};
-	
-	FAVOTUBE.util.popUp =	
 	
 		//--- RUNNING FUNCTIONS --- //
 

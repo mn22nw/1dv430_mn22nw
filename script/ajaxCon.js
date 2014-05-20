@@ -102,7 +102,7 @@ $.ajax({
 						//opens folder with a list of folderITEMS
 						$.ajax({
 								type: 'post',
-							    url: "/favotube/db/insideFolderOutput.php",
+							    url: urlList.insideFolderOutput,
 							    jsonp: "callback",
 							    data:{"foldername" : folderN},
 							    dataType: "text",
@@ -110,28 +110,56 @@ $.ajax({
 							    success: function( insidefolder ) {
 							    	var insidePopup= document.querySelector("#insidePopup");
 							    	var folderTitle= document.querySelector(".folderTitle");						    	
-							    	insidePopup.innerHTML ="";
-							    	folderTitle.innerHTML =folderN;
-							    	
+							    	 	
 							    	var obj = JSON.parse(insidefolder);
-							    	if (obj[0] === undefined )
+							    	if (obj[0] === undefined && insidePopup !== null)
 									 {	var backBtn = document.querySelector(".backBtn");
 										backBtn.style.visibility ="visible";
 							    		console.log("tom");
+							    		folderTitle.innerHTML =folderN;
+							    		insidePopup.innerHTML =""; 
 							    		insidePopup.innerHTML ="You have no videos yet!";
+							    		
+							    		// CHANCE HEADERCONTENT OF POPUP HERE //
+								    	AjaxCon.PopupHeader(url, "Add Video", "300", "addVideoBtn", "Add Video");
 							    	}
 							    	
 							    	else {
-							    	console.log("inne i"+ folderN +" ligger ju " + obj[0].youtubeId);
+							    	//console.log("inne i"+ folderN +" ligger ju " + obj[0].youtubeId);
 							    	
 							    	
 								    	if (insidePopup === null) {
 								    		console.log("starta en popup");
+								    		
+								    		var contentfunction = AjaxCon.initFolders(urlList.folderOutput, "insidePopup", "openFolderBtn2");	
+											var folderPop = new PopUpFolders(); 
+											folderPop.render.init(contentfunction, urlList.addfolder);
+								    		AjaxCon.PopupHeader(url, "Add Video", "300", "addVideoBtn", "Add Video");
+								    		var insidePopupNy= document.querySelector("#insidePopup");
+							    			var folderTitle= document.querySelector(".folderTitle");
+								    		insidePopupNy.innerHTML ="WHAAT"; 
+								    		console.log(insidePopupNy);
+								    		console.log("WHAtt");
+								    		folderTitle.innerHTML =folderN;
+								    		for(var i in obj){
+											var youtubeId = obj[i].youtubeId;
+											console.log("videoruta av denna" + youtubeId);
+											var img = document.createElement('img');
+											img.className = "thumbNail";
+											var imgUrl = "//img.youtube.com/vi/"+ youtubeId + "/0.jpg"; //http://img.youtube.com/vi/MwpMEbgC7DA/0.jpg
+											img.setAttribute("src", imgUrl);
+											insidePopupNy.appendChild(img);
+											
+											}
 								    	}
 								    	else{
-								    	
+								    	insidePopup.innerHTML =""; 
+								    	folderTitle.innerHTML =folderN;
 								    	var backBtn = document.querySelector(".backBtn");
 										backBtn.style.visibility ="visible";	
+								    	
+								    	// CHANCE HEADERCONTENT OF POPUP HERE //
+								    	AjaxCon.PopupHeader(url, "Add Video", "300", "addVideoBtn", "Add Video");
 								    	
 								    	for(var i in obj){
 											var youtubeId = obj[i].youtubeId;
@@ -141,9 +169,6 @@ $.ajax({
 											var imgUrl = "//img.youtube.com/vi/"+ youtubeId + "/0.jpg"; //http://img.youtube.com/vi/MwpMEbgC7DA/0.jpg
 											img.setAttribute("src", imgUrl);
 											insidePopup.appendChild(img);
-											
-											//CHANCE HEADERCONTENT OF POPUP HERE //
-											
 											
 											}
 							    	//fyll med youtubedatan
@@ -170,16 +195,16 @@ $.ajax({
         }
 	});
 },
-PopupHeader:function(url) {
+PopupHeader:function(url , Title, maxLengthInput,  addBtnClassName, buttonTitle) {
 		var header = document.querySelector(".headerPopup");
-		
+			header.innerHTML = "";
 		var add = document.createElement("p");
 			add.className ="addTitle";
-			add.innerHTML="Add Folder";
+			add.innerHTML= Title;
 			
 		var i = document.createElement("input"); //input element, text
 			i.setAttribute('type',"text");
-			i.setAttribute('maxlength',"30");
+			i.setAttribute('maxlength', maxLengthInput);
 			i.className = "inputPopup";
 			
 		var p = document.createElement("p");
@@ -188,8 +213,8 @@ PopupHeader:function(url) {
 				
 		var addButton = document.createElement("a"); //input element, Submit button
 			addButton.href ="#";
-			addButton.className = "addFolderBtn";
-			addButton.innerHTML = "Add folder";
+			addButton.className = addBtnClassName; 
+			addButton.innerHTML = buttonTitle;
 			
 		var errormheader = document.createElement("p");
 
@@ -211,9 +236,8 @@ PopupHeader:function(url) {
 				            dataType:'text',                
 				            success: function(rs)
 				            {
-				              // Don't need anything here! It's just successfull :D
 				              console.log("den borde lagt till!" + rs);
-				              
+				              AjaxCon.initFolders(urlList.folderOutput, "insidePopup", "openFolderBtn2");	
 				              
 				            },
 				            error: function(result) {

@@ -19,8 +19,6 @@ var Video = {
 			ptitle.className = "title";
 			ptitle.innerHTML = title;
 			
-			
-			
 			// -- EXITBUTTON --//
 			var exitButton = document.createElement('a');
 			exitButton.href = "#";
@@ -34,7 +32,7 @@ var Video = {
 			// hämtar php som deletar youtubeid i databasen //
 		    $.ajax({
 		            type: 'post',                    
-		            url:'/favotube/db/deleteyoutubeid.php',            
+		            url:urlList.deleteyoutubeid,           
 		            data:{"ytbid" : idTostring},
 		            dataType:'text',                
 		            success: function(rs)
@@ -76,8 +74,7 @@ var Video = {
 			e.preventDefault(); 
 			console.log("förstorar!");
 			};	
-			
-			
+				
 			var infoAdd= document.createElement('p');
 			infoAdd.className = "infoAdd";
 			infoAdd.innerHTML = "Add to folder";
@@ -186,7 +183,7 @@ var Video = {
 			// hämtar php som läggertill youtubeid till databasen //
 		    $.ajax({
 		            type: 'post',                    
-		            url:'/favotube/db/addyoutubeid.php',            
+		            url:urlList.addyoutubeid,            
 		            data:{"youtubeid" : id, "title" : title},
 		            dataType:'text',                
 		            success: function(rs)
@@ -235,4 +232,4 @@ var Video = {
 			    origin: "http://yoursite.com"
 		}); 
 			}
-	}
+	};
