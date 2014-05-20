@@ -141,6 +141,7 @@
 		clear:both;
 		outline:none;
 		}
+	.videoWrapper:focus {outline:0;}
 	.draggy {
 		display: inline-block;
 		width:382.5px;

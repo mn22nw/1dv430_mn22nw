@@ -39,7 +39,6 @@ $.ajax({
 					for(var obj in data){
 						var youtubeId = data[obj].youtubeid;
 						renderfunction(youtubeId);
-						
 						}	
     },
     error: function(result) {
@@ -113,7 +112,25 @@ $.ajax({
 							    		console.log("tom");
 							    	}
 							    	
+							    	else {
 							    	console.log("inne i"+ folderN +" ligger ju " + obj[0].youtubeId);
+							    	
+							    	var insidePopup= document.querySelector("#insidePopup");
+							    	if (insidePopup === null) {
+							    		console.log("starta en popup");
+							    	}
+							    	else{
+							    	insidePopup.innerHTML ="";
+							    	for(var i in obj){
+										var youtubeId = obj[i].youtubeId;
+										console.log("videoruta av denna" + youtubeId);
+										
+										}
+							    	//fyll med youtubedatan
+							    	}
+
+										
+										}
 							    },
   						  error: function(result) {
   						  	console.log(result);
@@ -122,11 +139,6 @@ $.ajax({
 						});
 						});	
     	
-
-						
-						
-						
-						
 						openFolderBtn.appendChild(folderTitle);
 						folderDiv.appendChild(openFolderBtn);
 					}
