@@ -113,6 +113,8 @@
 	overflow:hidden;
 }
 
+.thumbNail {width:200px; }
+
 		/** BUTTONS - VIDEOBOARD *
 ---------------------------------------------------------------------- */
 	.title {

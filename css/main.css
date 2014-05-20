@@ -11,7 +11,8 @@
 				}
 	h2 {			padding-top:30px;}
 	a:focus {outline:0;}
-	
+
+iframe:focus {outline:0;}
 	.unselectable {
     -WEBKIT-USER-SELECT: NONE; /* SAFARI, CHROME */
     -KHTML-USER-SELECT: NONE; /* KONQUEROR */
@@ -100,6 +101,7 @@
 -------------------------------------------------------------------*/
 	#videoboardContainer {
 			display:block;
+			float:left;
 			background:#000;
 			background: url(../pics/bk.jpg) center 0;
 			clear:both;
@@ -118,6 +120,7 @@
 	
 	
 	#videoBoard {
+	
 			text-align:justify;
 			width:96%;
 			height:96%;
@@ -132,7 +135,7 @@
    	  		height: 400px; overflow: hidden;
 			background:#2D8C36;
 			margin-bottom:35px;}
-			
+	.youtubeVideo{ overflow:hidden;}		
 	.youtubeVideo:focus {outline:0;}
 	.videoWrapper
 	{ 	width:382.5px;

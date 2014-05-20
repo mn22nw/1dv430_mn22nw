@@ -124,6 +124,12 @@ $.ajax({
 							    	for(var i in obj){
 										var youtubeId = obj[i].youtubeId;
 										console.log("videoruta av denna" + youtubeId);
+										var img = document.createElement('img');
+										img.className = "thumbNail";
+										var imgUrl = "//img.youtube.com/vi/"+ youtubeId + "/0.jpg";
+										img.setAttribute("src", imgUrl);
+										insidePopup.appendChild(img);
+										//http://img.youtube.com/vi/MwpMEbgC7DA/0.jpg
 										
 										}
 							    	//fyll med youtubedatan
