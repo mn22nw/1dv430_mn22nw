@@ -10,7 +10,7 @@
 				background: url(../pics/seamless.jpg);
 				}
 	h2 {			padding-top:30px;}
-	a:focus {outline:0;}
+	
 
 iframe:focus {outline:0;}
 	.unselectable {
@@ -258,6 +258,15 @@ iframe:focus {outline:0;}
 		background-image:url('../pics/sprites.png');
 		background-repeat:no-repeat;
 		background-position:0px -208px;
+	}
+	.folderTitle{
+		
+		color:#160E07;
+		font-size:1.4em;
+		font-weight:900;
+		position:absolute;
+		top:100px;
+		left:155px;
 	}
 	
 	

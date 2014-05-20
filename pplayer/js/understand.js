@@ -17,3 +17,18 @@ adapter = new ApiAdapter[ apapterClass ](settings, {
                     
 
  $boundingBox = settings.boundingBox
+ 
+ var  tpls = {
+                playpause:
+                    '     <div class="button">' +
+                    '        <button class="pause"><!-- --></button>' +
+                    '        <button class="play"><!-- --></button>' +
+                    '    </div>',
+                progress:
+                    '    <div><div class="progressBar"><div><!-- --></div></div></div>',
+                quality:
+settings
+
+
+
+$quality dropdown för att kunna välja kvalité.

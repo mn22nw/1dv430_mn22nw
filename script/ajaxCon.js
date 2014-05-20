@@ -106,21 +106,27 @@ $.ajax({
 							    dataType: "text",
 							 
 							    success: function( insidefolder ) {
+							    	var insidePopup= document.querySelector("#insidePopup");
+							    	var folderTitle= document.querySelector(".folderTitle");
+							    	insidePopup.innerHTML ="";
+							    	folderTitle.innerHTML =folderN;
+							    	
 							    	var obj = JSON.parse(insidefolder);
 							    	if (obj[0] === undefined )
 									 {
 							    		console.log("tom");
+							    		insidePopup.innerHTML ="You have no videos yet!";
 							    	}
 							    	
 							    	else {
 							    	console.log("inne i"+ folderN +" ligger ju " + obj[0].youtubeId);
 							    	
-							    	var insidePopup= document.querySelector("#insidePopup");
+							    	
 							    	if (insidePopup === null) {
 							    		console.log("starta en popup");
 							    	}
 							    	else{
-							    	insidePopup.innerHTML ="";
+							    	
 							    	for(var i in obj){
 										var youtubeId = obj[i].youtubeId;
 										console.log("videoruta av denna" + youtubeId);
