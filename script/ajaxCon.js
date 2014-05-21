@@ -121,7 +121,7 @@ $.ajax({
 							    		insidePopup.innerHTML ="You have no videos yet!";
 							    		
 							    		// CHANCE HEADERCONTENT OF POPUP HERE //
-								    	AjaxCon.PopupHeader(url, "Add Video", "300", "addVideoBtn", "Add Video");
+								    	AjaxCon.PopupHeaderAddVideo(urlList.addVideoToFolder, folderN);
 							    	}
 							    	
 							    	else {
@@ -134,7 +134,7 @@ $.ajax({
 								    		var contentfunction = AjaxCon.initFolders(urlList.folderOutput, "insidePopup", "openFolderBtn2");	
 											var folderPop = new PopUpFolders(); 
 											folderPop.render.init(contentfunction, urlList.addfolder);
-								    		AjaxCon.PopupHeader(url, "Add Video", "300", "addVideoBtn", "Add Video");
+								    		AjaxCon.PopupHeaderAddVideo(urlList.addVideoToFolder,folderN);
 								    		var insidePopupNy= document.querySelector("#insidePopup");
 							    			var folderTitle= document.querySelector(".folderTitle");
 								    		insidePopupNy.innerHTML ="WHAAT"; 
@@ -159,7 +159,7 @@ $.ajax({
 										backBtn.style.visibility ="visible";	
 								    	
 								    	// CHANCE HEADERCONTENT OF POPUP HERE //
-								    	AjaxCon.PopupHeader(url, "Add Video", "300", "addVideoBtn", "Add Video");
+								    	AjaxCon.PopupHeaderAddVideo(urlList.addVideoToFolder, folderN);
 								    	
 								    	for(var i in obj){
 											var youtubeId = obj[i].youtubeId;
@@ -195,16 +195,17 @@ $.ajax({
         }
 	});
 },
-PopupHeader:function(url , Title, maxLengthInput,  addBtnClassName, buttonTitle) {
+
+PopupHeaderAddFolder:function(url) {
 		var header = document.querySelector(".headerPopup");
 			header.innerHTML = "";
 		var add = document.createElement("p");
 			add.className ="addTitle";
-			add.innerHTML= Title;
+			add.innerHTML= "Add Folder";   
 			
 		var i = document.createElement("input"); //input element, text
 			i.setAttribute('type',"text");
-			i.setAttribute('maxlength', maxLengthInput);
+			i.setAttribute('maxlength', "30");
 			i.className = "inputPopup";
 			
 		var p = document.createElement("p");
@@ -213,8 +214,8 @@ PopupHeader:function(url , Title, maxLengthInput,  addBtnClassName, buttonTitle)
 				
 		var addButton = document.createElement("a"); //input element, Submit button
 			addButton.href ="#";
-			addButton.className = addBtnClassName; 
-			addButton.innerHTML = buttonTitle;
+			addButton.className = "addFolderBtn"; 
+			addButton.innerHTML = "Add folder";
 			
 		var errormheader = document.createElement("p");
 
@@ -241,12 +242,76 @@ PopupHeader:function(url , Title, maxLengthInput,  addBtnClassName, buttonTitle)
 				              
 				            },
 				            error: function(result) {
-		           			 alert("Error adding folder!");
+		           			 console.log("Error adding folder!");
 		     			   }
 		    		    });  
 					}
 			};
 			
+			header.appendChild(add);
+			header.appendChild(p);
+			header.appendChild(i);
+			header.appendChild(addButton);
+			header.appendChild (errormheader);
+	
+},
+PopupHeaderAddVideo:function(url, foldername) {
+		var header = document.querySelector(".headerPopup");
+			header.innerHTML = "";
+		var add = document.createElement("p");
+			add.className ="addTitle";
+			add.innerHTML= "Add Video";   
+			
+		var i = document.createElement("input"); 
+			i.setAttribute('type',"text");
+			i.setAttribute('maxlength', "300");
+			i.className = "inputPopup";
+			
+		var p = document.createElement("p");
+			p.innerHTML = "Link:";
+			p.className = "titleheaderPopup";
+				
+		var addButton = document.createElement("a"); //input element, Submit button
+			addButton.href ="#";
+			addButton.className = "addVideoBtn"; 
+			addButton.innerHTML = "Add Video";
+			
+		var errormheader = document.createElement("p");
+
+			addButton.onclick = function (e) { 
+		    e = e || window.event;
+			e.preventDefault(); 
+			
+				if (i.value ===""|| i.value === null){  //om formfält är tomt
+					errormheader.innerHTML = "";
+					errormheader.innerHTML = "*This field can't be left empty.";
+					}
+				else{ 
+						errormheader.innerHTML = "";
+						console.log (i.value);
+						
+						var youtubeId = Video.YouTubeGetID(i.value);
+				
+						Video.getTitleAndAddTitleToDataBase(youtubeId, false);
+						
+						
+						 $.ajax({
+				            type: 'post',                    
+				            url: url,            
+				            data:{"youtubeid" : youtubeId, "foldername" : foldername},
+				            dataType:'text',                
+				            success: function(rs)
+				            {
+				              console.log("den borde lagt till youtubevideo i folder!" + rs);
+				             	
+				            },
+				            error: function(result) {
+		           			 console.log("Error adding video!");
+		     			   }
+		    		    });  
+					}
+			};
+			i.value = "";
 			header.appendChild(add);
 			header.appendChild(p);
 			header.appendChild(i);

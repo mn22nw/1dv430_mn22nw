@@ -40,7 +40,7 @@ PopUpFoundation.prototype.render = {
 						
 						AjaxCon.initFolders(urlList.folderOutput, "insidePopup", "openFolderBtn2");
 						// CHANCE HEADERCONTENT OF POPUP HERE //
-						AjaxCon.PopupHeader(url, "Add Folder", "30", "addFolderBtn", "Add folder");
+						AjaxCon.PopupHeaderAddFolder(url);
 						
 						backBtn.style.visibility ="hidden";	
 				});	
@@ -79,7 +79,7 @@ PopUpFoundation.prototype.render = {
 			clearInterval(timer);
 			
 			// CHANCE HEADERCONTENT OF POPUP HERE //
-			AjaxCon.PopupHeader(url, "Add Folder", "30", "addFolderBtn", "Add folder");
+			AjaxCon.PopupHeaderAddFolder(url);
 	}};
 
 

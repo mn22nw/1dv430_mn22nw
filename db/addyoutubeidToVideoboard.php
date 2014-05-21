@@ -36,7 +36,23 @@
 		    
 		$stmt->execute(); 
 		// --------------- END INSERT//
-
+		
+		// INSERT INTO TABLE videogroup//
+		$InsertVID = "INSERT INTO `{$databasename}`.`videogroup` (`videoid`, `videoboardid`, `youtubeid`, `positionX`, `positionY`)   
+		VALUES (
+            '', 
+            :videoboardid,
+			:youtubeid,
+			'12',
+			'12')";
+                                          
+		$stmtVid = $handler->prepare($InsertVID);                                              
+		$stmtVid->bindParam(':videoboardid', $result["videoboardid"], PDO::PARAM_STR);       
+		$stmtVid->bindParam(':youtubeid', $youtubeid , PDO::PARAM_STR);  
+		    
+		$stmtVid->execute(); 
+		// --------------- END INSERT// 
+		
 		$handler->commit();                  //commits the transaction if it is succesfull              
 		
 		}

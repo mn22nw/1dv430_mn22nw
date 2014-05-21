@@ -5,7 +5,7 @@
 	
 	error_reporting(E_ALL);
 		
-		$username = "miaaim"; //$_SESSION['username']; //already safe!
+		$username = $_SESSION['username']; //already safe!
 		$foldername = $_POST['foldername']; 
 		//print_r($foldername);
 				error_reporting(E_ALL);
@@ -21,6 +21,7 @@
 			$userid = $handler->prepare($SELECTuserid); 
 			
 			$useridValue = $userid->execute();  
+			$result = $userid->fetch(PDO::FETCH_ASSOC);
 			
 			// --------------- END SELECT//	
 			
@@ -32,7 +33,7 @@
 	            :name)  ON DUPLICATE KEY update `name` = VALUES(`name`); ";     //
 	            
 	      	$addFolder = $handler->prepare($folderSql);     
-			$addFolder->bindParam(':userId', $useridValue, PDO::PARAM_STR);       
+			$addFolder->bindParam(':userId', $result["userId"], PDO::PARAM_STR);       
 			$addFolder->bindParam(':name', $safe_foldername , PDO::PARAM_STR);  
 
 			$addFolder->execute(); 

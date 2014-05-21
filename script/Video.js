@@ -40,7 +40,7 @@ var Video = {
 		               console.log("den deletade " + rs);               
 		              		            },
 		            error: function(result) {
-           			 alert("Error with delete youtubeid");
+           			 console.log("Error with delete youtubeid");
      			   }
     		    });			
 			};	
@@ -168,7 +168,7 @@ var Video = {
 		
 	},
 		
-	getTitleAndAddTitleToDataBase: function(id){
+	getTitleAndAddTitleToDataBase: function(id, value){
 		var url = "http://gdata.youtube.com/feeds/api/videos/" + id +" ?v=2&alt=json";
 		var title;
 		
@@ -178,9 +178,26 @@ var Video = {
 			
 			title = response.entry.title.$t;
 			
-			Video.init(id, title);  
+			 if(value) {
+				Video.init(id, title);  
 			
-			// hämtar php som läggertill youtubeid till databasen //
+			// hämtar php som läggertill youtubeid till databasen + videoboard//
+		    $.ajax({
+		            type: 'post',                    
+		            url:urlList.addyoutubeidToVideoboard,            
+		            data:{"youtubeid" : id, "title" : title},
+		            dataType:'text',                
+		            success: function(rs)
+		            {
+		              // Don't need anything here! It's just successfull :D
+		            },
+		            error: function(result) {
+           			 console.log("Error adding youtubeid");
+     			   }
+    		    });  
+    		  }
+			else {	
+				// hämtar php som läggertill youtubeid till databasen //
 		    $.ajax({
 		            type: 'post',                    
 		            url:urlList.addyoutubeid,            
@@ -191,10 +208,10 @@ var Video = {
 		              // Don't need anything here! It's just successfull :D
 		            },
 		            error: function(result) {
-           			 alert("Erroraddyoutubeid");
+           			 console.log("Error adding youtubeid");
      			   }
     		    });  
-
+    		  };
 		});
 		
 	} ,

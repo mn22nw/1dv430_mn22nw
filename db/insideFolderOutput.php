@@ -18,12 +18,10 @@
 			
 			$useridValue = $userid->execute();  
 			$result1 = $userid->fetch(PDO::FETCH_ASSOC);
-			
-			//echo $result1["userId"];
 				
 			// --------------- END SELECT//	
 			
-			// SELECT YOUTUBEVIDEOS FROM FOLDERGROUP //	
+			// SELECT FOLDERID FROM FOLDER //	
 			$folderIdSQL= "SELECT `folderId` FROM `folder` WHERE `userId` = '".$result1["userId"]. "' AND `name` = '".$safe_foldername. "'";
 	      	$getFolderId = $handler->prepare($folderIdSQL);     
 			$folderId = $getFolderId->execute(); 

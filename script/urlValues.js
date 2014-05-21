@@ -4,5 +4,7 @@ var urlList = {
 	deleteyoutubeid:"/favotube/db/deleteyoutubeid.php",
 	insideFolderOutput:"/favotube/db/insideFolderOutput.php",
 	addyoutubeid:"/favotube/db/addyoutubeid.php",
+	addyoutubeidToVideoboard:"/favotube/db/addyoutubeidToVideoboard.php",
 	videoBoardOutput: "/favotube/db/videoBoardOutput.php",
+	addVideoToFolder:"/favotube/db/addVideoToFolder.php"
 	};

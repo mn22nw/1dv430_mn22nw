@@ -136,15 +136,16 @@ iframe:focus {outline:0;}
 			background:#2D8C36;
 			margin-bottom:35px;}
 	.youtubeVideo{ overflow:hidden;}		
-	.youtubeVideo:focus {outline:0;}
+	.youtubeVideo:focus {outline:0; border:0;}
 	.videoWrapper
 	{ 	width:382.5px;
 		height:225px;
 		margin:0 auto;
 		clear:both;
-		outline:none;
+		outline:0;
+		border:0;
 		}
-	.videoWrapper:focus {outline:0;}
+	.videoWrapper:focus {outline:0; border:0;}
 	.draggy {
 		display: inline-block;
 		width:382.5px;

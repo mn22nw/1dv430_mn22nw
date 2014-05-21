@@ -71,7 +71,7 @@ var FAVOTUBE = FAVOTUBE || {};
 	
 	FAVOTUBE.util.createVideos = function(url) {   //ska till databas dessutom!
 			var youtubeID = Video.YouTubeGetID(url);
-			var title = Video.getTitleAndAddTitleToDataBase(youtubeID);
+			var title = Video.getTitleAndAddTitleToDataBase(youtubeID, true);
 			//Video.init(youtubeID, title);  flyttar denna till titelfunktionen annars funkar det aldriii
 
 	};
@@ -85,15 +85,13 @@ var FAVOTUBE = FAVOTUBE || {};
 					var textNode1 = document.createTextNode("* This field can't be left empty.");
 					console.log("men va 17 har nu gjort");
 					errorm.textContent ="";
-					
 							errorm.appendChild(textNode1);
 					}
 				else{ //window.scrollTo(0,300);
 						errorm.textContent ="";
 						FAVOTUBE.util.createVideos(linkInput.value);
 						linkInput.value=""; }
-											
-			
+	
 					
 	};	
 	
