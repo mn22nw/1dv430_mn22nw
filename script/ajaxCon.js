@@ -87,7 +87,7 @@ $.ajax({
 						openFolderBtn.href = "#";
 					    openFolderBtn.className = classN;
 					    
-					    var folderTitle = document.createElement('p');
+					    var folderTitle = document.createElement('span');
 					
 					    var name = AjaxCon.getRightFoldername(folderdata[obj].name);
 					    console.log(name);
@@ -186,6 +186,10 @@ $.ajax({
     	
 						openFolderBtn.appendChild(folderTitle);
 						folderDiv.appendChild(openFolderBtn);
+						AjaxCon.adjustHightElement(folderTitle);
+		  
+		 
+		
 					}
 					
     },
@@ -229,7 +233,7 @@ PopupHeaderAddFolder:function(url) {
 					}
 				else{ //window.scrollTo(0,300);
 						errormheader.innerHTML = "";
-						console.log (i.value);
+						
 						 $.ajax({
 				            type: 'post',                    
 				            url: url,            
@@ -245,6 +249,7 @@ PopupHeaderAddFolder:function(url) {
 		           			 console.log("Error adding folder!");
 		     			   }
 		    		    });  
+		    		    i.value = "";
 					}
 			};
 			
@@ -293,7 +298,7 @@ PopupHeaderAddVideo:function(url, foldername) {
 						var youtubeId = Video.YouTubeGetID(i.value);
 				
 						Video.getTitleAndAddTitleToDataBase(youtubeId, false);
-						
+						i.value = "";
 						
 						 $.ajax({
 				            type: 'post',                    
@@ -311,13 +316,20 @@ PopupHeaderAddVideo:function(url, foldername) {
 		    		    });  
 					}
 			};
-			i.value = "";
+			
 			header.appendChild(add);
 			header.appendChild(p);
 			header.appendChild(i);
 			header.appendChild(addButton);
 			header.appendChild (errormheader);
 	
-}
+},
+adjustHightElement: function (elem) {
+      var fontstep = 1;
+      if ($(elem).height()>79 || $(elem).width()>79) {
+        $(elem).css('font-size',(($(elem).css('font-size').substr(0,2)-fontstep)) + 'px').css('line-height',(($(elem).css('font-size').substr(0,2))) + 'px');
+        AjaxCon.adjustHightElement(elem);
+      }
+    }
 
 };

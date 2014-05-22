@@ -70,8 +70,15 @@ a:focus {outline:0;}
 		font-size:1em;
 		text-align:center;
 		font-family: Arial, Helvetica, sans-serif;
-		
+		color:#BBBBBB;
+		font-size:1em;
+		font-weight:900;
+		display:inline-block;
+		line-height:80px;
 	}
+
+
+		
 	.openFolderBtn {color:#BBBBBB; background-position:-295px -112.9px; }
 	
 	.openFolderBtn:hover{

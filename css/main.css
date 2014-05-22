@@ -260,16 +260,7 @@ iframe:focus {outline:0;}
 		background-repeat:no-repeat;
 		background-position:0px -208px;
 	}
-	.folderTitle{
-		
-		color:#160E07;
-		font-size:1.4em;
-		font-weight:900;
-		position:absolute;
-		top:100px;
-		left:155px;
-	}
-	
+
 	
 	#popup {	position: absolute;
 				min-width:250px;

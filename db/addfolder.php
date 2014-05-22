@@ -7,10 +7,12 @@
 		
 		$username = $_SESSION['username']; //already safe!
 		$foldername = $_POST['foldername']; 
+		$uppercasefoldername = ucfirst($foldername);
+		
 		//print_r($foldername);
 				error_reporting(E_ALL);
-				$safe_foldername = escape($foldername);
-
+				$safe_foldername = escape($uppercasefoldername);
+				
 		try { 
 			
 			$handler->beginTransaction();
@@ -39,7 +41,7 @@
 			$addFolder->execute(); 
 			// --------------- END INSERT//	
 			
-			$handler->commit();                  //commits the transaction if it is succesfull              
+			$handler->commit();                  //commits the transaction if it is succesfull             
 			
 			}
 			catch(Exception $e){

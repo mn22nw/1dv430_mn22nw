@@ -28,7 +28,7 @@
 	      	$getFolderId = $handler->prepare($folderIdSQL);     
 			$folderId = $getFolderId->execute(); 
 			$resultFolderId = $getFolderId->fetch(PDO::FETCH_ASSOC);
-			echo $resultFolderId["folderId"]."<--folderid";  
+			//echo $resultFolderId["folderId"]."<--folderid";  
 			// --------------- END SELECT//	
 			
 			// SELECT youtubeid from foldergroup based on id//	

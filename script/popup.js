@@ -23,7 +23,7 @@ PopUpFoundation.prototype.render = {
 			var header = document.createElement('div');
 			header.className= 'headerPopup';
 
-			var title = document.createElement("p");
+			var title = document.createElement("span");
 			title.className = "folderTitle";
 			
 			var insidePopup = document.createElement('div');
