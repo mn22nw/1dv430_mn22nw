@@ -62,6 +62,7 @@ var FAVOTUBE = FAVOTUBE || {};
 	
 	FAVOTUBE.util.renderVideoboard = function() { 
 			AjaxCon.initVideoboard(urlList.videoBoardOutput,FAVOTUBE.util.renderVideo );	
+			
 	};
 	
 	FAVOTUBE.util.renderVideo = function(url) {  
@@ -108,7 +109,20 @@ var FAVOTUBE = FAVOTUBE || {};
 		//FAVOTUBE.util.createprofile();	
 		FAVOTUBE.util.renderFolders();
 		FAVOTUBE.util.renderVideoboard(); 
-
+		
+		
+		var timer= setTimeout(function(){
+		var test= document.createElement('div');
+		test.className ="test";
+		var iframes = document.querySelectorAll(".pp-video");
+						for (var i = 0, len = iframes.length; i < len; i++) {
+						    //work with checkboxes[i]
+						//  iframe[0].appendChild(test);
+						 // iframes[0].firstElementChild.innerHTML = "";
+						}
+		 },4000);
+		
+		//clearInterval(timer);
 };
 
 

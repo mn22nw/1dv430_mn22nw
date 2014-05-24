@@ -49,6 +49,6 @@
 			    $handler->rollback();
 			}
 			
-			echo "heeej";
+			echo "Sucess";
 
 ?>

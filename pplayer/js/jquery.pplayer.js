@@ -95,6 +95,7 @@
                     },
                     play: function() {
                         _player.playVideo();
+
                     },
                     stop: function() {
                         _player.stopVideo();
@@ -393,6 +394,7 @@
                     $playBtn.hide();
                     $pauseBtn.show();
                     adapter.play();
+                    console.log("lilla");
                 },
                 stopVideo: function() {
                     adapter.stop();

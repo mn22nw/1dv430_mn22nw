@@ -133,6 +133,10 @@ margin:5px;
 	background-position:-513px -129px; }
 .backBtn:hover {
 	background-position:-584px -129px; }
+	
+.deleteFolderBtn {
+		float:right;
+}
 
 		/** BUTTONS - VIDEOBOARD *
 ---------------------------------------------------------------------- */

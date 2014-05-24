@@ -1,3 +1,7 @@
+
+adapter verkar vara den som spelar upp saker
+
+
 adapter = new ApiAdapter[ apapterClass ](settings, {
                         onReady: function( e ) {
                             that.startTimer();

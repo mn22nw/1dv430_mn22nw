@@ -1,7 +1,6 @@
 
 
-LOADING GIFAR!!! FIXA IDAG
-
+ _player.focus = function() {console.log("focus biiieach!");}
 
 
 // FIXA DATABAS / PHP //

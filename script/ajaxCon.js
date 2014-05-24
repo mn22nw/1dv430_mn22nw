@@ -40,11 +40,16 @@ $.ajax({
 						var youtubeId = data[obj].youtubeid;
 						renderfunction(youtubeId);
 						}	
+						
+						
+												
     },
     error: function(result) {
             alert("Error");
         }
 	});
+	
+	
 },
 getRightFoldername:function(n) {
 								return n;
@@ -76,8 +81,7 @@ $.ajax({
 			 		if(folderdata.length == 0 ){
 			 		folderDiv.innerHTML += folderdata[obj].name;
 			 		}
-			 		
-			 		
+
 			 		
 				 	folderDiv.innerHTML = "";
 					for(var obj in folderdata){
@@ -308,7 +312,6 @@ PopupHeaderAddVideo:function(url, foldername) {
 				            success: function(rs)
 				            {
 				              console.log("den borde lagt till youtubevideo i folder!" + rs);
-				             	
 				            },
 				            error: function(result) {
 		           			 console.log("Error adding video!");
@@ -317,14 +320,59 @@ PopupHeaderAddVideo:function(url, foldername) {
 					}
 			};
 			
+			var deleteButton = document.createElement("a"); 
+			deleteButton.href ="#";
+			deleteButton.className = "deleteFolderBtn"; 
+			deleteButton.innerHTML = "Delete folder";
+			
+			deleteButton.onclick = function (e) { 
+		    e = e || window.event;
+			e.preventDefault(); 
+			
+			// are you sure you want to delete thisfolder?
+				if (false) {
+					 //dont delete!
+					}
+				else{   
+					
+						var title = document.querySelector(".folderTitle");
+						var folderN =title.innerHTML;
+						
+						//opens folder with a list of folderITEMS
+						$.ajax({
+								type: 'post',
+							    url: urlList.deleteFolder,
+							    jsonp: "callback",
+							    data:{"foldername" : folderN},
+							    dataType: "text",                
+					            success: function(rs)
+					            {
+					              console.log("den borde deletat folder!" + rs);
+					              title.innerHTML = "";
+					              AjaxCon.initFolders(urlList.folderOutput, "insidePopup", "openFolderBtn2");
+					              
+					              // CHANCE HEADERCONTENT OF POPUP HERE //
+								    	AjaxCon.PopupHeaderAddFolder(urlList.addfolder, folderN);
+					              //bort med tillbakaknapp
+					              //byt ut headern!
+					            },
+					            error: function(result) {
+			           			 console.log("Error deleting folder!");
+			     			   }
+		    		    });  
+					}
+			};
+			
+			
 			header.appendChild(add);
 			header.appendChild(p);
 			header.appendChild(i);
 			header.appendChild(addButton);
-			header.appendChild (errormheader);
+			header.appendChild(errormheader);
+			header.appendChild(deleteButton);
 	
 },
-adjustHightElement: function (elem) {
+adjustHightElement: function (elem) {  //http://www.metaltoad.com/blog/resizing-text-fit-container  (open source)
       var fontstep = 1;
       if ($(elem).height()>79 || $(elem).width()>79) {
         $(elem).css('font-size',(($(elem).css('font-size').substr(0,2)-fontstep)) + 'px').css('line-height',(($(elem).css('font-size').substr(0,2))) + 'px');

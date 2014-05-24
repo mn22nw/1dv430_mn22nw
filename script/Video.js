@@ -84,12 +84,12 @@ var Video = {
 			var favouriteBtn = document.createElement('a');
 			favouriteBtn.href = "#";
 		    favouriteBtn.className = 'favouriteBtn';
-		   /* favouriteBtn.onclick = function (e) { 
+		    favouriteBtn.onclick = function (e) { 
 		 	 e = e || window.event;
 				e.preventDefault(); 
 		
 			console.log("favorit!");
-			};	*/
+			};	
 			
 			function func()
 			{  

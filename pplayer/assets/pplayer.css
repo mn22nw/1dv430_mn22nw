@@ -20,7 +20,7 @@
 */
 
 /* http://css-tricks.com/NetMag/FluidWidthVideo/Article-FluidWidthVideo.php */
-
+/* .ppVideoWrapper:first-child{}*/
 .ppVideoWrapper {
     position: relative;
     padding-bottom: 56.25%; /* 16:9 */
@@ -29,6 +29,7 @@
     overflow: hidden;
     background: url(./img/loading.gif) center center no-repeat;
 }
+	.ppVideoWrapper video:focus {outline:#000 solid 1px; border:0;}
     .ppVideoWrapper video,
     .ppVideoWrapper iframe {
         position: absolute;
@@ -62,6 +63,8 @@
         bottom: 0;
         background-color: #000;
     }
+    
+    .ppVideoWrapper .controls:focus {outline:0}
 
 /* Desktops and laptops ----------- */
 @media only screen
