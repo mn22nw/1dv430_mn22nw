@@ -38,7 +38,7 @@ $.ajax({
 	});
 		
 },
-getRightFoldername:function(n) {
+getRightName:function(n) {
 								return n;
 							}
 ,
@@ -80,7 +80,7 @@ $.ajax({
 					    
 					    var folderTitle = document.createElement('span');
 					
-					    var name = AjaxCon.getRightFoldername(folderdata[obj].name);
+					    var name = AjaxCon.getRightName(folderdata[obj].name);
 					    console.log(name);
 					    folderTitle.innerHTML = name;
 					   
@@ -88,7 +88,6 @@ $.ajax({
 					    e = e || window.event;
 						e.preventDefault(); 
 						var folderN = this.firstChild.innerHTML;
-						//HÄR
 						
 						AjaxCon.renderFolderContent(folderN);
 						
@@ -361,36 +360,67 @@ renderFolderContent: function(folderN) {
 								    		console.log(insidePopupNy);
 								    		console.log("WHAtt");
 								    		folderTitle.innerHTML =folderN;
+								    		
 								    		for(var i in obj){
-											var youtubeId = obj[i].youtubeId;
-											console.log("videoruta av denna" + youtubeId);
-											var img = document.createElement('img');
-											img.className = "thumbNail";
-											var imgUrl = "//img.youtube.com/vi/"+ youtubeId + "/0.jpg"; //http://img.youtube.com/vi/MwpMEbgC7DA/0.jpg
-											img.setAttribute("src", imgUrl);
-											insidePopupNy.appendChild(img);
+								    			
+								    			var vidButton = document.createElement("a"); //input element, Submit button
+													vidButton.href ="#";
+													vidButton.className = "thumbNail"; 
+													
+								    			
+												var youtubeId = obj[i].youtubeId;
+												console.log("videoruta av denna" + youtubeId);
+												var img = document.createElement('img');
+												img.className = "thumbNailImg";
+												var imgUrl = "//img.youtube.com/vi/"+ youtubeId + "/0.jpg"; //http://img.youtube.com/vi/MwpMEbgC7DA/0.jpg
+												img.setAttribute("src", imgUrl);
+												insidePopupNy.appendChild(img);
 											
 											}
 								    	}
 								    	else{
-								    	insidePopup.innerHTML =""; 
-								    	folderTitle.innerHTML =folderN;
-								    	var backBtn = document.querySelector(".backBtn");
-										backBtn.style.visibility ="visible";	
-								    	
-								    	// CHANCE HEADERCONTENT OF POPUP HERE //
-								    	AjaxCon.PopupHeaderAddVideo(urlList.addVideoToFolder, folderN);
-								    	
-								    	for(var i in obj){
-											var youtubeId = obj[i].youtubeId;
-											console.log("videoruta av denna" + youtubeId);
-											var img = document.createElement('img');
-											img.className = "thumbNail";
-											var imgUrl = "//img.youtube.com/vi/"+ youtubeId + "/0.jpg"; //http://img.youtube.com/vi/MwpMEbgC7DA/0.jpg
-											img.setAttribute("src", imgUrl);
-											insidePopup.appendChild(img);
+									    	insidePopup.innerHTML =""; 
+									    	folderTitle.innerHTML =folderN;
+									    	var backBtn = document.querySelector(".backBtn");
+											backBtn.style.visibility ="visible";	
+									    	
+									    	// CHANCE HEADERCONTENT OF POPUP HERE //
+									    	AjaxCon.PopupHeaderAddVideo(urlList.addVideoToFolder, folderN);
+									    	
+									    	for(var i in obj){
+									    		var youtubeId = obj[i].youtubeId;
+												var vidButton = document.createElement("a"); //input element, Submit button
+													vidButton.href ="#";
+													vidButton.className = "thumbNail"; 
+													
+								    			//rumple
+													
+														
+														
+												console.log("videoruta av denna" + youtubeId);
+												var img = document.createElement('img');
+												img.className = "thumbNailImg";
+												var imgUrl = "//img.youtube.com/vi/"+ youtubeId + "/0.jpg"; //http://img.youtube.com/vi/MwpMEbgC7DA/0.jpg
+												img.setAttribute("src", imgUrl);
+												 
+												vidButton.appendChild(img);
+												var correctYTBid = AjaxCon.getRightName(youtubeId);
+												img.id =correctYTBid;
+												
+												vidButton.onclick = function (e) { 
+													    e = e || window.event;
+														e.preventDefault(); 
+														console.log(this.firstChild.id);
+														Video.getTitle(this.firstChild.id);   //makes a new video-div with title and adds it to videoboard
+														var popup = document.querySelector("#popup");
+														var mask = document.querySelector("#mask");
+														popup.parentNode.removeChild(popup); 
+														mask.parentNode.removeChild(mask);
+														};
+														
+												insidePopup.appendChild(vidButton);
 											
-											}
+												}
 							    	}
 										}
 							    },
