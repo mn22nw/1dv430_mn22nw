@@ -8,5 +8,7 @@ var urlList = {
 	addyoutubeid:"/favotube/db/addyoutubeid.php",
 	addyoutubeidToVideoboard:"/favotube/db/addyoutubeidToVideoboard.php",
 	videoBoardOutput: "/favotube/db/videoBoardOutput.php",
-	addVideoToFolder:"/favotube/db/addVideoToFolder.php"
+	addVideoToFolder:"/favotube/db/addVideoToFolder.php",
+	logout:"/favotube/db/logout.php",
+	index:"/favotube/index.php"
 	};

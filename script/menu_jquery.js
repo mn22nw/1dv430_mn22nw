@@ -10,15 +10,7 @@ $( document ).ready(function() {  //http://cssmenumaker.com/builder/1939102
 	        }
 	    });
 	
-		var posLeft = activeElement.position().left;
-		var elementWidth = activeElement.width();
-		posLeft = posLeft + elementWidth/2 -6;
-		if (activeElement.hasClass('has-sub')) {
-			posLeft -= 6;
-		}
-	
-		$('#options #pIndicator').css('left', posLeft);
-		var element, leftPos, indicator = $('#options pIndicator');
+		var element = $('#options pIndicator');
 		
 		$("#options>ul>li").hover(function() {
 	        element = $(this);
@@ -33,20 +25,8 @@ $( document ).ready(function() {  //http://cssmenumaker.com/builder/1939102
 	
 	        $('#options #pIndicator').css('left', leftPos);
 	    }
-	    , function() {
-	    	$('#options #pIndicator').css('left', posLeft);
-	    });
-	
-	
-		$('#options>ul>.has-sub>ul').append('<div class="submenuArrow"></div>');
-		$('#options>ul').children('.has-sub').each(function() {
-			var posLeftArrow = $(this).width();
-			posLeftArrow /= 2;
-			posLeftArrow -= 12;
-			$(this).find('.submenuArrow').css('left', posLeftArrow);
-	
-		});
-	
+	    );
+
 		$('#options>ul').prepend('<li id="menu-button"><a>Menu</a></li>');
 		$( "#menu-button" ).click(function(){
 	    		if ($(this).parent().hasClass('open')) {

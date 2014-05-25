@@ -43,6 +43,13 @@ var FAVOTUBE = FAVOTUBE || {};
 						FAVOTUBE.util.getInputUrl();
 				}, false);
 				
+				
+			var logout = document.querySelector(".signout");
+			logout.onclick = function (e) { 
+		    e = e || window.event;
+			e.preventDefault(); 
+			console.log("loggi");
+			AjaxCon.logout(logout); };
 			
 	};	
 	

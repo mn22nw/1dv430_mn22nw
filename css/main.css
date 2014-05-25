@@ -84,15 +84,18 @@ iframe:focus {outline:0;}
 	height:150px;
 	background-image:url('../pics/profile.jpg');
 	background-position:center;
+	background-repeat:no-repeat;
+	margin-left:35px;
+	
 	
 }
 #username {
 	cursor:default;
 	margin:0 auto;
-	text-align:center;
-	display:block;
-	clear:both;
-	width:100px;
+	padding-right:10px;
+	text-align:right;
+	line-height:50px;
+	width:300px;
 	font-size:1.3em;
 	font-weight:900;
 }

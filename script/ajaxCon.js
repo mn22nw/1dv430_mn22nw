@@ -103,7 +103,7 @@ $.ajax({
 					
     },
     error: function(result) {
-    	console.log(result);
+    	console.log(result.responseText);
             console.log("There was an error with collecting the data from the database");
         }
 	});
@@ -433,6 +433,23 @@ adjustHightElement: function (elem) {  //http://www.metaltoad.com/blog/resizing-
         $(elem).css('font-size',(($(elem).css('font-size').substr(0,2)-fontstep)) + 'px').css('line-height',(($(elem).css('font-size').substr(0,2))) + 'px');
         AjaxCon.adjustHightElement(elem);
       }
-    }
+   },
+logout: function(url){
+	$.ajax({
+			type: 'post',
+			url: urlList.logout,
+			jsonp: "callback",
+			data:"",
+			dataType: "text",                
+			success: function(rs)
+			         {
+			         document.location = urlList.index;
+		         	   },
+		    error: function(result) {
+			           	console.log("Error logging out!" +  result.responseText);
+			     			   }
+		    		    }); 
+	
+}
 
 };

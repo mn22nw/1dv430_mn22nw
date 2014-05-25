@@ -110,18 +110,21 @@ a:focus {outline:0;}
 #popup .exitButton:hover{ 		
 		background-position:-30px 0;  }
 	
-.addFolderBtn, .backBtn {
+.addFolderBtn, .backBtn , .addVideoBtn{
 		display:block;
 		width:107px;
 		height:30px;
 		font-size:1.3em;
 		background: url('../pics/sprites.png') no-repeat;
-		background-position:-304px -228px; 
 		text-indent:100%;
 		white-space:nowrap;
 		overflow:hidden;
 		cursor:pointer;}
-
+		
+.addFolderBtn {background-position:-294px -228px; }
+.addFolderBtn:hover {background-position:-427px -228px; }
+.addVideoBtn {background-position:-294px -266px; }
+.addVideoBtn:hover {background-position:-427px -266px; }
 .thumbNail {
 		width:200px; 
 		display:block;
@@ -174,17 +177,17 @@ a:focus {outline:0;}
 	
 	/*Exitbutton*/
 	.exitButton ,  .hideButton , .enLarge ,.favouriteBtn ,  #bigVideo a{
-				display:block;					
+					display:block;					
 					text-decoration:none;
 					background: url('../pics/sprites.png') no-repeat;
 					text-indent:100%;
 					white-space:nowrap;
 					overflow:hidden;
-				width:30px;
-				height:30px;
-				float:right;
-				margin-right:7px;
-				cursor:pointer;}
+					width:30px;
+					height:30px;
+					float:right;
+					margin-right:7px;
+					cursor:pointer;}
 	
 	
 	#videoBoard .exitButton { 			background-position:0 0;  }  /*The first value is the horizontal position and the second value is the vertical.*/
@@ -193,12 +196,13 @@ a:focus {outline:0;}
 	#bigVideo .exitButton { 			background-position:-30px 0;  }  /*The first value is the horizontal position and the second value is the vertical.*/
 	#bigVideo .exitButton:hover{ 		background-position:-30px 0;  }
 	
+	#popup .exitButton {background-position:0 0; }	
 	/*hideButton*/
 	.hideButton{	float:right;
-				width:30px;
-				height:30px;
-				margin-right:7px;
-				cursor:pointer;}
+					width:30px;
+					height:30px;
+					margin-right:7px;
+					cursor:pointer;}
 	
 	
 	#videoBoard .hideButton { 		background-position:-95px 0;  }  /*The first value is the horizontal position and the second value is the vertical.*/
@@ -231,8 +235,11 @@ a:focus {outline:0;}
 				}
 
 #options	{
-				width:80px;
+				width:40px;
 				height:40px;
+				background: url('../pics/sprites.png') no-repeat;
+				background-position:-653px -140px;
+				float:right;
 }
 	
 /**visdomsord från Annie - Det som inte finns syns inte!*/

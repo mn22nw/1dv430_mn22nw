@@ -53,15 +53,16 @@
 		</div>
 		<div id="profilediv" class="selectable profiled">
 				<div id="profilepic"></div>
-				<p id="username"> <?php echo $profilename ?></p>
-					<div id='options'>
+				
+					<div id='options' class="unselectable">
 						<ul>
 					  		 <li class='has-sub'><a href='#'><span>Options</span></a>
 					  		 	<ul>
-					        	 <li class='last'><a href='#'><span>Sign out</span></a></li> 
+					        	 <li class='last signout'><a href='#'><span>Sign out</span></a></li> 
 					         	</ul>
 					   </ul>
-				</div>
+					</div>
+					<p id="username"> <?php echo $profilename ?></p>
 			</div>
 		<div class="validation">
 				<input id="linkInput" type="text" name="Förnamn" value="" placeholder=" Paste your videolink here...">			
