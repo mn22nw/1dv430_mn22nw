@@ -97,18 +97,49 @@ var FAVOTUBE = FAVOTUBE || {};
 	};	
 	
 	FAVOTUBE.util.createprofile= function() {
+		/*var profileDiv = document.querySelector("#profilediv");
+		var options = document.createElement('div');
+		options.id = "options";
 		
-		document.getElementById("username").innerHTML ="<?php echo 'heej'; ?>" ;
-		console.log(username);
+		var ul = document.createElement('ul');
+		var li = document.createElement('li');
+			li.className= "active";
+			li.innerHTML = "Sign out";
+			
+			var lia = document.createElement('a');
+			vas lispan = document.createElement('span');
+			lispan.innerHtml
+			lia.href="#";*/
+		
+		/*
+		 
+	 <li class='has-sub'><a href='#'><span>Products</span></a>
+      <ul>
+         <li class='has-sub'><a href='#'><span>Product 1</span></a>
+            <ul>
+               <li><a href='#'><span>Sub Item</span></a></li>
+               <li class='last'><a href='#'><span>Sub Item</span></a></li>
+            </ul>
+         </li>
+		
+		
+		ul.appendChild(li);
+		options.appendChild(ul);
+		profileDiv.appendChild(options); */
+		FAVOTUBE.util.profileMenu(); 
 	  
+	},
+	FAVOTUBE.util.profileMenu = function() {
+		
+		//tom
 	};
 	
 		//--- RUNNING FUNCTIONS --- //
 
 		FAVOTUBE.util.init();	
-		//FAVOTUBE.util.createprofile();	
 		FAVOTUBE.util.renderFolders();
 		FAVOTUBE.util.renderVideoboard(); 
+		FAVOTUBE.util.createprofile();
 		
 		
 		var timer= setTimeout(function(){

@@ -18,6 +18,7 @@
 	<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 	<script src="//www.youtube.com/iframe_api"></script>
 	<link rel="stylesheet" type="text/css" href="pplayer/assets/pplayer.css">
+	<link rel='stylesheet' type='text/css' href='css/styles.css' />
 	
 	<script src="jquery.ui.touch-punch.min.js"></script>
 	<link type="text/css" rel="stylesheet" href="css/main.css"/>
@@ -50,9 +51,17 @@
 	    	<a href ="#" id="load_folders"> My Folders<span></span> </a>
 			<div id ="myFolders"></div>	
 		</div>
-		<div id="profilediv" class="selectable">
+		<div id="profilediv" class="selectable profiled">
 				<div id="profilepic"></div>
 				<p id="username"> <?php echo $profilename ?></p>
+					<div id='options'>
+						<ul>
+					  		 <li class='has-sub'><a href='#'><span>Options</span></a>
+					  		 	<ul>
+					        	 <li class='last'><a href='#'><span>Sign out</span></a></li> 
+					         	</ul>
+					   </ul>
+				</div>
 			</div>
 		<div class="validation">
 				<input id="linkInput" type="text" name="Förnamn" value="" placeholder=" Paste your videolink here...">			
@@ -64,6 +73,7 @@
 	</div>
 	<script type="text/javascript" src="pplayer/js/jquery.pplayer.js"></script>
 	<script type='text/javascript' src="script/urlValues.js"></script>
+	<script type='text/javascript' src='script/menu_jquery.js'></script>
 	<script type='text/javascript' src="script/Video.js"></script>
 	<script type="text/javascript" src="script/ajaxCon.js"></script>
 	<script type='text/javascript' src="script/popup.js"></script>

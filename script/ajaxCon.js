@@ -392,11 +392,7 @@ renderFolderContent: function(folderN) {
 												var vidButton = document.createElement("a"); //input element, Submit button
 													vidButton.href ="#";
 													vidButton.className = "thumbNail"; 
-													
-								    			//rumple
-													
-														
-														
+
 												console.log("videoruta av denna" + youtubeId);
 												var img = document.createElement('img');
 												img.className = "thumbNailImg";
@@ -416,6 +412,7 @@ renderFolderContent: function(folderN) {
 														var mask = document.querySelector("#mask");
 														popup.parentNode.removeChild(popup); 
 														mask.parentNode.removeChild(mask);
+														window.scrollTo(0,385);
 														};
 														
 												insidePopup.appendChild(vidButton);

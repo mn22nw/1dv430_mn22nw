@@ -125,8 +125,10 @@ a:focus {outline:0;}
 .thumbNail {
 		width:200px; 
 		display:block;
+		float:left;
 		border:2px solid black; 
 		margin:5px;
+		background: #000;
 }
 .thumbNailImg {
 		width:100%;
@@ -149,6 +151,8 @@ a:focus {outline:0;}
 		/** BUTTONS - VIDEOBOARD *
 ---------------------------------------------------------------------- */
 	.title {
+		text-decoration:none;
+		display:block;
 		text-align:left;
 		font-family: Arial, Helvetica, sans-serif;
 		color:#312b2d;
@@ -162,19 +166,20 @@ a:focus {outline:0;}
 	    -webkit-line-clamp: 1; /* number of lines to show */
 	   -webkit-box-orient: vertical;
 	}
+	.title:hover {
+		color:#F2F1F1;
+	}
 
-	#videoBoard a , #bigVideo a  {	
-					display:block;					
+					
+	
+	/*Exitbutton*/
+	.exitButton ,  .hideButton , .enLarge ,.favouriteBtn ,  #bigVideo a{
+				display:block;					
 					text-decoration:none;
 					background: url('../pics/sprites.png') no-repeat;
 					text-indent:100%;
 					white-space:nowrap;
 					overflow:hidden;
-					}
-					
-	
-	/*Exitbutton*/
-	.exitButton ,  .hideButton , .enLarge ,.favouriteBtn{
 				width:30px;
 				height:30px;
 				float:right;
@@ -225,6 +230,9 @@ a:focus {outline:0;}
 				z-index:1000;
 				}
 
-	
+#options	{
+				width:80px;
+				height:40px;
+}
 	
 /**visdomsord från Annie - Det som inte finns syns inte!*/

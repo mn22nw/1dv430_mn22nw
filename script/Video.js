@@ -15,9 +15,12 @@ var Video = {
 			videoDiv.className = "youtubeVideo";
 			
 			// -- TITLE --//
-			var ptitle = document.createElement('p');
-			ptitle.className = "title";
-			ptitle.innerHTML = title;
+			var atitle = document.createElement('a');
+				atitle.href ="//www.youtube.com/watch?v="+ youtubeID;
+				atitle.setAttribute('target', '_blank');
+				atitle.className ="title";
+				atitle.innerHTML = title;				
+				
 			
 			// -- EXITBUTTON --//
 			var exitButton = document.createElement('a');
@@ -111,9 +114,8 @@ var Video = {
 	     	 $(this).hide();
 	     	 $("#"+youtubeID).get(0).playVideo();
 			});*/
-
 			draggyDiv.appendChild(exitButton);
-			draggyDiv.appendChild(ptitle);
+			draggyDiv.appendChild(atitle);
 			//videoWrapper.appendChild(imgOver);
 		 	videoWrapper.appendChild(videoDiv);
 		 	
@@ -121,8 +123,9 @@ var Video = {
 		 	draggyDiv.appendChild(favouriteBtn);
 		 	draggyDiv.appendChild(enLarge);
 		 	draggyDiv.appendChild(infoAdd);
-
-			videoBoard.appendChild(draggyDiv); 
+			
+			$('#videoBoard').prepend(draggyDiv);
+			//videoBoard.appendChild(draggyDiv); 
 			
 			
 			
@@ -140,6 +143,9 @@ var Video = {
 			
 			var errorm = document.querySelector(".errorm");
 			errorm.textContent ="The video is already open!";
+			var timer= setTimeout(function(){
+				errorm.textContent ="";
+			},4000);
 		}
 			
 		},
