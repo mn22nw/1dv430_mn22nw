@@ -11,20 +11,11 @@ initVideoboard: function getVideos(url, renderfunction) {
 
 $.ajax({
     url: url,
- 
-    // the name of the callback parameter, as specified by the YQL service
     jsonp: "callback",
-    
-    // tell jQuery we're expecting JSONP
     dataType: "jsonp",
- 
-    // tell YQL what we want and that we want JSON
     data: {
-       // q: "select title,abstract,url from search.news where query=\"cat\"",
         format: "jsonp"
     },
- 
-    // work with the response
     success: function( data ) {
     				
     				clearInterval(timer);
@@ -39,17 +30,13 @@ $.ajax({
 					for(var obj in data){
 						var youtubeId = data[obj].youtubeid;
 						renderfunction(youtubeId);
-						}	
-						
-						
-												
+						}										
     },
     error: function(result) {
             alert("Error");
         }
 	});
-	
-	
+		
 },
 getRightFoldername:function(n) {
 								return n;
@@ -101,91 +88,10 @@ $.ajax({
 					    e = e || window.event;
 						e.preventDefault(); 
 						var folderN = this.firstChild.innerHTML;
+						//HÄR
 						
+						AjaxCon.renderFolderContent(folderN);
 						
-						//opens folder with a list of folderITEMS
-						$.ajax({
-								type: 'post',
-							    url: urlList.insideFolderOutput,
-							    jsonp: "callback",
-							    data:{"foldername" : folderN},
-							    dataType: "text",
-							 
-							    success: function( insidefolder ) {
-							    	var insidePopup= document.querySelector("#insidePopup");
-							    	var folderTitle= document.querySelector(".folderTitle");						    	
-							    	 	
-							    	var obj = JSON.parse(insidefolder);
-							    	if (obj[0] === undefined && insidePopup !== null)
-									 {	var backBtn = document.querySelector(".backBtn");
-										backBtn.style.visibility ="visible";
-							    		console.log("tom");
-							    		folderTitle.innerHTML =folderN;
-							    		insidePopup.innerHTML =""; 
-							    		insidePopup.innerHTML ="You have no videos yet!";
-							    		
-							    		// CHANCE HEADERCONTENT OF POPUP HERE //
-								    	AjaxCon.PopupHeaderAddVideo(urlList.addVideoToFolder, folderN);
-							    	}
-							    	
-							    	else {
-							    	//console.log("inne i"+ folderN +" ligger ju " + obj[0].youtubeId);
-							    	
-							    	
-								    	if (insidePopup === null) {
-								    		console.log("starta en popup");
-								    		
-								    		var contentfunction = AjaxCon.initFolders(urlList.folderOutput, "insidePopup", "openFolderBtn2");	
-											var folderPop = new PopUpFolders(); 
-											folderPop.render.init(contentfunction, urlList.addfolder);
-								    		AjaxCon.PopupHeaderAddVideo(urlList.addVideoToFolder,folderN);
-								    		var insidePopupNy= document.querySelector("#insidePopup");
-							    			var folderTitle= document.querySelector(".folderTitle");
-								    		insidePopupNy.innerHTML ="WHAAT"; 
-								    		console.log(insidePopupNy);
-								    		console.log("WHAtt");
-								    		folderTitle.innerHTML =folderN;
-								    		for(var i in obj){
-											var youtubeId = obj[i].youtubeId;
-											console.log("videoruta av denna" + youtubeId);
-											var img = document.createElement('img');
-											img.className = "thumbNail";
-											var imgUrl = "//img.youtube.com/vi/"+ youtubeId + "/0.jpg"; //http://img.youtube.com/vi/MwpMEbgC7DA/0.jpg
-											img.setAttribute("src", imgUrl);
-											insidePopupNy.appendChild(img);
-											
-											}
-								    	}
-								    	else{
-								    	insidePopup.innerHTML =""; 
-								    	folderTitle.innerHTML =folderN;
-								    	var backBtn = document.querySelector(".backBtn");
-										backBtn.style.visibility ="visible";	
-								    	
-								    	// CHANCE HEADERCONTENT OF POPUP HERE //
-								    	AjaxCon.PopupHeaderAddVideo(urlList.addVideoToFolder, folderN);
-								    	
-								    	for(var i in obj){
-											var youtubeId = obj[i].youtubeId;
-											console.log("videoruta av denna" + youtubeId);
-											var img = document.createElement('img');
-											img.className = "thumbNail";
-											var imgUrl = "//img.youtube.com/vi/"+ youtubeId + "/0.jpg"; //http://img.youtube.com/vi/MwpMEbgC7DA/0.jpg
-											img.setAttribute("src", imgUrl);
-											insidePopup.appendChild(img);
-											
-											}
-							    	//fyll med youtubedatan
-							    	}
-
-										
-										}
-							    },
-  						  error: function(result) {
-  						  	console.log(result);
-           				 console.log("There was an error with collecting the data from the database");
-      					  }
-						});
 						});	
     	
 						openFolderBtn.appendChild(folderTitle);
@@ -280,7 +186,7 @@ PopupHeaderAddVideo:function(url, foldername) {
 			p.innerHTML = "Link:";
 			p.className = "titleheaderPopup";
 				
-		var addButton = document.createElement("a"); //input element, Submit button
+		var addButton = document.createElement("a"); 
 			addButton.href ="#";
 			addButton.className = "addVideoBtn"; 
 			addButton.innerHTML = "Add Video";
@@ -301,22 +207,28 @@ PopupHeaderAddVideo:function(url, foldername) {
 						
 						var youtubeId = Video.YouTubeGetID(i.value);
 				
-						Video.getTitleAndAddTitleToDataBase(youtubeId, false);
-						i.value = "";
-						
-						 $.ajax({
+						Video.getTitleAndAddTitleToDataBase(youtubeId, false , 
+							// using callback to make sure getTitleAndAddTitleToDataBase is finished before running the ajax!
+							function() {$.ajax({
 				            type: 'post',                    
 				            url: url,            
 				            data:{"youtubeid" : youtubeId, "foldername" : foldername},
 				            dataType:'text',                
 				            success: function(rs)
 				            {
-				              console.log("den borde lagt till youtubevideo i folder!" + rs);
+				              console.log("den borde lagt till "+ youtubeId+" i folder!" + rs);
+				              
+				              //need to reload page here!!! ...with videos.
+				              AjaxCon.renderFolderContent(foldername);
 				            },
 				            error: function(result) {
 		           			 console.log("Error adding video!");
 		     			   }
-		    		    });  
+		    		    });  } );
+						
+						i.value = "";
+						
+						 
 					}
 			};
 			
@@ -324,7 +236,7 @@ PopupHeaderAddVideo:function(url, foldername) {
 			deleteButton.href ="#";
 			deleteButton.className = "deleteFolderBtn"; 
 			deleteButton.innerHTML = "Delete folder";
-			
+			var backBtn = document.querySelector(".backBtn");
 			deleteButton.onclick = function (e) { 
 		    e = e || window.event;
 			e.preventDefault(); 
@@ -338,7 +250,6 @@ PopupHeaderAddVideo:function(url, foldername) {
 						var title = document.querySelector(".folderTitle");
 						var folderN =title.innerHTML;
 						
-						//opens folder with a list of folderITEMS
 						$.ajax({
 								type: 'post',
 							    url: urlList.deleteFolder,
@@ -353,8 +264,8 @@ PopupHeaderAddVideo:function(url, foldername) {
 					              
 					              // CHANCE HEADERCONTENT OF POPUP HERE //
 								    	AjaxCon.PopupHeaderAddFolder(urlList.addfolder, folderN);
-					              //bort med tillbakaknapp
-					              //byt ut headern!
+								    	backBtn.style.visibility ="hidden";
+
 					            },
 					            error: function(result) {
 			           			 console.log("Error deleting folder!");
@@ -363,6 +274,41 @@ PopupHeaderAddVideo:function(url, foldername) {
 					}
 			};
 			
+			var deleteVideoBtn = document.createElement("a"); 
+			deleteVideoBtn.href ="#";
+			deleteVideoBtn.className = "deleteFolderBtn"; 
+			deleteVideoBtn.innerHTML = "Delete Video";
+			
+			deleteVideoBtn.onclick = function (e) { 
+		    e = e || window.event;
+			e.preventDefault(); 
+			
+						var title = document.querySelector(".folderTitle");
+						var folderN =title.innerHTML;
+						
+						$.ajax({
+								type: 'post',
+							    url: urlList.deleteFolder,
+							    jsonp: "callback",
+							    data:{"foldername" : folderN},
+							    dataType: "text",                
+					            success: function(rs)
+					            {
+					              console.log("den borde deletat folder!" + rs);
+					              title.innerHTML = "";
+					              AjaxCon.initFolders(urlList.folderOutput, "insidePopup", "openFolderBtn2");
+					              
+					              // CHANCE HEADERCONTENT OF POPUP HERE //
+								    	AjaxCon.PopupHeaderAddFolder(urlList.addfolder, folderN);
+								    	
+								    	backBtn.style.visibility ="hidden";
+
+					            },
+					            error: function(result) {
+			           			 console.log("Error deleting folder!");
+			     			   }
+		    		    });  
+			};
 			
 			header.appendChild(add);
 			header.appendChild(p);
@@ -371,6 +317,88 @@ PopupHeaderAddVideo:function(url, foldername) {
 			header.appendChild(errormheader);
 			header.appendChild(deleteButton);
 	
+}, 
+renderFolderContent: function(folderN) {
+						//opens folder with a list of folderITEMS
+						$.ajax({
+								type: 'post',
+							    url: urlList.insideFolderOutput,
+							    jsonp: "callback",
+							    data:{"foldername" : folderN},
+							    dataType: "text",
+							 
+							    success: function( insidefolder ) {
+							    	var insidePopup= document.querySelector("#insidePopup");
+							    	var folderTitle= document.querySelector(".folderTitle");						    	
+							    	 	
+							    	var obj = JSON.parse(insidefolder);
+							    	if (obj[0] === undefined && insidePopup !== null)
+									 {	var backBtn = document.querySelector(".backBtn");
+										backBtn.style.visibility ="visible";
+							    		console.log("tom");
+							    		folderTitle.innerHTML =folderN;
+							    		insidePopup.innerHTML =""; 
+							    		insidePopup.innerHTML ="You have no videos yet!";
+							    		
+							    		// CHANCE HEADERCONTENT OF POPUP HERE //
+								    	AjaxCon.PopupHeaderAddVideo(urlList.addVideoToFolder, folderN);
+							    	}
+							    	
+							    	else {
+							    	//console.log("inne i"+ folderN +" ligger ju " + obj[0].youtubeId);
+							    	
+							    	
+								    	if (insidePopup === null) {
+								    		console.log("starta en popup");
+								    		
+								    		var contentfunction = AjaxCon.initFolders(urlList.folderOutput, "insidePopup", "openFolderBtn2");	
+											var folderPop = new PopUpFolders(); 
+											folderPop.render.init(contentfunction, urlList.addfolder);
+								    		AjaxCon.PopupHeaderAddVideo(urlList.addVideoToFolder,folderN);
+								    		var insidePopupNy= document.querySelector("#insidePopup");
+							    			var folderTitle= document.querySelector(".folderTitle");
+								    		//insidePopupNy.innerHTML ="WHAAT"; 
+								    		console.log(insidePopupNy);
+								    		console.log("WHAtt");
+								    		folderTitle.innerHTML =folderN;
+								    		for(var i in obj){
+											var youtubeId = obj[i].youtubeId;
+											console.log("videoruta av denna" + youtubeId);
+											var img = document.createElement('img');
+											img.className = "thumbNail";
+											var imgUrl = "//img.youtube.com/vi/"+ youtubeId + "/0.jpg"; //http://img.youtube.com/vi/MwpMEbgC7DA/0.jpg
+											img.setAttribute("src", imgUrl);
+											insidePopupNy.appendChild(img);
+											
+											}
+								    	}
+								    	else{
+								    	insidePopup.innerHTML =""; 
+								    	folderTitle.innerHTML =folderN;
+								    	var backBtn = document.querySelector(".backBtn");
+										backBtn.style.visibility ="visible";	
+								    	
+								    	// CHANCE HEADERCONTENT OF POPUP HERE //
+								    	AjaxCon.PopupHeaderAddVideo(urlList.addVideoToFolder, folderN);
+								    	
+								    	for(var i in obj){
+											var youtubeId = obj[i].youtubeId;
+											console.log("videoruta av denna" + youtubeId);
+											var img = document.createElement('img');
+											img.className = "thumbNail";
+											var imgUrl = "//img.youtube.com/vi/"+ youtubeId + "/0.jpg"; //http://img.youtube.com/vi/MwpMEbgC7DA/0.jpg
+											img.setAttribute("src", imgUrl);
+											insidePopup.appendChild(img);
+											
+											}
+							    	}
+										}
+							    },
+  						  error: function(result) {
+  						  	console.log(result);
+           				 console.log("There was an error with collecting the data from the database");
+      					  }
+						});
 },
 adjustHightElement: function (elem) {  //http://www.metaltoad.com/blog/resizing-text-fit-container  (open source)
       var fontstep = 1;

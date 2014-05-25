@@ -8,7 +8,6 @@
 		$username = $_SESSION['username']; //already safe!
 		$foldername = $_POST['foldername']; 
 		$youtubeid = $_POST['youtubeid'];
-		//print_r($foldername);
 				error_reporting(E_ALL);
 		$safe_foldername = escape($foldername);
 
@@ -35,11 +34,10 @@
 			$SELECTyoutubeId= "SELECT `youtubeid` FROM `foldergroup` WHERE `folderId` = '".$resultFolderId["folderId"]. "' AND `youtubeid` = '".$youtubeid. "' LIMIT 1";
 			
 			$ytbid= $handler->prepare($SELECTyoutubeId); 
-			
 			$ytbidValue = $ytbid->execute();  
 			$row= $ytbid->fetch(PDO::FETCH_ASSOC);
 			echo $row["youtubeid"]."<--rad ur databas";
-			echo $youtubeid ."<--youtubid";
+			//echo $youtubeid ."<--youtubid";
 			
 			if ($row["youtubeid"] === $youtubeid ) {
 				
@@ -75,10 +73,11 @@
 						catch(Exception $e){
 			
 						    $handler->rollback();
+						    echo "Sorry, the video was not added correctly. Is it a valid youtubelink? ";       
 						}
 			
 			}
-			
+			$handler = null; // end db- connection
 		}
 
 		catch(Exception $e){

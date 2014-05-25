@@ -72,7 +72,7 @@ var FAVOTUBE = FAVOTUBE || {};
 	
 	FAVOTUBE.util.createVideos = function(url) {   //ska till databas dessutom!
 			var youtubeID = Video.YouTubeGetID(url);
-			var title = Video.getTitleAndAddTitleToDataBase(youtubeID, true);
+			var title = Video.getTitleAndAddTitleToDataBase(youtubeID, true, function(){});
 			//Video.init(youtubeID, title);  flyttar denna till titelfunktionen annars funkar det aldriii
 
 	};

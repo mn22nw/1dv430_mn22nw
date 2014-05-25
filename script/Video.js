@@ -168,7 +168,7 @@ var Video = {
 		
 	},
 		
-	getTitleAndAddTitleToDataBase: function(id, value){
+	getTitleAndAddTitleToDataBase: function(id, value, callback){
 		var url = "http://gdata.youtube.com/feeds/api/videos/" + id +" ?v=2&alt=json";
 		var title;
 		
@@ -211,6 +211,7 @@ var Video = {
            			 console.log("Error adding youtubeid");
      			   }
     		    });  
+    		    callback();
     		  };
 		});
 		

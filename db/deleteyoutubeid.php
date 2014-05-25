@@ -5,8 +5,6 @@
 			
 		$ytbid = $_POST['ytbid'];
 		
-		echo $ytbid;
-		
 		$username = $_SESSION['username'];
 		
 		try {

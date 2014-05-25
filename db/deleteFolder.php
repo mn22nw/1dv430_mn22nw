@@ -34,6 +34,10 @@
 		$resultfId = $folderId->fetch(PDO::FETCH_ASSOC);
 		// --------------- END SELECT//	
 		
+		// DELETE youtubevideos FROM FOLDERgroup //	
+		$deleteContentSQL= "DELETE FROM `foldergroup` WHERE  `folderId` = '".$resultfId["folderId"]."' ";
+		$deleteContentFolder = $handler->prepare($deleteContentSQL);
+		$deleteContentFolder->execute();  
 		
 		// DELETE FOLDERID FROM FOLDER //	
 		$deleteSQL= "DELETE FROM `folder` WHERE  `folderId` = '".$resultfId["folderId"]."' ";
