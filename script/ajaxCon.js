@@ -5,9 +5,7 @@ initVideoboard: function getVideos(url, renderfunction) {
 	var timer= setInterval(function(){
 		
 		$("#videoboardContainer").append("<img src='pics/loader.gif' class='loading' alt='Loading'/>");
-		 },400);
-		 
- 		console.log("kommer hit iaf i ajaxCon!");
+		 },400);	 
 
 $.ajax({
     url: url,
@@ -43,7 +41,7 @@ getRightName:function(n) {
 							}
 ,
 
-initFolders:function(url, divId , classN) {			
+initFolders:function(url, divId , classN, value) {			
 		
 	//	var timer;
 		//$("#myFolders").append("<img src='pics/loader.gif' alt='Loading'/>");
@@ -58,7 +56,9 @@ $.ajax({
     },
  
     success: function( folderdata ) {
-    	
+    				
+    				var maxLenght;
+    				
     				if (!NodeList.prototype.forEach) {
 					NodeList.prototype.forEach = Array.prototype.forEach;
 					};
@@ -68,11 +68,14 @@ $.ajax({
 			 		if(folderdata.length == 0 ){
 			 		folderDiv.innerHTML += folderdata[obj].name;
 			 		}
-
-			 		
+					
+					if (value){
+						maxLenght = 6;
+					}
+					else {maxLenght = folderdata.length;}
+												
 				 	folderDiv.innerHTML = "";
-					for(var obj in folderdata){
-											
+					for (var i = 0; i < maxLenght; i++ )	{					
 						// -- FOLDERBUTTON --//
 						var openFolderBtn = document.createElement('a');
 						openFolderBtn.href = "#";
@@ -80,15 +83,15 @@ $.ajax({
 					    
 					    var folderTitle = document.createElement('span');
 					
-					    var name = AjaxCon.getRightName(folderdata[obj].name);
-					    console.log(name);
+					    var name = AjaxCon.getRightName(folderdata[i].name);
+					   // console.log(name);
 					    folderTitle.innerHTML = name;
 					   
 					    openFolderBtn.addEventListener("click", function(e){
 					    e = e || window.event;
 						e.preventDefault(); 
 						var folderN = this.firstChild.innerHTML;
-						
+						//console.log(folderN + "yeah");
 						AjaxCon.renderFolderContent(folderN);
 						
 						});	
@@ -96,15 +99,91 @@ $.ajax({
 						openFolderBtn.appendChild(folderTitle);
 						folderDiv.appendChild(openFolderBtn);
 						AjaxCon.adjustHightElement(folderTitle);
-		  
-		 
-		
+
 					}
 					
     },
     error: function(result) {
     	console.log(result.responseText);
-            console.log("There was an error with collecting the data from the database");
+            console.log("There was an error with collecting the folder-data from the database");
+        }
+	});
+},
+foldersFavouritePopup:function(url, divId , classN, youtubeID) {			
+		
+$.ajax({
+    url: url,
+    jsonp: "callback",
+    dataType: "jsonp",
+    data: {
+        format: "jsonp"
+    },
+ 
+    success: function( folderdata ) {
+    				
+    				var maxLenght;
+    				
+    				if (!NodeList.prototype.forEach) {
+					NodeList.prototype.forEach = Array.prototype.forEach;
+					};
+       				
+       				var folderDiv = document.querySelector("[id='" + divId + "']");  
+
+			 		if(folderdata.length == 0 ){
+			 		folderDiv.innerHTML += folderdata[obj].name;
+			 		}
+					
+					maxLenght = folderdata.length;
+					
+				 	folderDiv.innerHTML = "";
+					for (var i = 0; i < maxLenght; i++ )	{					
+						// -- FOLDERBUTTON --//
+						var openFolderBtn = document.createElement('a');
+						openFolderBtn.href = "#";
+					    openFolderBtn.className = classN;
+					    
+					    var folderTitle = document.createElement('span');
+					
+					    var name = AjaxCon.getRightName(folderdata[i].name);
+					    folderTitle.innerHTML = name;
+					   
+					    openFolderBtn.addEventListener("click", function(e){
+					    e = e || window.event;
+						e.preventDefault(); 
+						
+						var folderN = this.firstChild.innerHTML;
+
+						Video.getTitleAndAddTitleToDataBase(youtubeID, false , 
+							// using callback to make sure getTitleAndAddTitleToDataBase is finished before running the ajax!
+							function() {$.ajax({
+				            type: 'post',                    
+				            url: urlList.addVideoToFolder,            
+				            data:{"youtubeid" : youtubeID, "foldername" : folderN},
+				            dataType:'text',                
+				            success: function(rs)
+				            {
+				              console.log("Added "+ youtubeID+" to folder!" + rs);
+					          var content = rs+ folderN;    
+				              var successPop = new PopUpFolders(); 
+								successPop.okPopup(content);				             				            
+				            },
+				            error: function(result) {
+		           			 console.log("Error adding video!");
+		     			   }
+		    		    });  } );
+						
+						});	
+    	
+						openFolderBtn.appendChild(folderTitle);
+						folderDiv.appendChild(openFolderBtn);
+						AjaxCon.adjustHightElement(folderTitle);
+
+					}
+					
+    },
+    error: function(result) {
+    	console.log(result.responseText);
+            console.log("There was an error with collecting the folder-data from the database");
         }
 	});
 },
@@ -151,7 +230,8 @@ PopupHeaderAddFolder:function(url) {
 				            success: function(rs)
 				            {
 				              console.log("den borde lagt till!" + rs);
-				              AjaxCon.initFolders(urlList.folderOutput, "insidePopup", "openFolderBtn2");	
+				              AjaxCon.initFolders(urlList.folderOutput, "insidePopup", "openFolderBtn2", false);	
+				              AjaxCon.initFolders(urlList.folderOutput, "myFolders", "openFolderBtn", true);	
 				              
 				            },
 				            error: function(result) {
@@ -239,74 +319,9 @@ PopupHeaderAddVideo:function(url, foldername) {
 			deleteButton.onclick = function (e) { 
 		    e = e || window.event;
 			e.preventDefault(); 
-			
-			// are you sure you want to delete thisfolder?
-				if (false) {
-					 //dont delete!
-					}
-				else{   
-					
-						var title = document.querySelector(".folderTitle");
-						var folderN =title.innerHTML;
-						
-						$.ajax({
-								type: 'post',
-							    url: urlList.deleteFolder,
-							    jsonp: "callback",
-							    data:{"foldername" : folderN},
-							    dataType: "text",                
-					            success: function(rs)
-					            {
-					              console.log("den borde deletat folder!" + rs);
-					              title.innerHTML = "";
-					              AjaxCon.initFolders(urlList.folderOutput, "insidePopup", "openFolderBtn2");
-					              
-					              // CHANCE HEADERCONTENT OF POPUP HERE //
-								    	AjaxCon.PopupHeaderAddFolder(urlList.addfolder, folderN);
-								    	backBtn.style.visibility ="hidden";
-
-					            },
-					            error: function(result) {
-			           			 console.log("Error deleting folder!");
-			     			   }
-		    		    });  
-					}
-			};
-			
-			var deleteVideoBtn = document.createElement("a"); 
-			deleteVideoBtn.href ="#";
-			deleteVideoBtn.className = "deleteFolderBtn"; 
-			deleteVideoBtn.innerHTML = "Delete Video";
-			
-			deleteVideoBtn.onclick = function (e) { 
-		    e = e || window.event;
-			e.preventDefault(); 
-			
-						var title = document.querySelector(".folderTitle");
-						var folderN =title.innerHTML;
-						
-						$.ajax({
-								type: 'post',
-							    url: urlList.deleteFolder,
-							    jsonp: "callback",
-							    data:{"foldername" : folderN},
-							    dataType: "text",                
-					            success: function(rs)
-					            {
-					              console.log("den borde deletat folder!" + rs);
-					              title.innerHTML = "";
-					              AjaxCon.initFolders(urlList.folderOutput, "insidePopup", "openFolderBtn2");
-					              
-					              // CHANCE HEADERCONTENT OF POPUP HERE //
-								    	AjaxCon.PopupHeaderAddFolder(urlList.addfolder, folderN);
-								    	
-								    	backBtn.style.visibility ="hidden";
-
-					            },
-					            error: function(result) {
-			           			 console.log("Error deleting folder!");
-			     			   }
-		    		    });  
+				var content = "Are you sure you want to delete this folder?";
+				var confirmPop = new PopUpFolders(); 
+				confirmPop.confirmPopup(content);
 			};
 			
 			header.appendChild(add);
@@ -350,32 +365,87 @@ renderFolderContent: function(folderN) {
 								    	if (insidePopup === null) {
 								    		console.log("starta en popup");
 								    		
-								    		var contentfunction = AjaxCon.initFolders(urlList.folderOutput, "insidePopup", "openFolderBtn2");	
+								    			
 											var folderPop = new PopUpFolders(); 
-											folderPop.render.init(contentfunction, urlList.addfolder);
+											folderPop.render.init("", urlList.addfolder);
 								    		AjaxCon.PopupHeaderAddVideo(urlList.addVideoToFolder,folderN);
 								    		var insidePopupNy= document.querySelector("#insidePopup");
 							    			var folderTitle= document.querySelector(".folderTitle");
-								    		//insidePopupNy.innerHTML ="WHAAT"; 
-								    		console.log(insidePopupNy);
-								    		console.log("WHAtt");
-								    		folderTitle.innerHTML =folderN;
+								    		insidePopupNy.innerHTML =""; 
+											
+											var backBtn = document.querySelector(".backBtn");
+												backBtn.style.visibility ="visible";	
 								    		
+								    		folderTitle.innerHTML =folderN;
+								    		var numberOfVids = 0;
 								    		for(var i in obj){
-								    			
-								    			var vidButton = document.createElement("a"); //input element, Submit button
+												numberOfVids++;						
+												var youtubeId = obj[i].youtubeId;
+												var vidButton = document.createElement("a"); //input element, Submit button
 													vidButton.href ="#";
 													vidButton.className = "thumbNail"; 
-													
-								    			
-												var youtubeId = obj[i].youtubeId;
-												console.log("videoruta av denna" + youtubeId);
+
+												//console.log("videoruta av denna" + youtubeId);
 												var img = document.createElement('img');
 												img.className = "thumbNailImg";
 												var imgUrl = "//img.youtube.com/vi/"+ youtubeId + "/0.jpg"; //http://img.youtube.com/vi/MwpMEbgC7DA/0.jpg
 												img.setAttribute("src", imgUrl);
-												insidePopupNy.appendChild(img);
+												 
+												vidButton.appendChild(img);
+												var correctYTBid = AjaxCon.getRightName(youtubeId);
+												img.id =correctYTBid;
+												
+												vidButton.onclick = function (e) { 
+													    e = e || window.event;
+														e.preventDefault(); 
+														console.log(this.firstChild.id);
+														Video.getTitle(this.firstChild.id);   //makes a new video-div with title and adds it to videoboard
+														var popup = document.querySelector("#popup");
+														var mask = document.querySelector("#mask");
+														popup.parentNode.removeChild(popup); 
+														mask.parentNode.removeChild(mask);
+														window.scrollTo(0,385);
+														};
+												
+											var deleteVideoBtn = document.createElement("a"); 
+												deleteVideoBtn.href ="#";
+												deleteVideoBtn.className = "deleteVideoBtn"; 
+												deleteVideoBtn.innerHTML = "Delete Video";
+												
+												deleteVideoBtn.onclick = function (e) { 
+													    e = e || window.event;
+														e.preventDefault(); 
 											
+														var title = document.querySelector(".folderTitle");
+														var folderN =title.innerHTML;
+														//rumple
+														$.ajax({
+																type: 'post',
+															    url: urlList.deleteVideoinFolder,
+															    jsonp: "callback",
+															    data:{"youtubeid" : youtubeId, "foldername" : folderN},
+															    dataType: "text",                
+													            success: function(rs)
+													            {
+													              console.log("den borde deletat video!" + rs);
+													              title.innerHTML = "";
+													              AjaxCon.initFolders(urlList.folderOutput, "insidePopup", "openFolderBtn2", false);
+													              
+													             // CHANCE HEADERCONTENT OF POPUP HERE //
+								    							  AjaxCon.PopupHeaderAddVideo(urlList.addVideoToFolder, folderN);
+																  backBtn.style.visibility ="visible";
+								
+													            },
+													            error: function(result) {
+											           			 console.log("Error deleting folder!");
+											     			   }
+										    		    });  
+											};
+												vidButton.appendChild(deleteVideoBtn);
+												insidePopupNy.appendChild(vidButton);
+											}
+											if (numberOfVids === 0) {
+												insidePopupNy.innerHTML = "You have no videos yet!";
 											}
 								    	}
 								    	else{
@@ -423,7 +493,7 @@ renderFolderContent: function(folderN) {
 							    },
   						  error: function(result) {
   						  	console.log(result);
-           				 console.log("There was an error with collecting the data from the database");
+           				 console.log("There was an error with collecting the folderdata from the database");
       					  }
 						});
 },
@@ -451,5 +521,4 @@ logout: function(url){
 		    		    }); 
 	
 }
-
 };

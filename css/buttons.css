@@ -14,7 +14,7 @@ a:focus {outline:0;}
 			height:40px;
 			line-height:25px;
 			color:#FFF;
-			text-indent:100%;
+			text-indent:200%;
 			white-space:nowrap;
 			overflow:hidden;
 			margin:0;
@@ -31,13 +31,13 @@ a:focus {outline:0;}
 					margin-top:10px;
 					width:388px;
 					padding:2px 0;
-					height:55px;
+					height:50px;
 					color:white;
 					background: url('../pics/sprites.png') no-repeat;
 					text-align:center;
 					font-size:1.3em;
 					line-height:40px;
-					text-indent:100%;
+					text-indent:200%;
 					white-space:nowrap;
 					overflow:hidden;
 					margin-left:-25px;
@@ -110,29 +110,51 @@ a:focus {outline:0;}
 #popup .exitButton:hover{ 		
 		background-position:-30px 0;  }
 	
-.addFolderBtn, .backBtn , .addVideoBtn{
+.addFolderBtn, .backBtn , .addVideoBtn, .deleteFolderBtn{
 		display:block;
 		width:107px;
 		height:30px;
 		font-size:1.3em;
 		background: url('../pics/sprites.png') no-repeat;
-		text-indent:100%;
+		text-indent:200%;
 		white-space:nowrap;
 		overflow:hidden;
 		cursor:pointer;}
 		
-.addFolderBtn {background-position:-294px -228px; }
-.addFolderBtn:hover {background-position:-427px -228px; }
-.addVideoBtn {background-position:-294px -266px; }
-.addVideoBtn:hover {background-position:-427px -266px; }
+.addFolderBtn {
+		background-position:-294px -228px; }
+.addFolderBtn:hover {
+		background-position:-427px -228px; }
+.addVideoBtn {
+		background-position:-294px -266px; }
+.addVideoBtn:hover {
+		background-position:-427px -266px; }
+.deleteFolderBtn {
+		float:right;
+		margin-right:7px;
+		margin-top:50px;
+		background-position:-294px -304px; }
+.deleteFolderBtn:hover {
+		background-position:-427px -304px; }
 .thumbNail {
+		position:relative;
 		width:200px; 
 		display:block;
 		float:left;
 		border:2px solid black; 
 		margin:5px;
 		background: #000;
+		text-align:center;
 }
+.thumbNail:hover {		text-decoration:none;}
+.thumbNail:hover::after {
+		content:"Click to open in videoboard";
+		color:#FFF;
+		position:absolute;
+		top:35%;
+		left:0;
+		width:100%;
+		}
 .thumbNailImg {
 		width:100%;
 }
@@ -146,11 +168,6 @@ a:focus {outline:0;}
 .backBtn:hover {
 		background-position:-584px -129px; }
 	
-.deleteFolderBtn {
-		float:right;
-		margin-top:20px;
-}
-
 		/** BUTTONS - VIDEOBOARD *
 ---------------------------------------------------------------------- */
 	.title {
@@ -197,6 +214,7 @@ a:focus {outline:0;}
 	#bigVideo .exitButton:hover{ 		background-position:-30px 0;  }
 	
 	#popup .exitButton {background-position:0 0; }	
+	#popup .exitButton:hover {background-position:0 0; }	
 	/*hideButton*/
 	.hideButton{	float:right;
 					width:30px;
@@ -225,7 +243,7 @@ a:focus {outline:0;}
 				margin-top:25px; 
 				line-height:30px;
 				margin-right:5px;
-				background#000;
+				background:#000;
 				color:#FFF;}
 	
 	.imgOver {

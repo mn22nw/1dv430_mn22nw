@@ -28,14 +28,8 @@
 	<link rel="apple-touch-icon" href="pics/appleicon.png" />
 	<script>  
 		 document.createElement("header"); 
-		 document.createElement("hgroup");  
 		 document.createElement("footer"); 
-		 document.createElement("article"); 
 		 document.createElement("main"); 
-		 document.createElement("section"); 
-		 document.createElement("nav"); 
-		 document.createElement("aside"); 
-		 document.createElement("address"); 
 	</script> 
 
 	</head>
@@ -53,7 +47,7 @@
 		</div>
 		<div id="profilediv" class="selectable profiled">
 				<div id="profilepic"></div>
-				
+				<div id="details">
 					<div id='options' class="unselectable">
 						<ul>
 					  		 <li class='has-sub'><a href='#'><span>Options</span></a>
@@ -62,6 +56,7 @@
 					         	</ul>
 					   </ul>
 					</div>
+				</div>
 					<p id="username"> <?php echo $profilename ?></p>
 			</div>
 		<div class="validation">
@@ -69,8 +64,8 @@
 			</div>
 			<a id="okButton" href="#">OK</a>	
 			<div class="errorm"></div>
-		<div id="videoboardContainer"><div id="videoBoard"></div></div>
-		
+		<div id="videoboardContainer"><div id="videoBoard">
+		</div></div>
 	</div>
 	<script type="text/javascript" src="pplayer/js/jquery.pplayer.js"></script>
 	<script type='text/javascript' src="script/urlValues.js"></script>

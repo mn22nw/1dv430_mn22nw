@@ -42,7 +42,7 @@
                         }, delay );
                     })( 550 );
                 }
-            }
+            };
         }()),
         ApiAdapter = {
             Youtube : function( settings, handlers ){
@@ -513,6 +513,6 @@
             _instanceCounter++;
             player.renderUI().syncUI();
             return player;
-        }
+        };
 
 }( window ));

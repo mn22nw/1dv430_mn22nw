@@ -39,9 +39,10 @@ PopUpFoundation.prototype.render = {
 						insidePopup.innerHTML="";
 						
 						AjaxCon.initFolders(urlList.folderOutput, "insidePopup", "openFolderBtn2");
+						
 						// CHANCE HEADERCONTENT OF POPUP HERE //
 						AjaxCon.PopupHeaderAddFolder(url);
-						
+	
 						backBtn.style.visibility ="hidden";	
 				});	
 			backBtn.style.visibility ="hidden";	 
@@ -72,26 +73,18 @@ PopUpFoundation.prototype.render = {
 			document.body.appendChild(mask); 
 			document.body.appendChild(popup);
 			
+			if (/MSIE (\d+\.\d+);/.test(navigator.userAgent)){ //http://stackoverflow.com/questions/19999388/jquery-check-if-user-is-using-ie
 			var timer= setInterval(function(){
 			contentfunction();}
 			,300);
 			
 			clearInterval(timer);
+			};
 			
-			// CHANCE HEADERCONTENT OF POPUP HERE //
-			AjaxCon.PopupHeaderAddFolder(url);
 	}};
 
 
 
-/*
-//PopUpImages ärver från PopUpFoundation
-PopUpImages.prototype = new PopUpFoundation();
-
-//lägg till nya funktioner på PopUp prototype
-PopUpImages.prototype.ajaxCall = function(){
-		AjaxTester.init();
-}; */
 
 //Med denna kan jag skapa flera fönster ju (som en mall)och den ärver från popup foundation //
 PopUpFolders.prototype = new PopUpFoundation();
@@ -102,6 +95,86 @@ function PopUpFolders () {
 
 
 //lägg till nya funktioner på PopUp prototype
-PopUpFolders.prototype.somethingsomething = function(){
-			//någon mer egenskap kanske om det behövs?
+PopUpFolders.prototype.confirmPopup = function(content){
+	
+	var confirmPopup = document.createElement('div');
+		confirmPopup.id = "confirmPopup";
+	var message = document.createElement('p');
+		message.innerHTML = content;
+	var yesBtn = document.createElement('a');
+		yesBtn.href = "#";
+		yesBtn.innerHTML = "Yes";
+		yesBtn.onclick = function (e) { 
+		    e = e || window.event;
+			e.preventDefault(); 
+			var title = document.querySelector(".folderTitle");
+			var folderN =title.innerHTML;
+						
+						$.ajax({
+								type: 'post',
+							    url: urlList.deleteFolder,
+							    jsonp: "callback",
+							    data:{"foldername" : folderN},
+							    dataType: "text",                
+					            success: function(rs)
+					            {
+					              console.log("den borde deletat folder!" + rs);
+					              title.innerHTML = "";
+					              AjaxCon.initFolders(urlList.folderOutput, "insidePopup", "openFolderBtn2", false);
+					              AjaxCon.initFolders(urlList.folderOutput, "myFolders", "openFolderBtn", true);
+					              
+					              // CHANCE HEADERCONTENT OF POPUP HERE //
+								    	AjaxCon.PopupHeaderAddFolder(urlList.addfolder, folderN);
+								    	var backBtn = document.createElement("a");
+								    	backBtn.style.visibility ="hidden";
+
+					            },
+					            error: function(result) {
+			           			 console.log("Error deleting folder!");
+			     			   }
+		    		    });  		
+			confirmPopup.parentNode.removeChild(confirmPopup); 
+			};
+		
+	var noBtn = document.createElement('a');
+		noBtn.href = "#";
+		noBtn.innerHTML = "No";
+		noBtn.onclick = function (e) { 
+		    e = e || window.event;
+			e.preventDefault(); 
+			confirmPopup.parentNode.removeChild(confirmPopup); 
+			};
+		
+	var popUp = document.querySelector('#popup');
+	confirmPopup.appendChild(message);
+	confirmPopup.appendChild(yesBtn);
+	confirmPopup.appendChild(noBtn);
+	popUp.appendChild(confirmPopup);
+};
+
+PopUpFolders.prototype.okPopup = function(content){
+	
+			var popUp = document.querySelector("#popup");
+			var mask = document.querySelector("#mask");
+			
+			var okPop = document.createElement('div');
+				okPop.setAttribute("id", "okPopup");
+			var message = document.createElement('p');
+				message.innerHTML = content;
+			var okBtnPopup = document.createElement('a');
+				okBtnPopup.href = "#";
+				okBtnPopup.innerHTML = "Ok";
+				okBtnPopup.onclick = function (e) { 
+				    e = e || window.event;
+					e.preventDefault(); 
+					popup.parentNode.removeChild(popup); 
+					mask.parentNode.removeChild(mask);
+					window.scrollTo(0,385);
+					};
+				
+			okPop.appendChild(message);
+			okPop.appendChild(okBtnPopup);
+			popUp.appendChild(okPop); 
+			
+	
 };

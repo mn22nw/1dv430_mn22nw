@@ -1,6 +1,6 @@
 <?php 
 	
-	include("connect_db.php");
+	include("../db/connect_db.php");
 	include("../functions/security.php");
 			
 		$username = $_SESSION['username'];

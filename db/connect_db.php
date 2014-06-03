@@ -7,17 +7,20 @@
 	 	session_start();
 		ob_start();
 		
-		$databasename = "favotube";
+		$databasename = "a6072281_data1";
 	 	
 	 	try {
-	 		$handler = new PDO('mysql:host=127.0.0.1;dbname=favotube','root','');
+	 		$handler = new PDO('mysql:host=mysql17.000webhost.com;dbname=a6072281_data1','a6072281_miaaim','test123');
 			$handler->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	 	}	catch(PDOException $e) {
 	 		
-	 		echo 'Sorry, We are having a database problem <br /> ';
+	 		echo 'Sorry, We are having a database problem <br ';
 	 		echo $e->getMessage();
 			die(); 
-	 	}
+	 	} 
+		
+
+
 		
 /*	
     $dbhost = 'localhost';

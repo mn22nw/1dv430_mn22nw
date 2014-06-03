@@ -8,6 +8,14 @@ var FAVOTUBE = FAVOTUBE || {};
 	
 	FAVOTUBE.util.init= function() { 
 		
+				
+			// 2. This code loads the IFrame Player API code asynchronously.
+	      var tag = document.createElement('script');
+	
+	      tag.src = "https://www.youtube.com/iframe_api";
+	      var firstScriptTag = document.getElementsByTagName('script')[0];
+	      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+		
 			var myFolderButton = document.querySelector("#load_folders");
 					
 			myFolderButton.addEventListener('click', function(e) { 
@@ -20,10 +28,11 @@ var FAVOTUBE = FAVOTUBE || {};
 						var folderPop = new PopUpFolders(); 
 
 						folderPop.render.init(contentfunction, urlList.addfolder);
+						// CHANCE HEADERCONTENT OF POPUP HERE //
+						AjaxCon.PopupHeaderAddFolder(urlList.addfolder);
 						
 				});		 
 
-			
 			$('#linkInput').focus();	
 				
 			$('#linkInput').on('keyup', function(e) {
@@ -55,16 +64,16 @@ var FAVOTUBE = FAVOTUBE || {};
 	
 	FAVOTUBE.util.renderFolders = function() { 
 		
-		AjaxCon.initFolders(urlList.folderOutput, "myFolders", "openFolderBtn");
+		AjaxCon.initFolders(urlList.folderOutput, "myFolders", "openFolderBtn", true);
 						// Link to php-file ---------- Div to render to --- classname of folderbuttons //
 	};
 	
 	FAVOTUBE.util.renderFoldersPopup = function() { 
-		AjaxCon.initFolders(urlList.folderOutput, "insidePopup", "openFolderBtn2");	
+		AjaxCon.initFolders(urlList.folderOutput, "insidePopup", "openFolderBtn2", false);	
 	};
 	
 	FAVOTUBE.util.renderFolderContent = function() { 
-		AjaxCon.initFolders(urlList. insideFolderOutput, "insidePopup", "openFolderBtn2");	
+		AjaxCon.initFolders(urlList. insideFolderOutput, "insidePopup", "openFolderBtn2", false);	
 	};
 	
 	FAVOTUBE.util.renderVideoboard = function() { 
@@ -74,11 +83,13 @@ var FAVOTUBE = FAVOTUBE || {};
 	
 	FAVOTUBE.util.renderVideo = function(url) {  
 			var youtubeID = Video.YouTubeGetID(url);
-			var title = Video.getTitle(youtubeID);
+			if (youtubeID){
+			var title = Video.getTitle(youtubeID);}
 	};
 	
 	FAVOTUBE.util.createVideos = function(url) {   //ska till databas dessutom!
 			var youtubeID = Video.YouTubeGetID(url);
+			
 			var title = Video.getTitleAndAddTitleToDataBase(youtubeID, true, function(){});
 			//Video.init(youtubeID, title);  flyttar denna till titelfunktionen annars funkar det aldriii
 

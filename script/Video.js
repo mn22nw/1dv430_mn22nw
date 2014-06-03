@@ -75,7 +75,6 @@ var Video = {
 		    hideButton.onclick = function (e) { 
 		    e = e || window.event;
 			e.preventDefault(); 
-			console.log("förstorar!");
 			};	
 				
 			var infoAdd= document.createElement('p');
@@ -90,8 +89,16 @@ var Video = {
 		    favouriteBtn.onclick = function (e) { 
 		 	 e = e || window.event;
 				e.preventDefault(); 
-		
-			console.log("favorit!");
+			window.scrollTo(0,100);
+			
+			//Function that renders content, to send to popup-window//
+			var contentfunction = AjaxCon.foldersFavouritePopup(urlList.folderOutput, "insidePopup", "openFolderBtn2", youtubeID);	
+						
+			var addFolderPopUp = new PopUpFolders(); 
+
+			addFolderPopUp.render.init(contentfunction, urlList.addfolder);
+			var title = document.querySelector(".folderTitle");
+				title.innerHTML = "Select a folder";
 			};	
 			
 			function func()
@@ -127,15 +134,11 @@ var Video = {
 			$('#videoBoard').prepend(draggyDiv);
 			//videoBoard.appendChild(draggyDiv); 
 			
-			
-			
-			
-			// --- VIKTIG !!! SKAPAR VIDEON !!!!! //
-			
+
 		 	$("#"+youtubeID).pPlayer({
 			    youtubeVideoId: youtubeID,
 			    autoplay: 0,
-			    origin: "http://yoursite.com"
+			    origin: "http://www.favotube.comule.com"
 			});
 			
 		
@@ -158,12 +161,22 @@ var Video = {
 		    ID = ID[0];
 		  }
 		  else {
-		    ID = url;
+		  	
+		   ID = url;
 		  }
+		 
+		 /* if (ID[0].length  !== 11) {
+
+		  	var errorm = document.querySelector(".errorm");
+			errorm.textContent ="This is not a valid youtubelink!" + ID[0].length;
+			var timer= setTimeout(function(){
+				errorm.textContent ="";
+			},4000);
+			return false;
+		  }*/
 		    return ID;
 		},
 	getTitle: function(id){
-		//console.log("Rumple says " + id);  //id är korrekt
 		var url = "http://gdata.youtube.com/feeds/api/videos/" + id +" ?v=2&alt=json";
 		var title;
 		
@@ -178,14 +191,11 @@ var Video = {
 		var url = "http://gdata.youtube.com/feeds/api/videos/" + id +" ?v=2&alt=json";
 		var title;
 		
-		$.getJSON(url, function(response){ 
-			//console.log(response);
-			console.log(response.entry.title.$t + "FIRA?! :D");
-			
+		$.getJSON(url, function(response){ 		
 			title = response.entry.title.$t;
 			
 			 if(value) {
-				Video.init(id, title);  
+				
 			
 			// hämtar php som läggertill youtubeid till databasen + videoboard//
 		    $.ajax({
@@ -196,11 +206,13 @@ var Video = {
 		            success: function(rs)
 		            {
 		              // Don't need anything here! It's just successfull :D
+		              Video.init(id, title); 
 		            },
 		            error: function(result) {
            			 console.log("Error adding youtubeid");
      			   }
     		    });  
+    		     
     		  }
 			else {	
 				// hämtar php som läggertill youtubeid till databasen //
@@ -243,7 +255,6 @@ var Video = {
 			mask2.parentNode.removeChild(mask2);
 			};
 
-
 			//popup.appendChild(exitButton);  
 			bigVideo.appendChild(exitButton);
 			bigVideo.appendChild(bigVideoWrapper);
@@ -253,7 +264,7 @@ var Video = {
 	 $("#bigVideoWrapper").pPlayer({
 			    youtubeVideoId: youtubeID,
 			    autoplay: 0,
-			    origin: "http://yoursite.com"
+			    origin: "http://www.favotube.comule.com"
 		}); 
 			}
 	};

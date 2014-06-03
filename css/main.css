@@ -9,7 +9,10 @@
 				position:relative;
 				background: url(../pics/seamless.jpg);
 				}
-	h2 {			padding-top:30px;}
+	h2 {		
+				padding-top:30px;}
+	img {			
+				max-width:100%;}
 .test {background:red; width:150px; height:50px;}
 
 iframe:focus {outline:0;}
@@ -37,21 +40,20 @@ iframe:focus {outline:0;}
 -------------------------------------------------------------------*/
 
 	#headerMain {
-			height:300px;
-			width:400px; float:left;
+			width:30%; float:left;
+			min-width:250px;
 	}
 	
 	
-	.logo {
-			width:250px;
-			height:60px;
+	.logo { 
+			min-width:250px;
 			float:left;
 			margin-top:15px;
 			margin-bottom:15px;
 	}
 .validation {
 			float:left;
-			clear:left;
+			clear:both;
 			margin-left:20px;
 			
 }
@@ -69,35 +71,36 @@ iframe:focus {outline:0;}
 			outline:none;}
 			
 #profilediv {
-	float:right;
-	margin-left:20px;
-	width:200px;
-	height:200px;
-	padding:20px;
-	margin-top:22px;
+			float:right;
+			width:19%;
+			margin-top:55px;
 }
 #profilepic {
-	border:4px solid #000;
-	border-radius:10px;
-	margin:0 auto;
-	width:150px;
-	height:150px;
-	background-image:url('../pics/profile.jpg');
-	background-position:center;
-	background-repeat:no-repeat;
-	margin-left:35px;
-	
-	
+			float:right;
+			border:4px solid #000;
+			border-radius:10px;
+			margin:0 auto;
+			min-width:150px;
+			height:150px;
+			max-width:100%;
+			max-height:100%;
+			background-image:url('../pics/profile.jpg');
+			background-position:center;
+			background-repeat:no-repeat;
+
+}
+#details {
+			width:100%;
+			clear:both;
 }
 #username {
-	cursor:default;
-	margin:0 auto;
-	padding-right:10px;
-	text-align:right;
-	line-height:50px;
-	width:300px;
-	font-size:1.3em;
-	font-weight:900;
+			cursor:default;
+			margin:0 auto;
+			padding-right:10px;
+			text-align:right;
+			line-height:50px;
+			font-size:1.3em;
+			font-weight:900;
 }
 
 	/** VIDEORUTA **
@@ -129,13 +132,11 @@ iframe:focus {outline:0;}
 			width:96%;
 			height:96%;
 			height:auto !important; 
-			margin: 0 auto;
-			
-			  	
+			margin: 0 auto;	  	
 	}
 	
 	.vidSize { 
-			margin:0 auto;  width:382.5px;
+		margin:0 auto;  width:382.5px;  /*width:382.5px;*/
     		padding-bottom: 70.3125%;
    	  		height: 400px; overflow: hidden;
 			background:#2D8C36;
@@ -145,7 +146,7 @@ iframe:focus {outline:0;}
 	.youtubeVideo:focus {
 			outline:0; border:0;}
 	.videoWrapper
-		{ 	width:382.5px;
+		{ 	width:381.5px;
 			height:225px;
 			margin:0 auto;
 			clear:both;
@@ -184,6 +185,7 @@ iframe:focus {outline:0;}
 	#bigVideo{	
 		position: absolute;
 		width:853px;
+		max-width:100%;
 		min-height:480px;
 		padding:40px;
 		height:auto !important;
@@ -203,10 +205,13 @@ iframe:focus {outline:0;}
 ---------------------------------------------------------------------- */	
 	#folderHeader {
 		float:left;
-		width:45%;
-		height:200px;
+		width:50%;
+		min-height:200px;
+		height:280px;
 		overflow:hidden; 
 		margin-top:30px;
+		min-width:358px;
+		padding-bottom:15px;
 	}
 	
 	.folderTitle {
@@ -220,11 +225,11 @@ iframe:focus {outline:0;}
 	#myFolders {
 		display:block;
 		clear:left;
-		height:120px;
+		min-height:120px;
 		margin-top:5px;
 		margin-bottom: 50px;
 	}
-	
+	#kanske {width:500px; height:400px;}
 	/** POPUP - MY FOLDERS*
 ---------------------------------------------------------------------- */	
 	.addTitle {
@@ -245,15 +250,15 @@ iframe:focus {outline:0;}
 	}
 		
 	.inputPopup {
-	padding-left:10px;
-	margin-right:10px;
-	display:inline; 
-	border:1px solid green;
-	height:20px;
-	border:2px solid gray;
-	border-radius:10px;
-	outline:none;
-	float:left;
+		padding-left:10px;
+		margin-right:10px;
+		display:inline; 
+		border:1px solid green;
+		height:20px;
+		border:2px solid gray;
+		border-radius:10px;
+		outline:none;
+		float:left;
 	}
 	
 	.headerPopup {
@@ -261,8 +266,6 @@ iframe:focus {outline:0;}
 		float:right;
 		width:400px;
 		height:150px;
-		overflow:hidden
-		
 	}
 		
 	.folderTag{		
@@ -292,45 +295,156 @@ iframe:focus {outline:0;}
 			 	right: 0;
 				}
 	#insidePopup  p {
-		margin-top:30px;
-		text-align:center;
+			margin-top:30px;
+			text-align:center;
 	}
 	#popup  h2 {
-		font-weight:bold;
-		font-size:18px;
+			font-weight:bold;
+			font-size:18px;
 	}
 	
 	
 	#insidePopup {
-		padding-top:15px;
-		width:90%;
-		height:80%;
-		border-top: 4px solid #160E07;
-		clear:both;
-		margin:0 auto;
+			padding-top:15px;
+			width:90%;
+			height:80%;
+			border-top: 4px solid #160E07;
+			clear:both;
+			margin:0 auto;
 		
 	}
 	
 #mask , #mask2 {
 	
-	background:#000;
-	position: absolute;
-	z-index: 8888; 
-    top:0;
-    left:0;
-    bottom:0;
-    right: 0;
-	opacity:0.8;
+			background:#000;
+			position: absolute;
+			z-index: 8888; 
+		    top:0;
+		    left:0;
+		    bottom:0;
+		    right: 0;
+			opacity:0.8;
 }
 
-#mask2 {opacity:1;}
+#mask2 {
+			opacity:1;}
+#confirmPopup, #okPopup { 
 	
+				position: absolute;
+				width:250px;
+				min-height:100px;
+				height:100%; 
+				height:auto !important; o 
+				top: 200px;
+				z-index: 9999; 
+				background-color: #FFF;
+				border: 5px solid #160E07;
+				border-radius:10px;
+				margin: 0 auto;
+			  	left: 0;
+			 	right: 0;	
+			 	text-align:center;
+			 	font-size:1.2em;
+			 	padding-bottom:20px;	
+			}
+#confirmPopup a , #okPopup a{
+				display:block;
+				float:left;
+				padding: 3px 5px;
+				color:#000;
+				text-decoration:none;
+				border:1px solid #000;
+				border-radius:5px;
+				margin:5px;
+}
+#confirmPopup a:visited , #okPopup a:visited {
+				color:#000;
+}
 		/** Anger sidansstorlek och placering*
 ---------------------------------------------------------------------- */	
-#page {	width:95%; min-height: 800px; 
-		height:100%; 
-		height:auto !important; 
-		margin:0 auto;
-		overflow:hidden;
-		padding-bottom: 20px;}
+	#page {	width:95%; min-height: 800px; 
+			height:100%; 
+			height:auto !important; 
+			margin:0 auto;
+			overflow:hidden;
+			padding-bottom: 20px;}
+
+/** CSS för mobila enheter*
+---------------------------------------------------------------------- */
+@media screen and (max-width:1305px) {
+	
+	#folderHeader {
+			width:30%;
+			padding-left:8%;
+			margin-right:15px;
+			min-width:358px;
+	}
+}
+@media screen and (max-width:1000px) {
+	
+	#folderHeader {
+			width:30%;
+			padding-left:8%;
+			margin-right:15px;
+			min-width:358px;
+	}
+	#folderHeader {
+			float:left;
+			clear:left;
+			padding-left:5px;
+	}
+	#profilediv {
+			float:right;
+			width:200px;
+}
+}
+
+@media screen and (max-width:910px) {
+#videoBoard {
+			width:390px;	
+	}
+#videoboardContainer {
+			min-width:250px;
+			max-width:99%;
+			min-width:500px;
+			min-height:500px;
+			height:100%; 
+			height:auto !important; 
+			width:96%;
+	}
+	#profilediv {
+			float:right;
+			width:200px;
+			margin-right:3%;
+}
+}
+@media screen and (max-width:649px) {
+	#profilepic {
+			display:none;
+		}
+	#profilediv {
+			position:absolute;
+			top:0;
+			right:15px;
+}
+}
+@media screen and (max-width:556px) {
+
+	#profilediv {
+			position:absolute;
+			top:0;
+			right:10px;		
+}
+ #videoboardContainer {
+			max-width:85%;
+			width:80%;
+	
+	}
+	#videoBoard {
+			width:400px;
+			margin:0 auto;
+			padding:0;	
+			
+	}
+}
 

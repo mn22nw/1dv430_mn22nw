@@ -1,14 +1,14 @@
 var urlList = {
-	addfolder: "/favotube/db/addfolder.php",
-	folderOutput:"/favotube/db/folderOutput.php",
-	deleteFolder:"/favotube/db/deleteFolder.php",
-	deleteyoutubeid:"/favotube/db/deleteyoutubeid.php",
-	deleteyoutubeidFolder:"/favotube/db/deleteyoutubeidFolder.php",
-	insideFolderOutput:"/favotube/db/insideFolderOutput.php",
-	addyoutubeid:"/favotube/db/addyoutubeid.php",
-	addyoutubeidToVideoboard:"/favotube/db/addyoutubeidToVideoboard.php",
-	videoBoardOutput: "/favotube/db/videoBoardOutput.php",
-	addVideoToFolder:"/favotube/db/addVideoToFolder.php",
-	logout:"/favotube/db/logout.php",
-	index:"/favotube/index.php"
+	addfolder: "/../db/addfolder.php",
+	folderOutput:"/../db/folderOutput.php",
+	deleteFolder:"/../db/deleteFolder.php",
+	deleteyoutubeid:"/../db/deleteyoutubeid.php",
+	deleteVideoinFolder:"/../db/deleteVideoinFolder.php",
+	insideFolderOutput:"/../db/insideFolderOutput.php",
+	addyoutubeid:"/../db/addyoutubeid.php",
+	addyoutubeidToVideoboard:"/../db/addyoutubeidToVideoboard.php",
+	videoBoardOutput: "../db/videoBoardOutput.php",
+	addVideoToFolder:"/../db/addVideoToFolder.php",
+	logout:"/../db/logout.php",
+	index:"/../index.php"
 	};

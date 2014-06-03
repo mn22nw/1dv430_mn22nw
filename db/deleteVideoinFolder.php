@@ -3,12 +3,12 @@
 	include("../db/connect_db.php");
 	include("../functions/security.php");
 	
-	//error_reporting(E_ALL);
-	error_reporting(0);
+	error_reporting(E_ALL);
+	//error_reporting(0);
 		
-		$username = $_SESSION['username']; //already safe!
-		$foldername = $_POST['foldername']; 
-		$youtubeidPost = $_POST['youtubeid'];
+		$username = "miaaim";// $_SESSION['username']; //already safe!
+		$foldername = "Piano"; // $_POST['foldername']; 
+		$youtubeidPost ="ESXgJ9-H-2U";// $_POST['youtubeid'];
 		$safe_foldername = escape($foldername);
 		
 		if (is_array($youtubeidPost)){
@@ -36,7 +36,7 @@
 			// --------------- END SELECT//	
 			
 			// SELECT youtubeid from foldergroup based on id//	
-			$SELECTyoutubeId= "SELECT `youtubeid` FROM `foldergroup` WHERE `folderId` = '".$resultFolderId["folderId"]. "' AND `youtubeid` = '".$youtubeid. "' LIMIT 1";
+			$SELECTyoutubeId= "SELECT `youtubeid` FROM `foldergroup` WHERE `folderId` = '".$resultFolderId["folderId"]. "' AND `youtubeid` = '".$youtubeid."' LIMIT 1";
 			
 			$ytbid= $handler->prepare($SELECTyoutubeId); 
 			$ytbidValue = $ytbid->execute();  
@@ -45,42 +45,22 @@
 			//echo $youtubeid ."<--youtubid";
 			
 			if ($row["youtubeid"] === $youtubeid ) {
+				//deleta videon här!
 				
-				echo "The video already exists in ";
+				// DELETE youtubevideo FROM FOLDERgroup //	
+				$deleteContentSQL= "DELETE FROM `foldergroup` WHERE  `folderId` = '".$resultFolderId["folderId"]."' AND `youtubeid` = '".$youtubeid."'";
+				$deleteContentFolder = $handler->prepare($deleteContentSQL);
+				$deleteContentFolder->execute();  
+				
+				echo "The video was succesfully removed!";
 			}
 			
-			// --------------- END SELECT//	
+			// --------------- END DELETE/	
+			
 			else {
-					try { 
-						
-						$handler->beginTransaction();
-						
-						// INSERT new folder to folder-table //	
-						$folderSql= "INSERT INTO `{$databasename}`.`foldergroup` (`fgroupid`,`folderId`,`youtubeid`)   
-						VALUES ( 
-							'',
-				            :folderId, 
-				            :youtubeid)  ON DUPLICATE KEY update `youtubeid` = VALUES(`youtubeid`);  ";     //
-				            
-				      	$addFolder = $handler->prepare($folderSql);     
-						$addFolder->bindParam(':folderId', $resultFolderId["folderId"], PDO::PARAM_STR);        
-						$addFolder->bindParam(':youtubeid', $youtubeid , PDO::PARAM_STR);  
-			
-						$addFolder->execute(); 
-						// --------------- END INSERT//	
-						
-						
-						$handler->commit();    
-						
-						echo "The video was successfully added to ";                         
-						
-						}
-						catch(Exception $e){
-			
-						    $handler->rollback();
-						    echo "Sorry, the video was not added correctly. Is it a valid youtubelink? ";       
-						}
-			
+					
+						echo "Something went wrong! Please try again later";   
+						                    
 			}
 			$handler = null; // end db- connection
 		}

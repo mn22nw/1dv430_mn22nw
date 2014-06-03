@@ -20,7 +20,7 @@
 */
 
 /* http://css-tricks.com/NetMag/FluidWidthVideo/Article-FluidWidthVideo.php */
-/* .ppVideoWrapper:first-child{}*/
+.ppVideoWrapper:first-child:focus{  outline:#000 solid 1px; border:0;}
 .ppVideoWrapper {
     position: relative;
     padding-bottom: 56.25%; /* 16:9 */
@@ -51,7 +51,7 @@
         top: 0;
         padding: 0;
         height: 100%;
-        overflow: none;
+        overflow: hidden;
     }
 
     .ppVideoWrapper .controls {

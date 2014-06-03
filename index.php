@@ -34,7 +34,6 @@
 				include("db/connect_db.php");
 				include("functions/security.php");
 				include("functions/functions.php");		
-			
 				if(isset($_POST['Login_Btn'])) {
 				
 				error_reporting(E_ALL);
@@ -43,8 +42,8 @@
 				$safe_username = escape($username);
 				$password = $_POST['Login_Password'];
 		
-				//echo $testing = password_encrypt($safe_password) . "<br />";
-				//echo $hash = crypt($safe_password, $testing); 
+				//echo $testing = password_encrypt($password) . "<br />";
+				//echo $hash = crypt($password, $testing); 
 				
 				$query= "SELECT * FROM `user` WHERE `username` = '".$safe_username. "'";
 				
@@ -62,10 +61,9 @@
 					    foreach($r as $row)
 					    {
 						$set_password = $row['password']; // password from database
-						
+							
 						$input_password = crypt($password, $set_password); // compares password from database with input
-						
-							if($input_password == $set_password) {
+							if($input_password== $set_password) {
 								$_SESSION['username']=$safe_username;
 								$redirect = $_POST['Login_Redirect']; 
 								header("Location: ".$redirect);
