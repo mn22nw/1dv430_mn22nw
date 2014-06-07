@@ -57,27 +57,26 @@ var FAVOTUBE = FAVOTUBE || {};
 			logout.onclick = function (e) { 
 		    e = e || window.event;
 			e.preventDefault(); 
-			console.log("loggi");
 			AjaxCon.logout(logout); };
 			
 	};	
 	
-	FAVOTUBE.util.renderFolders = function() { 
+	FAVOTUBE.util.renderFolders = function(youtubeId) { 
 		
-		AjaxCon.initFolders(urlList.folderOutput, "myFolders", "openFolderBtn", true);
+		AjaxCon.initFolders(urlList.folderOutput, "myFolders", "openFolderBtn", true, youtubeId);
 						// Link to php-file ---------- Div to render to --- classname of folderbuttons //
 	};
 	
-	FAVOTUBE.util.renderFoldersPopup = function() { 
-		AjaxCon.initFolders(urlList.folderOutput, "insidePopup", "openFolderBtn2", false);	
+	FAVOTUBE.util.renderFoldersPopup = function(youtubeId) { 
+		AjaxCon.initFolders(urlList.folderOutput, "insidePopup", "openFolderBtn2", false, youtubeId);	
 	};
 	
-	FAVOTUBE.util.renderFolderContent = function() { 
-		AjaxCon.initFolders(urlList. insideFolderOutput, "insidePopup", "openFolderBtn2", false);	
+	FAVOTUBE.util.renderFolderContent = function(youtubeId) { 
+		AjaxCon.initFolders(urlList. insideFolderOutput, "insidePopup", "openFolderBtn2", false, youtubeId);	
 	};
 	
 	FAVOTUBE.util.renderVideoboard = function() { 
-			AjaxCon.initVideoboard(urlList.videoBoardOutput,FAVOTUBE.util.renderVideo );	
+			AjaxCon.initVideoboard(urlList.videoBoardOutput,FAVOTUBE.util.renderVideo);	
 			
 	};
 	
@@ -102,7 +101,6 @@ var FAVOTUBE = FAVOTUBE || {};
 				if (linkInput.value ===""|| linkInput.value === null){  //om formfält är tomt
 					errorm.textContent ="";
 					var textNode1 = document.createTextNode("* This field can't be left empty.");
-					console.log("men va 17 har nu gjort");
 					errorm.textContent ="";
 							errorm.appendChild(textNode1);
 					}

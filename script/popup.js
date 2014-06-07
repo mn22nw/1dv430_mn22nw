@@ -39,9 +39,10 @@ PopUpFoundation.prototype.render = {
 						insidePopup.innerHTML="";
 						
 						AjaxCon.initFolders(urlList.folderOutput, "insidePopup", "openFolderBtn2");
+						var folderN =title.innerHTML;
 						
 						// CHANCE HEADERCONTENT OF POPUP HERE //
-						AjaxCon.PopupHeaderAddFolder(url);
+						AjaxCon.PopupHeaderAddFolder(url, folderN);
 	
 						backBtn.style.visibility ="hidden";	
 				});	

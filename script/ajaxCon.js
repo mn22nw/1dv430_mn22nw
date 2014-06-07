@@ -359,13 +359,10 @@ renderFolderContent: function(folderN) {
 							    	}
 							    	
 							    	else {
-							    	//console.log("inne i"+ folderN +" ligger ju " + obj[0].youtubeId);
-							    	
-							    	
+						    		var insidePopup= document.querySelector("#insidePopup");
 								    	if (insidePopup === null) {
 								    		console.log("starta en popup");
-								    		
-								    			
+
 											var folderPop = new PopUpFolders(); 
 											folderPop.render.init("", urlList.addfolder);
 								    		AjaxCon.PopupHeaderAddVideo(urlList.addVideoToFolder,folderN);
@@ -377,22 +374,53 @@ renderFolderContent: function(folderN) {
 												backBtn.style.visibility ="visible";	
 								    		
 								    		folderTitle.innerHTML =folderN;
-								    		var numberOfVids = 0;
+								    		
+								    		AjaxCon.renderThumbNails(obj,insidePopupNy);
+								    		
+											
+								    	}
+								    	else{
+								    		
+								    		AjaxCon.callFunctionrenderThumbNails(obj,folderN, folderTitle);
+							    	}
+										}
+							    },
+  						  error: function(result) {
+  						  	console.log(result);
+           				 	console.log("There was an error with collecting the folderdata from the database");
+      					  }
+						});
+},
+adjustHightElement: function (elem) {  //http://www.metaltoad.com/blog/resizing-text-fit-container  (open source)
+      var fontstep = 1;
+      if ($(elem).height()>79 || $(elem).width()>79) {
+        $(elem).css('font-size',(($(elem).css('font-size').substr(0,2)-fontstep)) + 'px').css('line-height',(($(elem).css('font-size').substr(0,2))) + 'px');
+        AjaxCon.adjustHightElement(elem);
+      }
+   },
+renderThumbNails: function(obj,insidePopup){
+											var backBtn = document.querySelector(".backBtn");
+											var numberOfVids = 0;
 								    		for(var i in obj){
-												numberOfVids++;						
-												var youtubeId = obj[i].youtubeId;
+																	
+												var youtubeId = obj[numberOfVids].youtubeId;
+												var containerThumbNail = document.createElement("div");
+													containerThumbNail.className ="containerThumbNail";
+													
 												var vidButton = document.createElement("a"); //input element, Submit button
 													vidButton.href ="#";
 													vidButton.className = "thumbNail"; 
-
-												//console.log("videoruta av denna" + youtubeId);
+													
+												var correctYTBid = AjaxCon.getRightName(youtubeId);
+												containerThumbNail.id=correctYTBid;
+												console.log("videoruta av denna" + correctYTBid);
 												var img = document.createElement('img');
 												img.className = "thumbNailImg";
-												var imgUrl = "//img.youtube.com/vi/"+ youtubeId + "/0.jpg"; //http://img.youtube.com/vi/MwpMEbgC7DA/0.jpg
+												var imgUrl = "//img.youtube.com/vi/"+ correctYTBid + "/0.jpg"; //http://img.youtube.com/vi/MwpMEbgC7DA/0.jpg
 												img.setAttribute("src", imgUrl);
 												 
 												vidButton.appendChild(img);
-												var correctYTBid = AjaxCon.getRightName(youtubeId);
+												
 												img.id =correctYTBid;
 												
 												vidButton.onclick = function (e) { 
@@ -415,7 +443,7 @@ renderFolderContent: function(folderN) {
 												deleteVideoBtn.onclick = function (e) { 
 													    e = e || window.event;
 														e.preventDefault(); 
-											
+														console.log("parentt? " +this.parentNode.id); 
 														var title = document.querySelector(".folderTitle");
 														var folderN =title.innerHTML;
 														//rumple
@@ -423,32 +451,33 @@ renderFolderContent: function(folderN) {
 																type: 'post',
 															    url: urlList.deleteVideoinFolder,
 															    jsonp: "callback",
-															    data:{"youtubeid" : youtubeId, "foldername" : folderN},
+															    data:{"youtubeid" : this.parentNode.id, "foldername" : folderN},
 															    dataType: "text",                
 													            success: function(rs)
 													            {
 													              console.log("den borde deletat video!" + rs);
-													              title.innerHTML = "";
-													              AjaxCon.initFolders(urlList.folderOutput, "insidePopup", "openFolderBtn2", false);
+													             AjaxCon.renderFolderContent(folderN);
 													              
-													             // CHANCE HEADERCONTENT OF POPUP HERE //
-								    							  AjaxCon.PopupHeaderAddVideo(urlList.addVideoToFolder, folderN);
-																  backBtn.style.visibility ="visible";
-								
 													            },
 													            error: function(result) {
 											           			 console.log("Error deleting folder!");
 											     			   }
-										    		    });  
+											     		
+										    		    }); 	   	    		    
 											};
-												vidButton.appendChild(deleteVideoBtn);
-												insidePopupNy.appendChild(vidButton);
-											}
-											if (numberOfVids === 0) {
-												insidePopupNy.innerHTML = "You have no videos yet!";
-											}
-								    	}
-								    	else{
+											 numberOfVids++;	
+												containerThumbNail.appendChild(vidButton);
+												containerThumbNail.appendChild(deleteVideoBtn);
+												insidePopup.appendChild(containerThumbNail);
+												}
+									
+									if (numberOfVids === 0) {
+												insidePopup.innerHTML = "You have no videos yet!";
+											};
+		
+},
+callFunctionrenderThumbNails: function(obj, folderN, folderTitle){
+								    		var insidePopup= document.querySelector("#insidePopup");
 									    	insidePopup.innerHTML =""; 
 									    	folderTitle.innerHTML =folderN;
 									    	var backBtn = document.querySelector(".backBtn");
@@ -456,54 +485,7 @@ renderFolderContent: function(folderN) {
 									    	
 									    	// CHANCE HEADERCONTENT OF POPUP HERE //
 									    	AjaxCon.PopupHeaderAddVideo(urlList.addVideoToFolder, folderN);
-									    	
-									    	for(var i in obj){
-									    		var youtubeId = obj[i].youtubeId;
-												var vidButton = document.createElement("a"); //input element, Submit button
-													vidButton.href ="#";
-													vidButton.className = "thumbNail"; 
-
-												console.log("videoruta av denna" + youtubeId);
-												var img = document.createElement('img');
-												img.className = "thumbNailImg";
-												var imgUrl = "//img.youtube.com/vi/"+ youtubeId + "/0.jpg"; //http://img.youtube.com/vi/MwpMEbgC7DA/0.jpg
-												img.setAttribute("src", imgUrl);
-												 
-												vidButton.appendChild(img);
-												var correctYTBid = AjaxCon.getRightName(youtubeId);
-												img.id =correctYTBid;
-												
-												vidButton.onclick = function (e) { 
-													    e = e || window.event;
-														e.preventDefault(); 
-														console.log(this.firstChild.id);
-														Video.getTitle(this.firstChild.id);   //makes a new video-div with title and adds it to videoboard
-														var popup = document.querySelector("#popup");
-														var mask = document.querySelector("#mask");
-														popup.parentNode.removeChild(popup); 
-														mask.parentNode.removeChild(mask);
-														window.scrollTo(0,385);
-														};
-														
-												insidePopup.appendChild(vidButton);
-											
-												}
-							    	}
-										}
-							    },
-  						  error: function(result) {
-  						  	console.log(result);
-           				 console.log("There was an error with collecting the folderdata from the database");
-      					  }
-						});
-},
-adjustHightElement: function (elem) {  //http://www.metaltoad.com/blog/resizing-text-fit-container  (open source)
-      var fontstep = 1;
-      if ($(elem).height()>79 || $(elem).width()>79) {
-        $(elem).css('font-size',(($(elem).css('font-size').substr(0,2)-fontstep)) + 'px').css('line-height',(($(elem).css('font-size').substr(0,2))) + 'px');
-        AjaxCon.adjustHightElement(elem);
-      }
-   },
+									    	AjaxCon.renderThumbNails(obj, insidePopup);},
 logout: function(url){
 	$.ajax({
 			type: 'post',

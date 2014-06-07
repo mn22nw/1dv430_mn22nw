@@ -3,7 +3,6 @@ $( document ).ready(function() {  //http://cssmenumaker.com/builder/1939102
 	$('#options').prepend('<div id="indicatorContainer"><div id="pIndicator"><div id="cIndicator"></div></div></div>');
 	    var activeElement = document.querySelector("#options ul li"); //$('#options>ul:first');  //:first
 	    
-	    console.log("boop");
 	    $('#options>ul>li').each(function() {
 	        if ($(this).hasClass('active')) {
 	            activeElement = $(this);

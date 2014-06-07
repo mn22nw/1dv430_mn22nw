@@ -136,12 +136,15 @@ a:focus {outline:0;}
 		background-position:-294px -304px; }
 .deleteFolderBtn:hover {
 		background-position:-427px -304px; }
+.deleteVideoBtn {
+		color:#312b2d;
+		text-decoration:none;
+		margin:0 auto;
+		text-align: center;
+}
+
 .thumbNail {
-		position:relative;
 		width:200px; 
-		display:block;
-		float:left;
-		border:2px solid black; 
 		margin:5px;
 		background: #000;
 		text-align:center;
@@ -149,6 +152,8 @@ a:focus {outline:0;}
 .thumbNail:hover {		text-decoration:none;}
 .thumbNail:hover::after {
 		content:"Click to open in videoboard";
+		background:#000;
+		padding:5px 0;
 		color:#FFF;
 		position:absolute;
 		top:35%;
@@ -156,7 +161,8 @@ a:focus {outline:0;}
 		width:100%;
 		}
 .thumbNailImg {
-		width:100%;
+		max-width:200px;
+		margin:0 auto;
 }
 .backBtn { 
 		width:60px;

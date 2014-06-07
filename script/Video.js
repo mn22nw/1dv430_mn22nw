@@ -48,7 +48,7 @@ var Video = {
     		    });			
 			};	
 			
-			// -- EXITBUTTON --//
+			// -- Tryting to add image over video (to remove youtubes playbutton on video) --//
 			/*var imgOver = document.createElement('img');
 
 			imgOver.setAttribute("src", "http://img.youtube.com/vi/MwpMEbgC7DA/0.jpg");
@@ -67,20 +67,13 @@ var Video = {
 			Video.Enlarge(youtubeID);
 			window.scrollTo(0,100);
 			};
-			
-			// -- HideBUTTON --//
-			var hideButton = document.createElement('a');
-			hideButton.href = "#";
-		    hideButton.className = 'hideButton';
-		    hideButton.onclick = function (e) { 
-		    e = e || window.event;
-			e.preventDefault(); 
-			};	
+			var infoEnlarge= document.createElement('p');
+			infoEnlarge.className = "infoAdd";
+			infoEnlarge.innerHTML = "Enlarge video";
 				
 			var infoAdd= document.createElement('p');
 			infoAdd.className = "infoAdd";
 			infoAdd.innerHTML = "Add to folder";
-			var nameid = "infoadd" + youtubeID;
 			
 			// -- FavouriteBUTTON --//
 			var favouriteBtn = document.createElement('a');
@@ -101,19 +94,22 @@ var Video = {
 				title.innerHTML = "Select a folder";
 			};	
 			
-			function func()
-			{  
-			   infoAdd.style.visibility = "visible";
-			}
+			infoAdd.style.display = "none";
+			infoEnlarge.style.display = "none";
 			
-			function func1()
-			{  
-			   infoAdd.setAttribute("style", "visibility:hidden;");
-			}
+			favouriteBtn.addEventListener("mouseover", function(e) {
+				infoAdd.style.display = "inline";
+							}, false);
+			favouriteBtn.addEventListener("mouseout", function(e) {
+				infoAdd.setAttribute("style", "display:none;");
+							}, false);
 			
-			infoAdd.style.visibility = "hidden";
-			favouriteBtn.addEventListener("mouseover", func, false);
-			favouriteBtn.addEventListener("mouseout", func1, false);
+			enLarge.addEventListener("mouseover",  function(e) {
+				infoEnlarge.style.display = "inline";
+							}, false);
+			enLarge.addEventListener("mouseout", function(e) {
+				infoEnlarge.setAttribute("style", "display:none;");
+							}, false);
 			
 			
 			
@@ -130,6 +126,7 @@ var Video = {
 		 	draggyDiv.appendChild(favouriteBtn);
 		 	draggyDiv.appendChild(enLarge);
 		 	draggyDiv.appendChild(infoAdd);
+		 	draggyDiv.appendChild(infoEnlarge);
 			
 			$('#videoBoard').prepend(draggyDiv);
 			//videoBoard.appendChild(draggyDiv); 

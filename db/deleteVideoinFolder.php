@@ -6,9 +6,9 @@
 	error_reporting(E_ALL);
 	//error_reporting(0);
 		
-		$username = "miaaim";// $_SESSION['username']; //already safe!
-		$foldername = "Piano"; // $_POST['foldername']; 
-		$youtubeidPost ="ESXgJ9-H-2U";// $_POST['youtubeid'];
+		$username = $_SESSION['username']; //already safe!
+		$foldername = $_POST['foldername']; 
+		$youtubeidPost = $_POST['youtubeid'];
 		$safe_foldername = escape($foldername);
 		
 		if (is_array($youtubeidPost)){
