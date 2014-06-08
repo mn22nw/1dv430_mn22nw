@@ -126,7 +126,7 @@ PopUpFolders.prototype.confirmPopup = function(content){
 					              
 					              // CHANCE HEADERCONTENT OF POPUP HERE //
 								    	AjaxCon.PopupHeaderAddFolder(urlList.addfolder, folderN);
-								    	var backBtn = document.createElement("a");
+								    	var backBtn = document.querySelector(".backBtn");
 								    	backBtn.style.visibility ="hidden";
 
 					            },
@@ -134,6 +134,55 @@ PopUpFolders.prototype.confirmPopup = function(content){
 			           			 console.log("Error deleting folder!");
 			     			   }
 		    		    });  		
+			confirmPopup.parentNode.removeChild(confirmPopup); 
+			};
+		
+	var noBtn = document.createElement('a');
+		noBtn.href = "#";
+		noBtn.innerHTML = "No";
+		noBtn.onclick = function (e) { 
+		    e = e || window.event;
+			e.preventDefault(); 
+			confirmPopup.parentNode.removeChild(confirmPopup); 
+			};
+		
+	var popUp = document.querySelector('#popup');
+	confirmPopup.appendChild(message);
+	confirmPopup.appendChild(yesBtn);
+	confirmPopup.appendChild(noBtn);
+	popUp.appendChild(confirmPopup);
+};
+
+PopUpFolders.prototype.confirmPopupVideo = function(content, youtubeId){
+	
+	var confirmPopup = document.createElement('div');
+		confirmPopup.id = "confirmPopup";
+	var message = document.createElement('p');
+		message.innerHTML = content;
+	var yesBtn = document.createElement('a');
+		yesBtn.href = "#";
+		yesBtn.innerHTML = "Yes";
+		yesBtn.onclick = function (e) { 
+		    e = e || window.event;
+			e.preventDefault(); 
+			var title = document.querySelector(".folderTitle");
+			var folderN =title.innerHTML;
+						
+						$.ajax({
+								type: 'post',
+								url: urlList.deleteVideoinFolder,
+								jsonp: "callback",
+								data:{"youtubeid" : this.parentNode.id, "foldername" : folderN},
+								dataType: "text",                
+								success: function(rs)
+								{
+									 console.log("den borde deletat video!" + rs);
+									 AjaxCon.renderFolderContent(folderN);
+									},
+									error: function(result) {
+									console.log("Error deleting video!");
+											     			   }
+										    		    }); 	   	    		
 			confirmPopup.parentNode.removeChild(confirmPopup); 
 			};
 		

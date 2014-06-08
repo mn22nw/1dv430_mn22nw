@@ -427,7 +427,9 @@ renderThumbNails: function(obj,insidePopup){
 													    e = e || window.event;
 														e.preventDefault(); 
 														console.log(this.firstChild.id);
-														Video.getTitle(this.firstChild.id);   //makes a new video-div with title and adds it to videoboard
+														Video.getTitleAndAddTitleToDataBase(this.firstChild.id, true, function(){
+															//Empty
+															});   //makes a new video-div with title and adds it to videoboard
 														var popup = document.querySelector("#popup");
 														var mask = document.querySelector("#mask");
 														popup.parentNode.removeChild(popup); 
@@ -443,27 +445,14 @@ renderThumbNails: function(obj,insidePopup){
 												deleteVideoBtn.onclick = function (e) { 
 													    e = e || window.event;
 														e.preventDefault(); 
-														console.log("parentt? " +this.parentNode.id); 
+														
 														var title = document.querySelector(".folderTitle");
 														var folderN =title.innerHTML;
-														//rumple
-														$.ajax({
-																type: 'post',
-															    url: urlList.deleteVideoinFolder,
-															    jsonp: "callback",
-															    data:{"youtubeid" : this.parentNode.id, "foldername" : folderN},
-															    dataType: "text",                
-													            success: function(rs)
-													            {
-													              console.log("den borde deletat video!" + rs);
-													             AjaxCon.renderFolderContent(folderN);
-													              
-													            },
-													            error: function(result) {
-											           			 console.log("Error deleting folder!");
-											     			   }
-											     		
-										    		    }); 	   	    		    
+														var content = "Are you sure you want to delete this folder?";
+														var confirmPopVid = new PopUpFolders(); 
+														
+														confirmPopVid.confirmPopupVideo(content,this.parentNode.id); 
+														    
 											};
 											 numberOfVids++;	
 												containerThumbNail.appendChild(vidButton);
