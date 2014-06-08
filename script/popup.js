@@ -172,7 +172,7 @@ PopUpFolders.prototype.confirmPopupVideo = function(content, youtubeId){
 								type: 'post',
 								url: urlList.deleteVideoinFolder,
 								jsonp: "callback",
-								data:{"youtubeid" : this.parentNode.id, "foldername" : folderN},
+								data:{"youtubeid" : youtubeId, "foldername" : folderN},
 								dataType: "text",                
 								success: function(rs)
 								{
@@ -225,6 +225,27 @@ PopUpFolders.prototype.okPopup = function(content){
 			okPop.appendChild(message);
 			okPop.appendChild(okBtnPopup);
 			popUp.appendChild(okPop); 
+};
+
+PopUpFolders.prototype.okAddingFolderPopup = function(content){
+			console.log("eaah");
+			var popUp = document.querySelector("#popup");
+			var mask = document.querySelector("#mask");
 			
-	
+			var okPop = document.createElement('div');
+				okPop.setAttribute("id", "okPopup");
+			var message = document.createElement('p');
+				message.innerHTML = content;
+			var okBtnPopup = document.createElement('a');
+				okBtnPopup.href = "#";
+				okBtnPopup.innerHTML = "Ok";
+				okBtnPopup.onclick = function (e) { 
+				    e = e || window.event;
+					e.preventDefault(); 
+					okPop.parentNode.removeChild(okPop); 
+					};
+				
+			okPop.appendChild(message);
+			okPop.appendChild(okBtnPopup);
+			popUp.appendChild(okPop); 
 };

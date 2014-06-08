@@ -110,7 +110,7 @@ a:focus {outline:0;}
 #popup .exitButton:hover{ 		
 		background-position:-30px 0;  }
 	
-.addFolderBtn, .backBtn , .addVideoBtn, .deleteFolderBtn{
+.addFolderBtn, .backBtn , .addVideoBtn, .deleteFolderBtn, .addFolderBtnMain{
 		display:block;
 		width:107px;
 		height:30px;
@@ -125,6 +125,13 @@ a:focus {outline:0;}
 		background-position:-294px -228px; }
 .addFolderBtn:hover {
 		background-position:-427px -228px; }
+.addFolderBtnMain {
+		float:right;
+		margin-right:25px;
+		margin-bottom:0; 
+		margin-top:15px;
+		background-position:-427px -228px; }
+
 .addVideoBtn {
 		background-position:-294px -266px; }
 .addVideoBtn:hover {
@@ -173,6 +180,10 @@ a:focus {outline:0;}
 		background-position:-513px -129px; }
 .backBtn:hover {
 		background-position:-584px -129px; }
+#okPopup {
+		display:block;
+		margin:0 auto;
+}
 	
 		/** BUTTONS - VIDEOBOARD *
 ---------------------------------------------------------------------- */
@@ -265,5 +276,6 @@ a:focus {outline:0;}
 				background-position:-653px -140px;
 				float:right;
 }
+
 	
 /**visdomsord från Annie - Det som inte finns syns inte!*/

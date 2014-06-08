@@ -23,8 +23,7 @@
 			$userid = $handler->prepare($SELECTuserid); 
 			
 			$useridValue = $userid->execute();  
-			$result = $userid->fetch(PDO::FETCH_ASSOC);
-			
+			$result = $userid->fetch(PDO::FETCH_ASSOC);  
 			// --------------- END SELECT//	
 			
 			// SELECT FOLDERID FROM FOLDER //	

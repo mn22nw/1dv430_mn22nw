@@ -44,7 +44,7 @@ var FAVOTUBE = FAVOTUBE || {};
 			   
 			    }
 			});
-			
+
 			okButton.addEventListener('click', function(e) { 
 						e = e || window.event;
 						e.preventDefault(); 

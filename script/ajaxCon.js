@@ -199,6 +199,7 @@ PopupHeaderAddFolder:function(url) {
 			i.setAttribute('type',"text");
 			i.setAttribute('maxlength', "30");
 			i.className = "inputPopup";
+			i.id ="inputId";
 			
 		var p = document.createElement("p");
 			p.innerHTML = "Name:";
@@ -230,8 +231,12 @@ PopupHeaderAddFolder:function(url) {
 				            success: function(rs)
 				            {
 				              console.log("den borde lagt till!" + rs);
+				              	
 				              AjaxCon.initFolders(urlList.folderOutput, "insidePopup", "openFolderBtn2", false);	
 				              AjaxCon.initFolders(urlList.folderOutput, "myFolders", "openFolderBtn", true);	
+				              if (rs !=="Success"){
+				              var successAdding = new PopUpFolders(); 
+								  successAdding.okAddingFolderPopup(rs);}
 				              
 				            },
 				            error: function(result) {
@@ -247,6 +252,39 @@ PopupHeaderAddFolder:function(url) {
 			header.appendChild(i);
 			header.appendChild(addButton);
 			header.appendChild (errormheader);
+			i.focus();
+			$('#inputId').on('keyup', function(e) {
+			   e = e || window.event;
+				e.preventDefault(); 
+			  if (e.keyCode === 13) {
+				if (i.value ===""|| i.value === null){  //om formfält är tomt
+					errormheader.innerHTML = "";
+					errormheader.innerHTML = "*This field can't be left empty.";
+					}
+				else{ //window.scrollTo(0,300);
+						errormheader.innerHTML = "";
+						
+						 $.ajax({
+				            type: 'post',                    
+				            url: url,            
+				            data:{"foldername" : i.value},
+				            dataType:'text',                
+				            success: function(rs)
+				            {
+				              console.log("den borde lagt till!" + rs);
+				              AjaxCon.initFolders(urlList.folderOutput, "insidePopup", "openFolderBtn2", false);	
+				              AjaxCon.initFolders(urlList.folderOutput, "myFolders", "openFolderBtn", true);	
+				               if (rs !=="Success"){
+				              var successAdding2 = new PopUpFolders(); 
+								  successAdding2.okAddingFolderPopup(rs);}
+				            },
+				            error: function(result) {
+		           			 console.log("Error adding folder!");
+		     			   }
+		    		    });  
+		    		    i.value = "";
+				} }
+			});
 	
 },
 PopupHeaderAddVideo:function(url, foldername) {
@@ -260,6 +298,7 @@ PopupHeaderAddVideo:function(url, foldername) {
 			i.setAttribute('type',"text");
 			i.setAttribute('maxlength', "300");
 			i.className = "inputPopup";
+			i.id ="linkId";
 			
 		var p = document.createElement("p");
 			p.innerHTML = "Link:";
@@ -295,7 +334,7 @@ PopupHeaderAddVideo:function(url, foldername) {
 				            dataType:'text',                
 				            success: function(rs)
 				            {
-				              console.log("den borde lagt till "+ youtubeId+" i folder!" + rs);
+				             //console.log("den borde lagt till "+ youtubeId+" i folder!" + rs);
 				              
 				              //need to reload page here!!! ...with videos.
 				              AjaxCon.renderFolderContent(foldername);
@@ -306,8 +345,6 @@ PopupHeaderAddVideo:function(url, foldername) {
 		    		    });  } );
 						
 						i.value = "";
-						
-						 
 					}
 			};
 			
@@ -330,7 +367,39 @@ PopupHeaderAddVideo:function(url, foldername) {
 			header.appendChild(addButton);
 			header.appendChild(errormheader);
 			header.appendChild(deleteButton);
-	
+			i.focus();
+			$('#linkId').on('keyup', function(e) {
+			   e = e || window.event;
+				e.preventDefault(); 
+			  if (e.keyCode === 13) {
+			  		if (i.value ===""|| i.value === null){  //om formfält är tomt
+					errormheader.innerHTML = "";
+					errormheader.innerHTML = "*This field can't be left empty.";
+					}
+				else{ 
+						errormheader.innerHTML = "";
+						console.log (i.value);
+						var youtubeId = Video.YouTubeGetID(i.value);			
+						Video.getTitleAndAddTitleToDataBase(youtubeId, false , 
+							function() {$.ajax({
+				            type: 'post',                    
+				            url: url,            
+				            data:{"youtubeid" : youtubeId, "foldername" : foldername},
+				            dataType:'text',                
+				            success: function(rs)
+				            {
+				              AjaxCon.renderFolderContent(foldername);
+				            },
+				            error: function(result) {
+		           			 console.log("Error adding video!");
+		     			   }
+		    		    });  } );
+						
+						i.value = "";
+					}
+			};	
+			  
+			  });
 }, 
 renderFolderContent: function(folderN) {
 						//opens folder with a list of folderITEMS
@@ -413,7 +482,6 @@ renderThumbNails: function(obj,insidePopup){
 													
 												var correctYTBid = AjaxCon.getRightName(youtubeId);
 												containerThumbNail.id=correctYTBid;
-												console.log("videoruta av denna" + correctYTBid);
 												var img = document.createElement('img');
 												img.className = "thumbNailImg";
 												var imgUrl = "//img.youtube.com/vi/"+ correctYTBid + "/0.jpg"; //http://img.youtube.com/vi/MwpMEbgC7DA/0.jpg
@@ -448,7 +516,7 @@ renderThumbNails: function(obj,insidePopup){
 														
 														var title = document.querySelector(".folderTitle");
 														var folderN =title.innerHTML;
-														var content = "Are you sure you want to delete this folder?";
+														var content = "Are you sure you want to delete this video?";
 														var confirmPopVid = new PopUpFolders(); 
 														
 														confirmPopVid.confirmPopupVideo(content,this.parentNode.id); 
