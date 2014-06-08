@@ -18,7 +18,7 @@ Andra resources (kod jag inte skrivit själv):
 * [Pragmatic Player](http://demo.dsheiko.com/pplayer/)
 (Mappen som heter pplayer)
 
-* Mappen som heter functions innehåller kod (för kryptering av lösenord) jag hämtade från en tutorial på youtube.
+* Mappen som heter functions innehåller kod (för kryptering av lösenord) som jag hämtade från en tutorial på youtube.
 
-Annars har jag skrivit resten själv, vissa kodbitar jag jag tagit ifrån Stack Overflow och vid dessa har jag länkat till tråden där jag hittade dem.
+Annars har jag skrivit resten själv, vissa kodbitar jag jag tagit ifrån Stack Overflow och vid dessa har jag länkat i koden till tråden där jag hittade dem.
 
